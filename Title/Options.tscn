@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnl53v0lrb1mv"]
+
+[ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_0qhgt"]
+[ext_resource type="Script" path="res://Title/Options.gd" id="2_mrs1c"]
+
+[node name="Options" type="TabContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -375.0
+offset_right = 600.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0qhgt")
+script = ExtResource("2_mrs1c")
+
+[node name="#options_game#" type="TabBar" parent="."]
+layout_mode = 2
+
+[node name="Text" type="VBoxContainer" parent="#options_game#"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Language" type="Label" parent="#options_game#/Text"]
+layout_mode = 2
+text = "options.game.language"
+
+[node name="Button" type="VBoxContainer" parent="#options_game#"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Language_scroll" type="OptionButton" parent="#options_game#/Button"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "中文"
+popup/item_1/id = 1
+
+[node name="#options_video#" type="TabBar" parent="."]
+visible = false
+layout_direction = 1
+layout_mode = 2
+
+[node name="#options_audio#" type="TabBar" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="#options_control#" type="TabBar" parent="."]
+visible = false
+layout_mode = 2
+
+[connection signal="item_selected" from="#options_game#/Button/Language_scroll" to="." method="_on_option_button_item_selected"]

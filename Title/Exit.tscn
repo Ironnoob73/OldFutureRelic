@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsynmnxiy47ku"]
+
+[ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_6xdmf"]
+
+[node name="Exit" type="PanelContainer"]
+offset_right = 422.0
+offset_bottom = 100.0
+theme = ExtResource("1_6xdmf")
+
+[node name="Ask" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "exit.ask"
+horizontal_alignment = 1
+
+[node name="VSplitContainer" type="HSplitContainer" parent="."]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ConfirmButton" type="Button" parent="VSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_left = NodePath("../CancelButton")
+focus_neighbor_top = NodePath("../CancelButton")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_neighbor_bottom = NodePath("../CancelButton")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../CancelButton")
+text = "button.confirm"
+
+[node name="CancelButton" type="Button" parent="VSplitContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+focus_neighbor_left = NodePath("../ConfirmButton")
+focus_neighbor_top = NodePath("../ConfirmButton")
+focus_neighbor_right = NodePath("../ConfirmButton")
+focus_neighbor_bottom = NodePath("../ConfirmButton")
+focus_next = NodePath("../ConfirmButton")
+focus_previous = NodePath("../ConfirmButton")
+text = "button.cancel"

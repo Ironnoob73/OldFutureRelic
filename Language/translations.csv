@@ -1,0 +1,23 @@
+,en_US,zh_CN
+title.line0,Old future,旧未来
+title.line1,Relic,遗址
+title.menu.start,Start,开始
+title.menu.online,Online,在线
+title.menu.options,Options,选项
+title.menu.exit,Exit,退出
+,,
+button.back,Back,返回
+button.confirm,Confirm,确认
+button.cancel,Cancel,取消
+,,
+#options_game#,Game,游戏
+options.game.language,Language,语言
+#options_video#,Video,视频
+#options_audio#,Audio,音频
+#options_control#,Control,控制
+,,
+save.title,Select save,选择存档
+,,
+online.na,Coming s∞n,敬请期待
+,,
+exit.ask,Are you sure to exit?,你确定退出吗？

@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj71foidl1nbr"]
+
+[ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_xrdgn"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_xrdgn")
+
+[node name="Title_L0" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 50.0
+offset_top = 25.0
+offset_right = 436.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.74902, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+text = "title.line0"
+
+[node name="Title_L1" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 100.0
+offset_top = 75.0
+offset_right = 440.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.74902, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 150
+text = "title.line1"
+
+[node name="MainMenu" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 250.0
+offset_right = 470.0
+offset_bottom = 450.0
+
+[node name="StartButton" type="Button" parent="MainMenu"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../ExitButton")
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_right = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../ExitButton")
+mouse_default_cursor_shape = 2
+text = "title.menu.start"
+
+[node name="OnlineButton" type="Button" parent="MainMenu"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../StartButton")
+mouse_default_cursor_shape = 8
+text = "title.menu.online"
+
+[node name="OptionsButton" type="Button" parent="MainMenu"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+focus_next = NodePath("../ExitButton")
+focus_previous = NodePath("../StartButton")
+mouse_default_cursor_shape = 2
+text = "title.menu.options
+"
+
+[node name="ExitButton" type="Button" parent="MainMenu"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../OptionsButton")
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_right = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../OptionsButton")
+mouse_default_cursor_shape = 2
+text = "title.menu.exit
+"

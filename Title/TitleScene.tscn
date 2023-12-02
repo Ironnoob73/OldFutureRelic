@@ -1,0 +1,173 @@
+[gd_scene load_steps=15 format=3 uid="uid://ctdhomvmo6e63"]
+
+[ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_6nm6v"]
+[ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="2_b2r6n"]
+[ext_resource type="Script" path="res://Title/TitleScene.gd" id="2_ft3rn"]
+[ext_resource type="PackedScene" uid="uid://dj71foidl1nbr" path="res://Title/Main.tscn" id="3_6h4ks"]
+[ext_resource type="PackedScene" uid="uid://cnl53v0lrb1mv" path="res://Title/Options.tscn" id="4_oyfw7"]
+[ext_resource type="PackedScene" uid="uid://bsynmnxiy47ku" path="res://Title/Exit.tscn" id="6_201ko"]
+[ext_resource type="PackedScene" uid="uid://c6vlyx2oac4o4" path="res://Title/Saves.tscn" id="7_wpuqt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymlre"]
+shader = ExtResource("2_b2r6n")
+shader_parameter/mouse = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ngv4d"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.9)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iir2o"]
+gradient = SubResource("Gradient_ngv4d")
+width = 100
+height = 100
+fill = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqp76"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 10
+border_color = Color(0, 0.74902, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksh2j"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 5
+border_color = Color(0, 0.74902, 1, 1)
+
+[sub_resource type="InputEventAction" id="InputEventAction_8cm0h"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_ppty1"]
+events = [SubResource("InputEventAction_8cm0h")]
+
+[node name="Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6nm6v")
+script = ExtResource("2_ft3rn")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 2
+material = SubResource("ShaderMaterial_ymlre")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_iir2o")
+stretch_mode = 1
+
+[node name="Main" parent="." instance=ExtResource("3_6h4ks")]
+
+[node name="OptionsButton" parent="Main/MainMenu" index="2"]
+text = "title.menu.options"
+
+[node name="ExitButton" parent="Main/MainMenu" index="3"]
+text = "title.menu.exit"
+
+[node name="Save_pan_u" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_top = -100.0
+offset_right = 1600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pqp76")
+
+[node name="Label" type="Label" parent="Save_pan_u"]
+layout_mode = 2
+text = "save.title"
+horizontal_alignment = 1
+
+[node name="Save_pan_d" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 1600.0
+offset_bottom = 100.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ksh2j")
+
+[node name="Saves" parent="." instance=ExtResource("7_wpuqt")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 900.0
+offset_top = -375.0
+offset_right = 1900.0
+offset_bottom = 375.0
+
+[node name="Online" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1200.0
+offset_top = -50.0
+offset_right = 2200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Online"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "online.na"
+horizontal_alignment = 1
+
+[node name="Options" parent="." instance=ExtResource("4_oyfw7")]
+layout_mode = 1
+offset_top = 550.0
+offset_bottom = 1300.0
+
+[node name="Exit" parent="." instance=ExtResource("6_201ko")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1200.0
+offset_top = -50.0
+offset_right = 1622.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_right = 172.0
+offset_bottom = 40.0
+grow_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_ppty1")
+text = "button.back"
+
+[connection signal="pressed" from="Main/MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Main/MainMenu/OnlineButton" to="." method="_on_online_button_pressed"]
+[connection signal="pressed" from="Main/MainMenu/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Main/MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Exit/VSplitContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="Exit/VSplitContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="Main"]
+[editable path="Exit"]

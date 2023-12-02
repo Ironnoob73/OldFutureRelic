@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6vlyx2oac4o4"]
+
+[ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_hm2j0"]
+[ext_resource type="Script" path="res://Title/Saves.gd" id="2_exjy8"]
+
+[node name="Saves" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hm2j0")
+follow_focus = true
+script = ExtResource("2_exjy8")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot0" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot4")
+focus_neighbor_top = NodePath("../Slot4")
+focus_neighbor_right = NodePath("../Slot1")
+focus_neighbor_bottom = NodePath("../Slot1")
+focus_next = NodePath("../Slot1")
+focus_previous = NodePath("../Slot4")
+
+[node name="Slot1" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot0")
+focus_neighbor_top = NodePath("../Slot0")
+focus_neighbor_right = NodePath("../Slot2")
+focus_neighbor_bottom = NodePath("../Slot2")
+focus_next = NodePath("../Slot2")
+focus_previous = NodePath("../Slot0")
+
+[node name="Slot2" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot1")
+focus_neighbor_top = NodePath("../Slot1")
+focus_neighbor_right = NodePath("../Slot3")
+focus_neighbor_bottom = NodePath("../Slot3")
+focus_next = NodePath("../Slot3")
+focus_previous = NodePath("../Slot1")
+
+[node name="Slot3" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot2")
+focus_neighbor_top = NodePath("../Slot2")
+focus_neighbor_right = NodePath("../Slot4")
+focus_neighbor_bottom = NodePath("../Slot4")
+focus_next = NodePath("../Slot4")
+focus_previous = NodePath("../Slot2")
+
+[node name="Slot4" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot3")
+focus_neighbor_top = NodePath("../Slot3")
+focus_neighbor_right = NodePath("../Slot0")
+focus_neighbor_bottom = NodePath("../Slot0")
+focus_next = NodePath("../Slot0")
+focus_previous = NodePath("../Slot3")
