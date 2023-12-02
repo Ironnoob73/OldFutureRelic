@@ -29,38 +29,60 @@ func _ready():
 
 func _process(delta):
 	#Menu switch animate
-	if current_menu == "title":		main_menu.position.x = lerp( main_menu.position.x , 0.0 , 0.1 )
-	else:							main_menu.position.x = lerp( main_menu.position.x , -500.0 , 0.1 )
-		
+	if current_menu == "title":
+		main_menu.visible = true
+		main_menu.position.x = lerp( main_menu.position.x , 0.0 , 0.1 )
+	else:
+		main_menu.position.x = lerp( main_menu.position.x , -501.0 , 0.1 )
+		if main_menu.position.x < -500.0 : main_menu.visible = false
+
 	if current_menu == "saves" or current_menu == "online" or current_menu == "options":
+		back_button.visible = true
 		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y - 75.0 , 0.1 )
 	else:
-		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y - 0.0 , 0.1 )
+		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y + 1.0 , 0.1 )
+		if back_button.position.x > get_viewport().size.y : back_button.visible = false
 		
 	if current_menu == "saves":
+		saves_menu.visible = true
+		saves_pan_u.visible = true
+		saves_pan_d.visible = true
 		saves_menu.position.x = lerp( saves_menu.position.x , (get_viewport().size.x - saves_menu.size.x)/2.0 , 0.1 )
 		saves_pan_u.position.y = lerp( saves_pan_u.position.y , 0.0 , 0.1 )
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y - 100.0 , 0.1 )
 		background_color_fr = lerp(background_color_fr,0.5,0.1)
 		background_color_fg = lerp(background_color_fg,0.875,0.1)
 	else:
-		saves_menu.position.x = lerp( saves_menu.position.x ,get_viewport().size.x + 500.0 , 0.1 )
-		saves_pan_u.position.y = lerp( saves_pan_u.position.y , -100.0 , 0.1 )
-		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y + 0.0 , 0.1 )
+		saves_menu.position.x = lerp( saves_menu.position.x ,get_viewport().size.x + 1.0 , 0.1 )
+		if saves_menu.position.x > get_viewport().size.x : saves_menu.visible = false
+		saves_pan_u.position.y = lerp( saves_pan_u.position.y , -101.0 , 0.1 )
+		if saves_pan_u.position.y < -100.0 : saves_pan_u.visible = false
+		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y + 1.0 , 0.1 )
+		if saves_pan_d.position.y > get_viewport().size.y + 0.0 : saves_pan_d.visible = false
 		background_color_fr = lerp(background_color_fr,0.0,0.1)
 	
-	if current_menu == "online":	online_menu.position.x = lerp( online_menu.position.x , (get_viewport().size.x - online_menu.size.x)/2.0 , 0.1 )
-	else:							online_menu.position.x = lerp( online_menu.position.x ,get_viewport().size.x + 500.0 , 0.1 )
+	if current_menu == "online":
+		online_menu.visible = true
+		online_menu.position.x = lerp( online_menu.position.x , (get_viewport().size.x - online_menu.size.x)/2.0 , 0.1 )
+	else:
+		online_menu.position.x = lerp( online_menu.position.x , get_viewport().size.x + 1.0 , 0.1 )
+		if online_menu.position.x > get_viewport().size.x : online_menu.visible = false
 		
-	if current_menu == "options":	options_menu.position.y = lerp( options_menu.position.y , (get_viewport().size.y - options_menu.size.y)/2.0 , 0.1 )
-	else:							options_menu.position.y = lerp( options_menu.position.y , get_viewport().size.y + 100.0 , 0.1 )
+	if current_menu == "options":
+		options_menu.visible = true
+		options_menu.position.y = lerp( options_menu.position.y , (get_viewport().size.y - options_menu.size.y)/2.0 , 0.1 )
+	else:
+		options_menu.position.y = lerp( options_menu.position.y , get_viewport().size.y + 1.0 , 0.1 )
+		if options_menu.position.y > get_viewport().size.y : options_menu.visible = false
 		
 	if current_menu == "exit":
+		exit_menu.visible = true
 		exit_menu.position.x = lerp( exit_menu.position.x , (get_viewport().size.x - exit_menu.size.x)/2.0 , 0.1 )
 		background_color = lerp(background_color,0.0,0.1)
 		background_color_fg = lerp(background_color_fg,0.0,0.1)
 	else:
-		exit_menu.position.x = lerp( exit_menu.position.x ,get_viewport().size.x + 100.0 , 0.1 )
+		exit_menu.position.x = lerp( exit_menu.position.x ,get_viewport().size.x + 1.0 , 0.1 )
+		if exit_menu.position.x > get_viewport().size.x : exit_menu.visible = false
 		background_color = lerp(background_color,1.0,0.1)
 	
 	#Chage width
