@@ -22,6 +22,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.png"
 
+[audio]
+
+buses/default_bus_layout="res://global_audio.tres"
+
 [autoload]
 
 Global="*res://global.gd"

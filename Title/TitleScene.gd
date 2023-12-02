@@ -56,8 +56,7 @@ func _process(delta):
 	else:							options_menu.position.y = lerp( options_menu.position.y , get_viewport().size.y + 100.0 , 0.1 )
 		
 	if current_menu == "exit":
-		exit_menu.position.x = center(exit_menu.position.x,exit_menu.size.x,get_viewport().size.x)
-		#exit_menu.position.x = lerp( exit_menu.position.x , (get_viewport().size.x - exit_menu.size.x)/2.0 , 0.1 )
+		exit_menu.position.x = lerp( exit_menu.position.x , (get_viewport().size.x - exit_menu.size.x)/2.0 , 0.1 )
 		background_color = lerp(background_color,0.0,0.1)
 		background_color_fg = lerp(background_color_fg,0.0,0.1)
 	else:
@@ -73,10 +72,6 @@ func _process(delta):
 	background.texture.gradient.set_color( 0 , Color(background_color,background_color,background_color) )
 	background.texture.gradient.set_color( 1 , Color(background_color_fr,background_color_fg,1.0) )
 	background.material.set_shader_parameter("mouse",get_global_mouse_position()*0.0005)
-	
-#Move to center
-func center(element_pos,element_size,dir):
-	lerp ( element_pos , ( dir - element_size ) / 2.0 , 0.1 )
 	
 #Start & Options
 func _on_start_button_pressed():

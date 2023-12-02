@@ -13,7 +13,12 @@ button.cancel,Cancel,取消
 #options_game#,Game,游戏
 options.game.language,Language,语言
 #options_video#,Video,视频
+options.game.fullscreen,Fullscreen,全屏
+options.game.scale,Scale,缩放
 #options_audio#,Audio,音频
+options.audio.master,Master Volume,主音量
+options.audio.bgm,Music Volume,音乐音量
+options.audio.sfx,SFX Volume,音效音量
 #options_control#,Control,控制
 ,,
 save.title,Select save,选择存档
