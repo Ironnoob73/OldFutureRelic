@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctdhomvmo6e63"]
+[gd_scene load_steps=18 format=3 uid="uid://ctdhomvmo6e63"]
 
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_6nm6v"]
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="2_b2r6n"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cnl53v0lrb1mv" path="res://Title/Options.tscn" id="4_oyfw7"]
 [ext_resource type="AudioStream" uid="uid://bx3abwfykx10p" path="res://Audio/Sound/knock_iron.ogg" id="4_yg5wx"]
 [ext_resource type="PackedScene" uid="uid://bsynmnxiy47ku" path="res://Title/Exit.tscn" id="6_201ko"]
+[ext_resource type="PackedScene" uid="uid://vjy54fve2amm" path="res://Title/Beginning.tscn" id="7_vog78"]
 [ext_resource type="PackedScene" uid="uid://c6vlyx2oac4o4" path="res://Title/Saves.tscn" id="7_wpuqt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ymlre"]
@@ -84,6 +85,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pqp76")
 layout_mode = 2
 text = "save.title"
 horizontal_alignment = 1
+
+[node name="Beginning" parent="." instance=ExtResource("7_vog78")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 2998.0
+offset_right = 3998.0
+offset_bottom = 635.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Save_pan_d" type="PanelContainer" parent="."]
 layout_mode = 1

@@ -2,6 +2,7 @@ extends Control
 
 @onready var main_menu = $Main
 @onready var saves_menu = $Saves
+@onready var beginning_menu = $Beginning
 @onready var online_menu = $Online
 @onready var options_menu = $Options
 @onready var exit_menu = $Exit
@@ -38,30 +39,40 @@ func _process(delta):
 		main_menu.position.x = lerp( main_menu.position.x , -501.0 , 0.1 )
 		if main_menu.position.x < -500.0 : main_menu.visible = false
 
-	if current_menu == "saves" or current_menu == "online" or current_menu == "options":
+	if current_menu == "saves" or current_menu == "beginning" or current_menu == "online" or current_menu == "options":
 		back_button.visible = true
 		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y - 75.0 , 0.1 )
 	else:
 		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y + 1.0 , 0.1 )
 		if back_button.position.x > get_viewport().size.y : back_button.visible = false
 		
-	if current_menu == "saves":
-		saves_menu.visible = true
-		saves_pan_u.visible = true
+	if current_menu == "saves" or current_menu == "beginning":
 		saves_pan_d.visible = true
-		saves_menu.position.x = lerp( saves_menu.position.x , (get_viewport().size.x - saves_menu.size.x)/2.0 , 0.1 )
-		saves_pan_u.position.y = lerp( saves_pan_u.position.y , 0.0 , 0.1 )
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y - 100.0 , 0.1 )
 		background_color_fr = lerp(background_color_fr,0.5,0.1)
 		background_color_fg = lerp(background_color_fg,0.875,0.1)
+	else:
+		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y + 1.0 , 0.1 )
+		if saves_pan_d.position.y > get_viewport().size.y + 0.0 : saves_pan_d.visible = false
+		background_color_fr = lerp(background_color_fr,0.0,0.1)
+		
+	if current_menu == "saves":
+		saves_menu.visible = true
+		saves_pan_u.visible = true
+		saves_menu.position.x = lerp( saves_menu.position.x , (get_viewport().size.x - saves_menu.size.x)/2.0 , 0.1 )
+		saves_pan_u.position.y = lerp( saves_pan_u.position.y , 0.0 , 0.1 )
 	else:
 		saves_menu.position.x = lerp( saves_menu.position.x ,get_viewport().size.x + 1.0 , 0.1 )
 		if saves_menu.position.x > get_viewport().size.x : saves_menu.visible = false
 		saves_pan_u.position.y = lerp( saves_pan_u.position.y , -101.0 , 0.1 )
 		if saves_pan_u.position.y < -100.0 : saves_pan_u.visible = false
-		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y + 1.0 , 0.1 )
-		if saves_pan_d.position.y > get_viewport().size.y + 0.0 : saves_pan_d.visible = false
-		background_color_fr = lerp(background_color_fr,0.0,0.1)
+	
+	if current_menu == "beginning":
+		beginning_menu.visible = true
+		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x -750.0 , 0.1 )
+	else:
+		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x +1.0 , 0.1 )
+		if beginning_menu.position.x > get_viewport().size.x : beginning_menu.visible = false
 	
 	if current_menu == "online":
 		online_menu.visible = true
@@ -87,7 +98,7 @@ func _process(delta):
 		if exit_menu.position.x > get_viewport().size.x : exit_menu.visible = false
 		background_color = lerp(background_color,1.0,0.1)
 	
-	#Chage width
+	#Change width
 	saves_pan_u.size.x = get_viewport().size.x
 	saves_pan_d.size.x = get_viewport().size.x
 	#Set Background color & follow mouse
@@ -100,7 +111,7 @@ func _process(delta):
 #Start & Options
 func _on_start_button_pressed():
 	if current_menu == "title":
-		current_menu = "saves"
+		current_menu = "beginning"
 		saves_s0.grab_focus()
 func _on_continue_button_pressed():
 	if current_menu == "title":
@@ -133,5 +144,5 @@ func _on_confirm_button_pressed():
 #Button sound
 func button_sound(node):
 	for child in node.get_children():
-		if child is Button :	child.button_down.connect(func():click_sound.play())
+		if child is Button :	child.button_down.connect(click_sound.play)
 		else :					button_sound(child)

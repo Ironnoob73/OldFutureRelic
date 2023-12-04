@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://vjy54fve2amm"]
+
+[ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_tq046"]
+[ext_resource type="Script" path="res://Title/Beginning.gd" id="2_3xpcg"]
+
+[node name="Beginning" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tq046")
+theme_override_constants/separation = 15
+script = ExtResource("2_3xpcg")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+metadata/index = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+metadata/index = 3
+
+[node name="Button3" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+metadata/index = 4
