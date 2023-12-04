@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnl53v0lrb1mv"]
+[gd_scene load_steps=4 format=3 uid="uid://cnl53v0lrb1mv"]
 
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_0qhgt"]
 [ext_resource type="Script" path="res://Title/Options.gd" id="2_mrs1c"]
+[ext_resource type="Theme" uid="uid://ceygtpoj6mefb" path="res://default_theme.tres" id="3_qlqe2"]
 
 [node name="Options" type="TabContainer"]
 anchors_preset = 8
@@ -16,11 +17,9 @@ offset_bottom = 375.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0qhgt")
-current_tab = 2
 script = ExtResource("2_mrs1c")
 
 [node name="#options_game#" type="TabBar" parent="."]
-visible = false
 layout_mode = 2
 
 [node name="GameSetting" type="ScrollContainer" parent="#options_game#"]
@@ -31,24 +30,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSplit" type="HBoxContainer" parent="#options_game#/GameSetting"]
+[node name="VSplit" type="VBoxContainer" parent="#options_game#/GameSetting"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Text" type="VBoxContainer" parent="#options_game#/GameSetting/HSplit"]
+[node name="Language" type="HBoxContainer" parent="#options_game#/GameSetting/VSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="language_text" type="Label" parent="#options_game#/GameSetting/HSplit/Text"]
+[node name="language_text" type="Label" parent="#options_game#/GameSetting/VSplit/Language"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "options.game.language"
 
-[node name="Button" type="VBoxContainer" parent="#options_game#/GameSetting/HSplit"]
+[node name="language_button" type="OptionButton" parent="#options_game#/GameSetting/VSplit/Language"]
 custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="language_button" type="OptionButton" parent="#options_game#/GameSetting/HSplit/Button"]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
@@ -64,6 +60,28 @@ popup/item_0/id = 0
 popup/item_1/text = "中文"
 popup/item_1/id = 1
 
+[node name="DataPath" type="HBoxContainer" parent="#options_game#/GameSetting/VSplit"]
+layout_mode = 2
+
+[node name="datapath_text" type="Label" parent="#options_game#/GameSetting/VSplit/DataPath"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "options.game.data"
+
+[node name="datapath_button" type="Button" parent="#options_game#/GameSetting/VSplit/DataPath"]
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+
+[node name="path_choose" type="FileDialog" parent="#options_game#/GameSetting/VSplit/DataPath/datapath_button"]
+title = "Open a Directory"
+position = Vector2i(10, 35)
+size = Vector2i(750, 500)
+theme = ExtResource("3_qlqe2")
+ok_button_text = "选择当前文件夹"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
 [node name="#options_video#" type="TabBar" parent="."]
 visible = false
 layout_direction = 1
@@ -77,44 +95,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSplit" type="HBoxContainer" parent="#options_video#/VideoSetting"]
+[node name="VSpilt" type="VBoxContainer" parent="#options_video#/VideoSetting"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Text" type="VBoxContainer" parent="#options_video#/VideoSetting/HSplit"]
+[node name="Fullscreen" type="HBoxContainer" parent="#options_video#/VideoSetting/VSpilt"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="fullscreen_text" type="Label" parent="#options_video#/VideoSetting/HSplit/Text"]
+[node name="fullscreen_text" type="Label" parent="#options_video#/VideoSetting/VSpilt/Fullscreen"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "options.game.fullscreen"
 
-[node name="scale_text" type="Label" parent="#options_video#/VideoSetting/HSplit/Text"]
-visible = false
-layout_mode = 2
-text = "options.game.scale"
-
-[node name="Button" type="VBoxContainer" parent="#options_video#/VideoSetting/HSplit"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="fullscreen_button" type="CheckBox" parent="#options_video#/VideoSetting/HSplit/Button"]
+[node name="fullscreen_button" type="CheckBox" parent="#options_video#/VideoSetting/VSpilt/Fullscreen"]
 layout_mode = 2
 size_flags_horizontal = 8
-focus_neighbor_right = NodePath("../scale_button")
-focus_neighbor_bottom = NodePath("../scale_button")
-focus_next = NodePath("../scale_button")
+focus_neighbor_right = NodePath("../../Scale/scale_button")
+focus_neighbor_bottom = NodePath("../../Scale/scale_button")
+focus_next = NodePath("../../Scale/scale_button")
 text = " "
 flat = true
 
-[node name="scale_button" type="SpinBox" parent="#options_video#/VideoSetting/HSplit/Button"]
-visible = false
-custom_minimum_size = Vector2(0, 35)
+[node name="Scale" type="HBoxContainer" parent="#options_video#/VideoSetting/VSpilt"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../fullscreen_button")
-focus_previous = NodePath("../fullscreen_button")
+
+[node name="scale_text" type="Label" parent="#options_video#/VideoSetting/VSpilt/Scale"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "options.game.scale"
+
+[node name="scale_button" type="SpinBox" parent="#options_video#/VideoSetting/VSpilt/Scale"]
+visible = false
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../Fullscreen/fullscreen_button")
+focus_previous = NodePath("../../Fullscreen/fullscreen_button")
 
 [node name="#options_audio#" type="TabBar" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="AudioSetting" type="ScrollContainer" parent="#options_audio#"]
@@ -125,49 +145,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSpilt" type="HBoxContainer" parent="#options_audio#/AudioSetting"]
+[node name="VSpilt" type="VBoxContainer" parent="#options_audio#/AudioSetting"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Text" type="VBoxContainer" parent="#options_audio#/AudioSetting/HSpilt"]
+[node name="Master" type="HBoxContainer" parent="#options_audio#/AudioSetting/VSpilt"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="master_text" type="Label" parent="#options_audio#/AudioSetting/HSpilt/Text"]
+[node name="master_text" type="Label" parent="#options_audio#/AudioSetting/VSpilt/Master"]
 layout_mode = 2
-size_flags_stretch_ratio = 0.0
+size_flags_horizontal = 3
 text = "options.audio.master"
 
-[node name="bgm_text" type="Label" parent="#options_audio#/AudioSetting/HSpilt/Text"]
+[node name="master_button" type="HSlider" parent="#options_audio#/AudioSetting/VSpilt/Master"]
+custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Music" type="HBoxContainer" parent="#options_audio#/AudioSetting/VSpilt"]
+layout_mode = 2
+
+[node name="bgm_text" type="Label" parent="#options_audio#/AudioSetting/VSpilt/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "options.audio.bgm"
 
-[node name="sfx_text" type="Label" parent="#options_audio#/AudioSetting/HSpilt/Text"]
+[node name="bgm_button" type="HSlider" parent="#options_audio#/AudioSetting/VSpilt/Music"]
+custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFX" type="HBoxContainer" parent="#options_audio#/AudioSetting/VSpilt"]
+layout_mode = 2
+
+[node name="sfx_text" type="Label" parent="#options_audio#/AudioSetting/VSpilt/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "options.audio.sfx"
 
-[node name="Button" type="VBoxContainer" parent="#options_audio#/AudioSetting/HSpilt"]
-layout_mode = 2
-
-[node name="master_button" type="HSlider" parent="#options_audio#/AudioSetting/HSpilt/Button"]
-custom_minimum_size = Vector2(200, 35)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="bgm_button" type="HSlider" parent="#options_audio#/AudioSetting/HSpilt/Button"]
-custom_minimum_size = Vector2(200, 35)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="sfx_button" type="HSlider" parent="#options_audio#/AudioSetting/HSpilt/Button"]
+[node name="sfx_button" type="HSlider" parent="#options_audio#/AudioSetting/VSpilt/SFX"]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -180,9 +205,11 @@ value = 1.0
 visible = false
 layout_mode = 2
 
-[connection signal="item_selected" from="#options_game#/GameSetting/HSplit/Button/language_button" to="." method="_on_option_button_item_selected"]
-[connection signal="toggled" from="#options_video#/VideoSetting/HSplit/Button/fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
-[connection signal="value_changed" from="#options_video#/VideoSetting/HSplit/Button/scale_button" to="." method="_on_scale_button_value_changed"]
-[connection signal="value_changed" from="#options_audio#/AudioSetting/HSpilt/Button/master_button" to="." method="_on_master_button_value_changed"]
-[connection signal="value_changed" from="#options_audio#/AudioSetting/HSpilt/Button/bgm_button" to="." method="_on_bgm_button_value_changed"]
-[connection signal="value_changed" from="#options_audio#/AudioSetting/HSpilt/Button/sfx_button" to="." method="_on_sfx_button_value_changed"]
+[connection signal="item_selected" from="#options_game#/GameSetting/VSplit/Language/language_button" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="#options_game#/GameSetting/VSplit/DataPath/datapath_button" to="." method="_on_datapath_button_pressed"]
+[connection signal="dir_selected" from="#options_game#/GameSetting/VSplit/DataPath/datapath_button/path_choose" to="." method="_on_path_choose_dir_selected"]
+[connection signal="toggled" from="#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="value_changed" from="#options_video#/VideoSetting/VSpilt/Scale/scale_button" to="." method="_on_scale_button_value_changed"]
+[connection signal="value_changed" from="#options_audio#/AudioSetting/VSpilt/Master/master_button" to="." method="_on_master_button_value_changed"]
+[connection signal="value_changed" from="#options_audio#/AudioSetting/VSpilt/Music/bgm_button" to="." method="_on_bgm_button_value_changed"]
+[connection signal="value_changed" from="#options_audio#/AudioSetting/VSpilt/SFX/sfx_button" to="." method="_on_sfx_button_value_changed"]

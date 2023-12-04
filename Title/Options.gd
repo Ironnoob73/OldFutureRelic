@@ -1,16 +1,20 @@
 extends TabContainer
 
-@onready var GameLanguage = $"#options_game#/GameSetting/HSplit/Button/language_button"
-@onready var Fullscreen = $"#options_video#/VideoSetting/HSplit/Button/fullscreen_button"
-@onready var MasterVolume = $"#options_audio#/AudioSetting/HSpilt/Button/master_button"
-@onready var BgmVolume = $"#options_audio#/AudioSetting/HSpilt/Button/bgm_button"
-@onready var SfxVolume = $"#options_audio#/AudioSetting/HSpilt/Button/sfx_button"
+@onready var GameLanguage = $"#options_game#/GameSetting/VSplit/Language/language_button"
+@onready var DataPath = $"#options_game#/GameSetting/VSplit/DataPath/datapath_button"
+@onready var path_choose = $"#options_game#/GameSetting/VSplit/DataPath/datapath_button/path_choose"
+@onready var Fullscreen = $"#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button"
+@onready var MasterVolume = $"#options_audio#/AudioSetting/VSpilt/Master/master_button"
+@onready var BgmVolume = $"#options_audio#/AudioSetting/VSpilt/Music/bgm_button"
+@onready var SfxVolume = $"#options_audio#/AudioSetting/VSpilt/SFX/sfx_button"
 
 func _ready():
 	#Language
 	match TranslationServer.get_locale():
 		"en_US":	GameLanguage.set_indexed("selected",0)
 		"zh_CN":	GameLanguage.set_indexed("selected",1)
+	#Data path
+	DataPath.text = Global.DATA_PATH
 	#Fullscreen
 	match DisplayServer.window_get_mode():
 		0:	Fullscreen.set_pressed_no_signal(false)
@@ -49,11 +53,20 @@ func _on_option_button_item_selected(index):
 	print(TranslationServer.get_locale())
 	Global.save_config()
 	Global.window_min_limit()
-	
+#Choose data path
+func _on_datapath_button_pressed():
+	path_choose.visible = true
+func _on_path_choose_dir_selected(dir):
+	Global.DATA_PATH = dir
+	DataPath.text = Global.DATA_PATH
+	Global.save_config()
+
 #Fullscreen
 func _on_fullscreen_button_toggled(toggled_on):
-	if toggled_on == true :	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else :					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	if toggled_on == true :
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else :
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	print(DisplayServer.window_get_mode())
 	Global.save_config()
 #Scale
@@ -82,3 +95,5 @@ func tab_focus():
 		1:Fullscreen.grab_focus()
 		2:MasterVolume.grab_focus()
 		3:pass
+
+

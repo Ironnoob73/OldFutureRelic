@@ -10,10 +10,11 @@ extends Control
 @onready var saves_s0 = $Saves/VBox/Slot0
 @onready var saves_pan_u = $Save_pan_u
 @onready var saves_pan_d = $Save_pan_d
-@onready var main_menu_start = $Main/MainMenu/StartButton
+@onready var main_menu_start = $Main/ScrollContainer/MainMenu/StartButton
 @onready var exit_menu_cancel = $Exit/VSplitContainer/CancelButton
 
 @onready var background = $Background
+@onready var click_sound = $ClickSound
 
 var current_menu = "title"
 
@@ -26,6 +27,7 @@ var background_color_fg = 0.75
 
 func _ready():
 	main_menu_start.grab_focus()
+	button_sound(self)
 
 func _process(delta):
 	#Menu switch animate
@@ -100,6 +102,10 @@ func _on_start_button_pressed():
 	if current_menu == "title":
 		current_menu = "saves"
 		saves_s0.grab_focus()
+func _on_continue_button_pressed():
+	if current_menu == "title":
+		current_menu = "saves"
+		saves_s0.grab_focus()
 func _on_online_button_pressed():
 	if current_menu == "title":
 		current_menu = "online"
@@ -123,3 +129,9 @@ func _on_cancel_button_pressed():
 func _on_confirm_button_pressed():
 	if current_menu == "exit":
 		get_tree().quit()
+
+#Button sound
+func button_sound(node):
+	for child in node.get_children():
+		if child is Button :	child.button_down.connect(func():click_sound.play())
+		else :					button_sound(child)
