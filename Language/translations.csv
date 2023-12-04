@@ -23,6 +23,13 @@ options.audio.bgm,Music Volume,音乐音量
 options.audio.sfx,SFX Volume,音效音量
 #options_control#,Control,控制
 ,,
+beginning.title,Select a beginning...,选择一个开始...
+beginning.tutorial,Tutorial,教程
+beginning.tutorial.demo, Demo Scene, 演示场景
+beginning.original,Original Story,原版故事
+beginning.spare_time, Spare Time, 闲暇时光
+beginning.body_of_metal, Body of Metal, 金属之躯
+,,
 save.title,Select save,选择存档
 ,,
 online.na,Coming s∞n,敬请期待

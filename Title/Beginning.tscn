@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://vjy54fve2amm"]
+[gd_scene load_steps=4 format=3 uid="uid://vjy54fve2amm"]
 
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_tq046"]
 [ext_resource type="Script" path="res://Title/Beginning.gd" id="2_3xpcg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ngni"]
+bg_color = Color(0, 0.74902, 1, 1)
+border_width_left = 5
+border_width_right = 5
+border_color = Color(0, 0.74902, 1, 1)
+corner_radius_top_left = 15
+corner_radius_bottom_right = 15
+corner_detail = 1
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 10.0
 
 [node name="Beginning" type="VBoxContainer"]
 anchors_preset = 15
@@ -13,25 +26,42 @@ theme = ExtResource("1_tq046")
 theme_override_constants/separation = 15
 script = ExtResource("2_3xpcg")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Tutorial" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ngni")
 
-[node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(0, 50)
+[node name="tutorial_text" type="Label" parent="Tutorial"]
 layout_mode = 2
-metadata/index = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "beginning.tutorial"
 
-[node name="PanelContainer2" type="PanelContainer" parent="."]
+[node name="DemoScene" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+text = "beginning.tutorial.demo"
+alignment = 0
 
-[node name="Button2" type="Button" parent="."]
+[node name="OriginalStory" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-metadata/index = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ngni")
 
-[node name="Button3" type="Button" parent="."]
+[node name="original_story_text" type="Label" parent="OriginalStory"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "beginning.original"
+
+[node name="SpareTime" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-metadata/index = 4
+text = "beginning.spare_time"
+alignment = 0
+
+[node name="BodyOfMetal" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "beginning.body_of_metal"
+alignment = 0

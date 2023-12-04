@@ -10,7 +10,7 @@ func _process(delta):
 
 func button_selected(node):
 	for child in node.get_children():
-		if child is Button :	child.focus_entered.connect(set_index.bind(child.get_meta("index")))
+		if child is Button :	child.focus_entered.connect(set_index.bind(child.get_index()))
 func set_index(index):
 	current_index = index
 

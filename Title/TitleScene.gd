@@ -8,6 +8,12 @@ extends Control
 @onready var exit_menu = $Exit
 @onready var back_button = $BackButton
 
+@onready var beginning_title = $Beginning_title
+@onready var beginning_subtitle = $Beginning_title/subtitle_background/subtitle
+@onready var beginning_description = $Beginning_description
+@onready var beginning_description_text = $Beginning_description/description/description_text
+@onready var beginning_arrow = $Beginning_arrow
+@onready var beginning_tutorial = $Beginning/DemoScene
 @onready var saves_s0 = $Saves/VBox/Slot0
 @onready var saves_pan_u = $Save_pan_u
 @onready var saves_pan_d = $Save_pan_d
@@ -49,8 +55,8 @@ func _process(delta):
 	if current_menu == "saves" or current_menu == "beginning":
 		saves_pan_d.visible = true
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y - 100.0 , 0.1 )
-		background_color_fr = lerp(background_color_fr,0.5,0.1)
-		background_color_fg = lerp(background_color_fg,0.875,0.1)
+		background_color_fr = lerp(background_color_fr,0.75,0.1)
+		background_color_fg = lerp(background_color_fg,0.9375,0.1)
 	else:
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y + 1.0 , 0.1 )
 		if saves_pan_d.position.y > get_viewport().size.y + 0.0 : saves_pan_d.visible = false
@@ -69,10 +75,22 @@ func _process(delta):
 	
 	if current_menu == "beginning":
 		beginning_menu.visible = true
-		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x -750.0 , 0.1 )
+		beginning_title.visible = true
+		beginning_description.visible = true
+		beginning_arrow.visible = true
+		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x -450.0 , 0.1 )
+		beginning_title.position.y = lerp( beginning_title.position.y , 25.0 , 0.1 )
+		beginning_description.position.x = lerp( beginning_description.position.x , 10.0 , 0.1 )
+		beginning_arrow.position.x = lerp( beginning_arrow.position.x , get_viewport().size.x -470.0 , 0.1 )
 	else:
 		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x +1.0 , 0.1 )
 		if beginning_menu.position.x > get_viewport().size.x : beginning_menu.visible = false
+		beginning_title.position.y = lerp( beginning_title.position.y , -201.0 , 0.1 )
+		if beginning_title.position.y < -80 : beginning_title.visible = false
+		beginning_description.position.x = lerp( beginning_description.position.x , - beginning_description.size.x - 1.0 , 0.1 )
+		if beginning_description.position.x < - beginning_description.size.x : beginning_description.visible = false
+		beginning_arrow.position.x = lerp( beginning_arrow.position.x , get_viewport().size.x +1.0 , 0.1 )
+		if beginning_arrow.position.x > get_viewport().size.x : beginning_arrow.visible = false
 	
 	if current_menu == "online":
 		online_menu.visible = true
@@ -102,17 +120,24 @@ func _process(delta):
 	saves_pan_u.size.x = get_viewport().size.x
 	saves_pan_d.size.x = get_viewport().size.x
 	#Set Background color & follow mouse
-	if current_menu != "saves" and current_menu != "exit":
+	if current_menu != "saves" and current_menu != "beginning" and current_menu != "exit":
 		background_color_fg = lerp(background_color_fg,0.75,0.1)
 	background.texture.gradient.set_color( 0 , Color(background_color,background_color,background_color) )
 	background.texture.gradient.set_color( 1 , Color(background_color_fr,background_color_fg,1.0) )
 	background.material.set_shader_parameter("mouse",get_global_mouse_position()*0.0005)
+	#Set Beginning subtitle text & Beginning description
+	if beginning_menu.get_child(beginning_menu.current_index) is Button:
+		beginning_subtitle.text = beginning_menu.get_child(beginning_menu.current_index).text
+		beginning_description_text.text = "{beginning_description." + str(beginning_menu.current_index) + ":[color=red]TRANSLATION NOT FOUND[/color]}"
+	#Adjust Beginning description weight & height
+	beginning_description.size.x = get_viewport().size.x - 500.0
+	beginning_description.size.y = get_viewport().size.y - 250.0
 	
 #Start & Options
 func _on_start_button_pressed():
 	if current_menu == "title":
 		current_menu = "beginning"
-		saves_s0.grab_focus()
+		beginning_tutorial.grab_focus()
 func _on_continue_button_pressed():
 	if current_menu == "title":
 		current_menu = "saves"

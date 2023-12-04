@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctdhomvmo6e63"]
+[gd_scene load_steps=22 format=3 uid="uid://ctdhomvmo6e63"]
 
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_6nm6v"]
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="2_b2r6n"]
@@ -30,6 +30,32 @@ fill = 2
 bg_color = Color(1, 1, 1, 1)
 border_width_bottom = 10
 border_color = Color(0, 0.74902, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_je605"]
+colors = PackedColorArray(0, 0.74902, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c2ohh"]
+gradient = SubResource("Gradient_je605")
+width = 100
+height = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_676fo"]
+texture = SubResource("GradientTexture2D_c2ohh")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e5xr"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0, 0.74902, 1, 1)
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_detail = 1
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksh2j"]
 bg_color = Color(1, 1, 1, 1)
@@ -83,8 +109,63 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pqp76")
 
 [node name="Label" type="Label" parent="Save_pan_u"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "save.title"
 horizontal_alignment = 1
+
+[node name="Beginning_title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -200.0
+offset_right = 376.0
+offset_bottom = -131.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.74902, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "beginning.title"
+
+[node name="subtitle_background" type="Panel" parent="Beginning_title"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 80.0
+offset_right = 1575.0
+offset_bottom = 130.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_676fo")
+
+[node name="subtitle" type="Label" parent="Beginning_title/subtitle_background"]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 146.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.74902, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 35
+text = "Subtitle"
+
+[node name="Beginning_description" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = -1100.0
+offset_top = 160.0
+offset_bottom = 860.0
+
+[node name="description" type="ScrollContainer" parent="Beginning_description"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="description_text" type="RichTextLabel" parent="Beginning_description/description"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Description [i]Not found[/i]
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------#"
 
 [node name="Beginning" parent="." instance=ExtResource("7_vog78")]
 layout_mode = 0
@@ -96,6 +177,14 @@ offset_right = 3998.0
 offset_bottom = 635.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Beginning_arrow" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1650.0
+offset_top = 260.0
+offset_right = 1670.0
+offset_bottom = 285.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2e5xr")
 
 [node name="Save_pan_d" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -188,4 +277,5 @@ text = "button.back"
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 
 [editable path="Main"]
+[editable path="Beginning"]
 [editable path="Exit"]
