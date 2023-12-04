@@ -21,6 +21,12 @@ script = ExtResource("2_mrs1c")
 
 [node name="#options_game#" type="TabBar" parent="."]
 layout_mode = 2
+focus_neighbor_left = NodePath("../#options_control#")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../#options_video#")
+focus_neighbor_bottom = NodePath("GameSetting/VSplit/Language/language_button")
+focus_next = NodePath("../#options_video#")
+focus_previous = NodePath("../#options_control#")
 
 [node name="GameSetting" type="ScrollContainer" parent="#options_game#"]
 layout_mode = 1
@@ -47,11 +53,11 @@ text = "options.game.language"
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
+focus_neighbor_top = NodePath("../../../..")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
+focus_neighbor_bottom = NodePath("../../DataPath/datapath_button")
+focus_next = NodePath("../../DataPath/datapath_button")
+focus_previous = NodePath("../../DataPath/datapath_button")
 alignment = 1
 item_count = 2
 selected = 0
@@ -71,6 +77,12 @@ text = "options.game.data"
 [node name="datapath_button" type="Button" parent="#options_game#/GameSetting/VSplit/DataPath"]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../Language/language_button")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Language/language_button")
+focus_next = NodePath("../../Language/language_button")
+focus_previous = NodePath("../../Language/language_button")
 
 [node name="path_choose" type="FileDialog" parent="#options_game#/GameSetting/VSplit/DataPath/datapath_button"]
 title = "Open a Directory"
@@ -86,6 +98,12 @@ use_native_dialog = true
 visible = false
 layout_direction = 1
 layout_mode = 2
+focus_neighbor_left = NodePath("../#options_game#")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../#options_audio#")
+focus_neighbor_bottom = NodePath("VideoSetting/VSpilt/Fullscreen/fullscreen_button")
+focus_next = NodePath("../#options_audio#")
+focus_previous = NodePath("../#options_game#")
 
 [node name="VideoSetting" type="ScrollContainer" parent="#options_video#"]
 layout_mode = 1
@@ -111,9 +129,12 @@ text = "options.game.fullscreen"
 [node name="fullscreen_button" type="CheckBox" parent="#options_video#/VideoSetting/VSpilt/Fullscreen"]
 layout_mode = 2
 size_flags_horizontal = 8
-focus_neighbor_right = NodePath("../../Scale/scale_button")
-focus_neighbor_bottom = NodePath("../../Scale/scale_button")
-focus_next = NodePath("../../Scale/scale_button")
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../..")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 text = " "
 flat = true
 
@@ -136,6 +157,12 @@ focus_previous = NodePath("../../Fullscreen/fullscreen_button")
 [node name="#options_audio#" type="TabBar" parent="."]
 visible = false
 layout_mode = 2
+focus_neighbor_left = NodePath("../#options_video#")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../#options_control#")
+focus_neighbor_bottom = NodePath("AudioSetting/VSpilt/Master/master_button")
+focus_next = NodePath("../#options_control#")
+focus_previous = NodePath("../#options_video#")
 
 [node name="AudioSetting" type="ScrollContainer" parent="#options_audio#"]
 layout_mode = 1
@@ -163,6 +190,10 @@ custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../..")
+focus_neighbor_bottom = NodePath("../../Music/bgm_button")
+focus_next = NodePath("../../Music/bgm_button")
+focus_previous = NodePath("../../SFX/sfx_button")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -180,6 +211,10 @@ custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../Master/master_button")
+focus_neighbor_bottom = NodePath("../../SFX/sfx_button")
+focus_next = NodePath("../../SFX/sfx_button")
+focus_previous = NodePath("../../Master/master_button")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -197,6 +232,10 @@ custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../Music/bgm_button")
+focus_neighbor_bottom = NodePath("../../Master/master_button")
+focus_next = NodePath("../../Master/master_button")
+focus_previous = NodePath("../../Music/bgm_button")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -204,6 +243,12 @@ value = 1.0
 [node name="#options_control#" type="TabBar" parent="."]
 visible = false
 layout_mode = 2
+focus_neighbor_left = NodePath("../#options_audio#")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../#options_game#")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../#options_game#")
+focus_previous = NodePath("../#options_audio#")
 
 [connection signal="item_selected" from="#options_game#/GameSetting/VSplit/Language/language_button" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="#options_game#/GameSetting/VSplit/DataPath/datapath_button" to="." method="_on_datapath_button_pressed"]

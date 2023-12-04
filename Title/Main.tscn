@@ -51,36 +51,42 @@ theme_override_constants/separation = 20
 layout_mode = 2
 focus_neighbor_left = NodePath("../ExitButton")
 focus_neighbor_top = NodePath("../ExitButton")
-focus_neighbor_right = NodePath("../OptionsButton")
-focus_neighbor_bottom = NodePath("../OptionsButton")
-focus_next = NodePath("../OptionsButton")
+focus_neighbor_right = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
+focus_next = NodePath("../ContinueButton")
 focus_previous = NodePath("../ExitButton")
 mouse_default_cursor_shape = 2
 text = "title.menu.start"
 
 [node name="ContinueButton" type="Button" parent="ScrollContainer/MainMenu"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../OnlineButton")
+focus_neighbor_bottom = NodePath("../OnlineButton")
+focus_next = NodePath("../OnlineButton")
+focus_previous = NodePath("../StartButton")
 text = "title.menu.continue"
 
 [node name="OnlineButton" type="Button" parent="ScrollContainer/MainMenu"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../StartButton")
-focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_left = NodePath("../ContinueButton")
+focus_neighbor_top = NodePath("../ContinueButton")
 focus_neighbor_right = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
 focus_next = NodePath("../OptionsButton")
-focus_previous = NodePath("../StartButton")
+focus_previous = NodePath("../ContinueButton")
 mouse_default_cursor_shape = 8
 text = "title.menu.online"
 
 [node name="OptionsButton" type="Button" parent="ScrollContainer/MainMenu"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../StartButton")
-focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_left = NodePath("../OnlineButton")
+focus_neighbor_top = NodePath("../OnlineButton")
 focus_neighbor_right = NodePath("../ExitButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
-focus_previous = NodePath("../StartButton")
+focus_previous = NodePath("../OnlineButton")
 mouse_default_cursor_shape = 2
 text = "title.menu.options"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctdhomvmo6e63"]
+[gd_scene load_steps=28 format=3 uid="uid://ctdhomvmo6e63"]
 
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_6nm6v"]
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="2_b2r6n"]
@@ -61,6 +61,89 @@ expand_margin_bottom = 10.0
 bg_color = Color(1, 1, 1, 1)
 border_width_top = 5
 border_color = Color(0, 0.74902, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chap0"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0, 0.74902, 1, 1)
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_detail = 1
+expand_margin_bottom = 5.0
+anti_aliasing = false
+
+[sub_resource type="GDScript" id="GDScript_rjjkb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qaq6q"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.74902, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0, 0.74902, 1, 1)
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_detail = 1
+expand_margin_bottom = 5.0
+anti_aliasing = false
+script = SubResource("GDScript_rjjkb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xysp5"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.74902, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0, 0.74902, 1, 1)
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_detail = 1
+expand_margin_bottom = 5.0
+anti_aliasing = false
+script = SubResource("GDScript_rjjkb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2123"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0.74902, 0.74902, 0.74902, 1)
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_detail = 1
+expand_margin_bottom = 5.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8j2n"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 1, 1, 1)
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_detail = 1
 
 [sub_resource type="InputEventAction" id="InputEventAction_8cm0h"]
 action = &"ui_cancel"
@@ -158,6 +241,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 
 [node name="description_text" type="RichTextLabel" parent="Beginning_description/description"]
 layout_mode = 2
@@ -178,6 +262,15 @@ offset_bottom = 635.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="DemoScene" parent="Beginning" index="1"]
+focus_neighbor_left = NodePath("../../Beginning_description/description")
+
+[node name="SpareTime" parent="Beginning" index="3"]
+focus_neighbor_left = NodePath("../../Beginning_description/description")
+
+[node name="BodyOfMetal" parent="Beginning" index="4"]
+focus_neighbor_left = NodePath("../../Beginning_description/description")
+
 [node name="Beginning_arrow" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 1650.0
@@ -195,6 +288,26 @@ offset_right = 1600.0
 offset_bottom = 100.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ksh2j")
+
+[node name="LaunchButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_right = -41.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_chap0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qaq6q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xysp5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_t2123")
+theme_override_styles/focus = SubResource("StyleBoxFlat_f8j2n")
+text = "beginning.launch"
 
 [node name="Saves" parent="." instance=ExtResource("7_wpuqt")]
 layout_mode = 1
@@ -257,12 +370,7 @@ offset_left = 25.0
 offset_right = 172.0
 offset_bottom = 40.0
 grow_vertical = 0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_ppty1")
 text = "button.back"

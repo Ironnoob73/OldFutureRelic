@@ -40,6 +40,11 @@ text = "beginning.tutorial"
 [node name="DemoScene" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+focus_neighbor_top = NodePath("../BodyOfMetal")
+focus_neighbor_right = NodePath("../SpareTime")
+focus_neighbor_bottom = NodePath("../SpareTime")
+focus_next = NodePath("../SpareTime")
+focus_previous = NodePath("../BodyOfMetal")
 text = "beginning.tutorial.demo"
 alignment = 0
 
@@ -57,11 +62,21 @@ text = "beginning.original"
 [node name="SpareTime" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+focus_neighbor_top = NodePath("../DemoScene")
+focus_neighbor_right = NodePath("../BodyOfMetal")
+focus_neighbor_bottom = NodePath("../BodyOfMetal")
+focus_next = NodePath("../BodyOfMetal")
+focus_previous = NodePath("../DemoScene")
 text = "beginning.spare_time"
 alignment = 0
 
 [node name="BodyOfMetal" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+focus_neighbor_top = NodePath("../SpareTime")
+focus_neighbor_right = NodePath("../DemoScene")
+focus_neighbor_bottom = NodePath("../DemoScene")
+focus_next = NodePath("../DemoScene")
+focus_previous = NodePath("../DemoScene")
 text = "beginning.body_of_metal"
 alignment = 0

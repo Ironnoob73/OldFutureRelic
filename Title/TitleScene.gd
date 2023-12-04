@@ -6,6 +6,8 @@ extends Control
 @onready var online_menu = $Online
 @onready var options_menu = $Options
 @onready var exit_menu = $Exit
+
+@onready var launch_button = $LaunchButton
 @onready var back_button = $BackButton
 
 @onready var beginning_title = $Beginning_title
@@ -45,14 +47,14 @@ func _process(delta):
 		main_menu.position.x = lerp( main_menu.position.x , -501.0 , 0.1 )
 		if main_menu.position.x < -500.0 : main_menu.visible = false
 
-	if current_menu == "saves" or current_menu == "beginning" or current_menu == "online" or current_menu == "options":
+	if current_menu in ["saves","beginning","online","options"]:
 		back_button.visible = true
 		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y - 75.0 , 0.1 )
 	else:
 		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y + 1.0 , 0.1 )
 		if back_button.position.x > get_viewport().size.y : back_button.visible = false
 		
-	if current_menu == "saves" or current_menu == "beginning":
+	if current_menu in ["saves","beginning"]:
 		saves_pan_d.visible = true
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y - 100.0 , 0.1 )
 		background_color_fr = lerp(background_color_fr,0.75,0.1)
@@ -78,10 +80,12 @@ func _process(delta):
 		beginning_title.visible = true
 		beginning_description.visible = true
 		beginning_arrow.visible = true
+		launch_button.visible = true
 		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x -450.0 , 0.1 )
 		beginning_title.position.y = lerp( beginning_title.position.y , 25.0 , 0.1 )
 		beginning_description.position.x = lerp( beginning_description.position.x , 10.0 , 0.1 )
 		beginning_arrow.position.x = lerp( beginning_arrow.position.x , get_viewport().size.x -470.0 , 0.1 )
+		launch_button.position.y = lerp( launch_button.position.y , get_viewport().size.y - 150.0 , 0.1 )
 	else:
 		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x +1.0 , 0.1 )
 		if beginning_menu.position.x > get_viewport().size.x : beginning_menu.visible = false
@@ -91,6 +95,8 @@ func _process(delta):
 		if beginning_description.position.x < - beginning_description.size.x : beginning_description.visible = false
 		beginning_arrow.position.x = lerp( beginning_arrow.position.x , get_viewport().size.x +1.0 , 0.1 )
 		if beginning_arrow.position.x > get_viewport().size.x : beginning_arrow.visible = false
+		launch_button.position.y = lerp( launch_button.position.y , get_viewport().size.y +1.0 , 0.1 )
+		if launch_button.position.y > get_viewport().size.y : launch_button.visible = false
 	
 	if current_menu == "online":
 		online_menu.visible = true
@@ -119,19 +125,23 @@ func _process(delta):
 	#Change width
 	saves_pan_u.size.x = get_viewport().size.x
 	saves_pan_d.size.x = get_viewport().size.x
-	#Set Background color & follow mouse
-	if current_menu != "saves" and current_menu != "beginning" and current_menu != "exit":
+	launch_button.size.x = 200
+	beginning_description.size.x = get_viewport().size.x - 500.0
+	beginning_description.size.y = get_viewport().size.y - 250.0
+	#Set Background color
+	if current_menu not in ["saves","beginning","exit"]:
 		background_color_fg = lerp(background_color_fg,0.75,0.1)
 	background.texture.gradient.set_color( 0 , Color(background_color,background_color,background_color) )
 	background.texture.gradient.set_color( 1 , Color(background_color_fr,background_color_fg,1.0) )
+	#Follow mouse
 	background.material.set_shader_parameter("mouse",get_global_mouse_position()*0.0005)
 	#Set Beginning subtitle text & Beginning description
 	if beginning_menu.get_child(beginning_menu.current_index) is Button:
 		beginning_subtitle.text = beginning_menu.get_child(beginning_menu.current_index).text
 		beginning_description_text.text = "{beginning_description." + str(beginning_menu.current_index) + ":[color=red]TRANSLATION NOT FOUND[/color]}"
-	#Adjust Beginning description weight & height
-	beginning_description.size.x = get_viewport().size.x - 500.0
-	beginning_description.size.y = get_viewport().size.y - 250.0
+	#Disable Launch
+	if beginning_menu.current_index not in [1,3] :	launch_button.disabled = true
+	else:											launch_button.disabled = false
 	
 #Start & Options
 func _on_start_button_pressed():
