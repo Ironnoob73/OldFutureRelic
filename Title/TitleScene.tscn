@@ -264,12 +264,15 @@ grow_vertical = 1
 
 [node name="DemoScene" parent="Beginning" index="1"]
 focus_neighbor_left = NodePath("../../Beginning_description/description")
+focus_neighbor_right = NodePath("../../LaunchButton")
 
 [node name="SpareTime" parent="Beginning" index="3"]
 focus_neighbor_left = NodePath("../../Beginning_description/description")
+focus_neighbor_right = NodePath("../../LaunchButton")
 
 [node name="BodyOfMetal" parent="Beginning" index="4"]
 focus_neighbor_left = NodePath("../../Beginning_description/description")
+focus_neighbor_right = NodePath("../../LaunchButton")
 
 [node name="Beginning_arrow" type="Panel" parent="."]
 layout_mode = 0
@@ -380,6 +383,7 @@ text = "button.back"
 [connection signal="pressed" from="Main/ScrollContainer/MainMenu/OnlineButton" to="." method="_on_online_button_pressed"]
 [connection signal="pressed" from="Main/ScrollContainer/MainMenu/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Main/ScrollContainer/MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="index_changed" from="Beginning" to="." method="_on_beginning_index_changed"]
 [connection signal="pressed" from="Exit/VSplitContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="Exit/VSplitContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

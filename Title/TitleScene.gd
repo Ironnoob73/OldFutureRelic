@@ -37,25 +37,23 @@ var background_color_fg = 0.75
 func _ready():
 	main_menu_start.grab_focus()
 	button_sound(self)
+	launch_button.size.x = 200
 
 func _process(delta):
 	#Menu switch animate
 	if current_menu == "title":
-		main_menu.visible = true
 		main_menu.position.x = lerp( main_menu.position.x , 0.0 , 0.1 )
 	else:
 		main_menu.position.x = lerp( main_menu.position.x , -501.0 , 0.1 )
 		if main_menu.position.x < -500.0 : main_menu.visible = false
 
 	if current_menu in ["saves","beginning","online","options"]:
-		back_button.visible = true
 		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y - 75.0 , 0.1 )
 	else:
 		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y + 1.0 , 0.1 )
 		if back_button.position.x > get_viewport().size.y : back_button.visible = false
 		
 	if current_menu in ["saves","beginning"]:
-		saves_pan_d.visible = true
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y - 100.0 , 0.1 )
 		background_color_fr = lerp(background_color_fr,0.75,0.1)
 		background_color_fg = lerp(background_color_fg,0.9375,0.1)
@@ -65,8 +63,6 @@ func _process(delta):
 		background_color_fr = lerp(background_color_fr,0.0,0.1)
 		
 	if current_menu == "saves":
-		saves_menu.visible = true
-		saves_pan_u.visible = true
 		saves_menu.position.x = lerp( saves_menu.position.x , (get_viewport().size.x - saves_menu.size.x)/2.0 , 0.1 )
 		saves_pan_u.position.y = lerp( saves_pan_u.position.y , 0.0 , 0.1 )
 	else:
@@ -76,11 +72,6 @@ func _process(delta):
 		if saves_pan_u.position.y < -100.0 : saves_pan_u.visible = false
 	
 	if current_menu == "beginning":
-		beginning_menu.visible = true
-		beginning_title.visible = true
-		beginning_description.visible = true
-		beginning_arrow.visible = true
-		launch_button.visible = true
 		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x -450.0 , 0.1 )
 		beginning_title.position.y = lerp( beginning_title.position.y , 25.0 , 0.1 )
 		beginning_description.position.x = lerp( beginning_description.position.x , 10.0 , 0.1 )
@@ -99,21 +90,18 @@ func _process(delta):
 		if launch_button.position.y > get_viewport().size.y : launch_button.visible = false
 	
 	if current_menu == "online":
-		online_menu.visible = true
 		online_menu.position.x = lerp( online_menu.position.x , (get_viewport().size.x - online_menu.size.x)/2.0 , 0.1 )
 	else:
 		online_menu.position.x = lerp( online_menu.position.x , get_viewport().size.x + 1.0 , 0.1 )
 		if online_menu.position.x > get_viewport().size.x : online_menu.visible = false
 		
 	if current_menu == "options":
-		options_menu.visible = true
 		options_menu.position.y = lerp( options_menu.position.y , (get_viewport().size.y - options_menu.size.y)/2.0 , 0.1 )
 	else:
 		options_menu.position.y = lerp( options_menu.position.y , get_viewport().size.y + 1.0 , 0.1 )
 		if options_menu.position.y > get_viewport().size.y : options_menu.visible = false
 		
 	if current_menu == "exit":
-		exit_menu.visible = true
 		exit_menu.position.x = lerp( exit_menu.position.x , (get_viewport().size.x - exit_menu.size.x)/2.0 , 0.1 )
 		background_color = lerp(background_color,0.0,0.1)
 		background_color_fg = lerp(background_color_fg,0.0,0.1)
@@ -125,7 +113,6 @@ func _process(delta):
 	#Change width
 	saves_pan_u.size.x = get_viewport().size.x
 	saves_pan_d.size.x = get_viewport().size.x
-	launch_button.size.x = 200
 	beginning_description.size.x = get_viewport().size.x - 500.0
 	beginning_description.size.y = get_viewport().size.y - 250.0
 	#Set Background color
@@ -135,42 +122,53 @@ func _process(delta):
 	background.texture.gradient.set_color( 1 , Color(background_color_fr,background_color_fg,1.0) )
 	#Follow mouse
 	background.material.set_shader_parameter("mouse",get_global_mouse_position()*0.0005)
-	#Set Beginning subtitle text & Beginning description
-	if beginning_menu.get_child(beginning_menu.current_index) is Button:
-		beginning_subtitle.text = beginning_menu.get_child(beginning_menu.current_index).text
-		beginning_description_text.text = "{beginning_description." + str(beginning_menu.current_index) + ":[color=red]TRANSLATION NOT FOUND[/color]}"
-	#Disable Launch
-	if beginning_menu.current_index not in [1,3] :	launch_button.disabled = true
-	else:											launch_button.disabled = false
 	
 #Start & Options
 func _on_start_button_pressed():
 	if current_menu == "title":
 		current_menu = "beginning"
+		back_button.visible = true
+		saves_pan_d.visible = true
+		beginning_menu.visible = true
+		beginning_title.visible = true
+		beginning_description.visible = true
+		beginning_arrow.visible = true
+		launch_button.visible = true
 		beginning_tutorial.grab_focus()
 func _on_continue_button_pressed():
 	if current_menu == "title":
 		current_menu = "saves"
+		back_button.visible = true
+		saves_pan_d.visible = true
+		saves_menu.visible = true
+		saves_pan_u.visible = true
 		saves_s0.grab_focus()
 func _on_online_button_pressed():
 	if current_menu == "title":
 		current_menu = "online"
+		back_button.visible = true
+		online_menu.visible = true
 func _on_options_button_pressed():
 	if current_menu == "title":
 		current_menu = "options"
+		back_button.visible = true
+		options_menu.visible = true
 		options_menu.tab_focus()
 func _on_back_button_pressed():
 	if current_menu != "title":
 		current_menu = "title"
+		main_menu.visible = true
 		main_menu_start.grab_focus()
 #Exit
 func _on_exit_button_pressed():
 	if current_menu == "title":
 		current_menu = "exit"
+		exit_menu.visible = true
 		exit_menu_cancel.grab_focus()
 func _on_cancel_button_pressed():
 	if current_menu == "exit":
 		current_menu = "title"
+		main_menu.visible = true
 		main_menu_start.grab_focus()
 func _on_confirm_button_pressed():
 	if current_menu == "exit":
@@ -181,3 +179,13 @@ func button_sound(node):
 	for child in node.get_children():
 		if child is Button :	child.button_down.connect(click_sound.play)
 		else :					button_sound(child)
+
+#Change beginning discription
+func _on_beginning_index_changed():
+	#Set Beginning subtitle text & Beginning description
+	if beginning_menu.get_child(beginning_menu.current_index) is Button:
+		beginning_subtitle.text = beginning_menu.get_child(beginning_menu.current_index).text
+		beginning_description_text.text = "{beginning_description." + str(beginning_menu.current_index) + ":[color=red]TRANSLATION NOT FOUND[/color]}"
+	#Disable Launch
+	if beginning_menu.current_index not in [1,3] :	launch_button.disabled = true
+	else:											launch_button.disabled = false

@@ -28,6 +28,14 @@ func _ready():
 	SfxVolume.set_tooltip_text( str(db_to_linear(AudioServer.get_bus_volume_db(2))*100) + "%")
 
 func _process(delta):
+	#Fit the window size
+	if get_viewport().size.x < 1600 :	size.x = get_viewport().size.x * 0.75
+	else :								size.x = 1200
+	if get_viewport().size.y < 900 :	size.y = get_viewport().size.y * 0.8
+	else :								size.y = 750
+	position.x = ( get_viewport().size.x - size.x ) / 2
+#Change tab
+func _input(event):
 	if get_parent().current_menu == "options":
 		if Input.is_action_just_pressed("tab_right"):
 			if current_tab == get_tab_count()-1 :	current_tab = 0
@@ -37,14 +45,6 @@ func _process(delta):
 			if current_tab == 0 :	current_tab = get_tab_count()-1
 			else :					current_tab -= 1
 			tab_focus()
-	
-	#Fit the window size
-	if get_viewport().size.x < 1600 :	size.x = get_viewport().size.x * 0.75
-	else :								size.x = 1200
-	if get_viewport().size.y < 900 :	size.y = get_viewport().size.y * 0.8
-	else :								size.y = 750
-	position.x = ( get_viewport().size.x - size.x ) / 2
-
 #Language
 func _on_option_button_item_selected(index):
 	match index:
@@ -67,6 +67,7 @@ func _on_fullscreen_button_toggled(toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else :
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		#RenderingServer.viewport_set_size(DisplayServer.get_instance_id(),1600,900)
 	print(DisplayServer.window_get_mode())
 	Global.save_config()
 #Scale
