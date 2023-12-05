@@ -42,10 +42,12 @@ func _ready():
 func _process(delta):
 	#Menu switch animate
 	if current_menu == "title":
-		main_menu.position.x = lerp( main_menu.position.x , 0.0 , 0.1 )
+		#main_menu.position.x = lerp( main_menu.position.x , 0.0 , 0.1 )
+		pass
 	else:
-		main_menu.position.x = lerp( main_menu.position.x , -501.0 , 0.1 )
-		if main_menu.position.x < -500.0 : main_menu.visible = false
+		#main_menu.position.x = lerp( main_menu.position.x , -501.0 , 0.1 )
+		#if main_menu.position.x < -500.0 : main_menu.visible = false
+		pass
 
 	if current_menu in ["saves","beginning","online","options"]:
 		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y - 75.0 , 0.1 )
@@ -61,15 +63,6 @@ func _process(delta):
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y + 1.0 , 0.1 )
 		if saves_pan_d.position.y > get_viewport().size.y + 0.0 : saves_pan_d.visible = false
 		background_color_fr = lerp(background_color_fr,0.0,0.1)
-		
-	if current_menu == "saves":
-		saves_menu.position.x = lerp( saves_menu.position.x , (get_viewport().size.x - saves_menu.size.x)/2.0 , 0.1 )
-		saves_pan_u.position.y = lerp( saves_pan_u.position.y , 0.0 , 0.1 )
-	else:
-		saves_menu.position.x = lerp( saves_menu.position.x ,get_viewport().size.x + 1.0 , 0.1 )
-		if saves_menu.position.x > get_viewport().size.x : saves_menu.visible = false
-		saves_pan_u.position.y = lerp( saves_pan_u.position.y , -101.0 , 0.1 )
-		if saves_pan_u.position.y < -100.0 : saves_pan_u.visible = false
 	
 	if current_menu == "beginning":
 		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x -450.0 , 0.1 )
@@ -88,6 +81,15 @@ func _process(delta):
 		if beginning_arrow.position.x > get_viewport().size.x : beginning_arrow.visible = false
 		launch_button.position.y = lerp( launch_button.position.y , get_viewport().size.y +1.0 , 0.1 )
 		if launch_button.position.y > get_viewport().size.y : launch_button.visible = false
+		
+	if current_menu == "saves":
+		saves_menu.position.x = lerp( saves_menu.position.x , (get_viewport().size.x - saves_menu.size.x)/2.0 , 0.1 )
+		saves_pan_u.position.y = lerp( saves_pan_u.position.y , 0.0 , 0.1 )
+	else:
+		saves_menu.position.x = lerp( saves_menu.position.x ,get_viewport().size.x + 1.0 , 0.1 )
+		if saves_menu.position.x > get_viewport().size.x : saves_menu.visible = false
+		saves_pan_u.position.y = lerp( saves_pan_u.position.y , -101.0 , 0.1 )
+		if saves_pan_u.position.y < -100.0 : saves_pan_u.visible = false
 	
 	if current_menu == "online":
 		online_menu.position.x = lerp( online_menu.position.x , (get_viewport().size.x - online_menu.size.x)/2.0 , 0.1 )
@@ -127,6 +129,7 @@ func _process(delta):
 func _on_start_button_pressed():
 	if current_menu == "title":
 		current_menu = "beginning"
+		ui_transition()
 		back_button.visible = true
 		saves_pan_d.visible = true
 		beginning_menu.visible = true
@@ -135,9 +138,11 @@ func _on_start_button_pressed():
 		beginning_arrow.visible = true
 		launch_button.visible = true
 		beginning_tutorial.grab_focus()
+
 func _on_continue_button_pressed():
 	if current_menu == "title":
 		current_menu = "saves"
+		ui_transition()
 		back_button.visible = true
 		saves_pan_d.visible = true
 		saves_menu.visible = true
@@ -146,28 +151,33 @@ func _on_continue_button_pressed():
 func _on_online_button_pressed():
 	if current_menu == "title":
 		current_menu = "online"
+		ui_transition()
 		back_button.visible = true
 		online_menu.visible = true
 func _on_options_button_pressed():
 	if current_menu == "title":
 		current_menu = "options"
+		ui_transition()
 		back_button.visible = true
 		options_menu.visible = true
 		options_menu.tab_focus()
 func _on_back_button_pressed():
 	if current_menu != "title":
 		current_menu = "title"
+		ui_transition()
 		main_menu.visible = true
 		main_menu_start.grab_focus()
 #Exit
 func _on_exit_button_pressed():
 	if current_menu == "title":
 		current_menu = "exit"
+		ui_transition()
 		exit_menu.visible = true
 		exit_menu_cancel.grab_focus()
 func _on_cancel_button_pressed():
 	if current_menu == "exit":
 		current_menu = "title"
+		ui_transition()
 		main_menu.visible = true
 		main_menu_start.grab_focus()
 func _on_confirm_button_pressed():
@@ -179,7 +189,14 @@ func button_sound(node):
 	for child in node.get_children():
 		if child is Button :	child.button_down.connect(click_sound.play)
 		else :					button_sound(child)
-
+#UI transition
+func ui_transition():
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	if current_menu == "title":
+		tween.tween_property(main_menu, "position:x", 0.0, 0.5)
+	else:
+		tween.tween_property(main_menu, "position:x", -500.0, 0.5)
+		tween.tween_property(main_menu, "visible", false, 0)
 #Change beginning discription
 func _on_beginning_index_changed():
 	#Set Beginning subtitle text & Beginning description
