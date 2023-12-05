@@ -41,19 +41,8 @@ func _ready():
 
 func _process(delta):
 	#Menu switch animate
-	if current_menu == "title":
-		#main_menu.position.x = lerp( main_menu.position.x , 0.0 , 0.1 )
-		pass
-	else:
-		#main_menu.position.x = lerp( main_menu.position.x , -501.0 , 0.1 )
-		#if main_menu.position.x < -500.0 : main_menu.visible = false
-		pass
 
-	if current_menu in ["saves","beginning","online","options"]:
-		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y - 75.0 , 0.1 )
-	else:
-		back_button.position.y = lerp( back_button.position.y , get_viewport().size.y + 1.0 , 0.1 )
-		if back_button.position.x > get_viewport().size.y : back_button.visible = false
+	
 		
 	if current_menu in ["saves","beginning"]:
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y - 100.0 , 0.1 )
@@ -125,6 +114,22 @@ func _process(delta):
 	#Follow mouse
 	background.material.set_shader_parameter("mouse",get_global_mouse_position()*0.0005)
 	
+#UI transition
+func ui_transition():
+	var tween_main = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	if current_menu == "title":
+		tween_main.tween_property(main_menu, "position:x", 0.0, 0.5)
+	else:
+		tween_main.tween_property(main_menu, "position:x", -500.0, 0.5)
+		tween_main.tween_property(main_menu, "visible", false, 0)
+	
+	var tween_back = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	if current_menu in ["saves","beginning","online","options"]:
+		tween_back.tween_property(back_button, "position:y", get_viewport().size.y - 75.0, 0.5)
+	else:
+		tween_back.tween_property(back_button, "position:y", get_viewport().size.y, 0.5)
+		tween_back.tween_property(back_button, "visible", false, 0)
+		
 #Start & Options
 func _on_start_button_pressed():
 	if current_menu == "title":
@@ -189,14 +194,7 @@ func button_sound(node):
 	for child in node.get_children():
 		if child is Button :	child.button_down.connect(click_sound.play)
 		else :					button_sound(child)
-#UI transition
-func ui_transition():
-	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
-	if current_menu == "title":
-		tween.tween_property(main_menu, "position:x", 0.0, 0.5)
-	else:
-		tween.tween_property(main_menu, "position:x", -500.0, 0.5)
-		tween.tween_property(main_menu, "visible", false, 0)
+		
 #Change beginning discription
 func _on_beginning_index_changed():
 	#Set Beginning subtitle text & Beginning description
