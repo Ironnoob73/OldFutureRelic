@@ -24,8 +24,9 @@ extends Control
 
 @onready var background = $Background
 @onready var click_sound = $ClickSound
+@onready var animation = $Animation
 
-var current_menu = "title"
+var current_menu = "null"
 
 var background_color = 1.0
 var background_color_fr = 0.0
@@ -35,15 +36,13 @@ var background_color_fg = 0.75
 @onready var dir_y = get_viewport().size.y
 
 func _ready():
+	current_menu = "title"
 	main_menu_start.grab_focus()
 	button_sound(self)
 	launch_button.size.x = 200
 
 func _process(delta):
 	#Menu switch animate
-
-	
-		
 	if current_menu in ["saves","beginning"]:
 		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y - 100.0 , 0.1 )
 		background_color_fr = lerp(background_color_fr,0.75,0.1)
@@ -86,11 +85,11 @@ func _process(delta):
 		online_menu.position.x = lerp( online_menu.position.x , get_viewport().size.x + 1.0 , 0.1 )
 		if online_menu.position.x > get_viewport().size.x : online_menu.visible = false
 		
-	if current_menu == "options":
-		options_menu.position.y = lerp( options_menu.position.y , (get_viewport().size.y - options_menu.size.y)/2.0 , 0.1 )
-	else:
-		options_menu.position.y = lerp( options_menu.position.y , get_viewport().size.y + 1.0 , 0.1 )
-		if options_menu.position.y > get_viewport().size.y : options_menu.visible = false
+	if current_menu == "options":pass
+		#options_menu.position.y = lerp( options_menu.position.y , (get_viewport().size.y - options_menu.size.y)/2.0 , 0.1 )
+	else:pass
+		#options_menu.position.y = lerp( options_menu.position.y , get_viewport().size.y + 1.0 , 0.1 )
+		#if options_menu.position.y > get_viewport().size.y : options_menu.visible = false
 		
 	if current_menu == "exit":
 		exit_menu.position.x = lerp( exit_menu.position.x , (get_viewport().size.x - exit_menu.size.x)/2.0 , 0.1 )
@@ -102,8 +101,8 @@ func _process(delta):
 		background_color = lerp(background_color,1.0,0.1)
 	
 	#Change width
-	saves_pan_u.size.x = get_viewport().size.x
-	saves_pan_d.size.x = get_viewport().size.x
+	#saves_pan_u.size.x = get_viewport().size.x
+	#saves_pan_d.size.x = get_viewport().size.x
 	beginning_description.size.x = get_viewport().size.x - 500.0
 	beginning_description.size.y = get_viewport().size.y - 250.0
 	#Set Background color
@@ -116,12 +115,8 @@ func _process(delta):
 	
 #UI transition
 func ui_transition():
-	var tween_main = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
-	if current_menu == "title":
-		tween_main.tween_property(main_menu, "position:x", 0.0, 0.5)
-	else:
-		tween_main.tween_property(main_menu, "position:x", -500.0, 0.5)
-		tween_main.tween_property(main_menu, "visible", false, 0)
+	if current_menu == "title" :	animation.play("Title")
+	else:							animation.play_backwards("Title")
 	
 	var tween_back = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	if current_menu in ["saves","beginning","online","options"]:
@@ -129,6 +124,9 @@ func ui_transition():
 	else:
 		tween_back.tween_property(back_button, "position:y", get_viewport().size.y, 0.5)
 		tween_back.tween_property(back_button, "visible", false, 0)
+	
+	if current_menu == "options" :	animation.play("Options")
+	else :							animation.play_backwards("Options")
 		
 #Start & Options
 func _on_start_button_pressed():
@@ -164,7 +162,7 @@ func _on_options_button_pressed():
 		current_menu = "options"
 		ui_transition()
 		back_button.visible = true
-		options_menu.visible = true
+		#options_menu.visible = true
 		options_menu.tab_focus()
 func _on_back_button_pressed():
 	if current_menu != "title":
@@ -204,3 +202,5 @@ func _on_beginning_index_changed():
 	#Disable Launch
 	if beginning_menu.current_index not in [1,3] :	launch_button.disabled = true
 	else:											launch_button.disabled = false
+
+

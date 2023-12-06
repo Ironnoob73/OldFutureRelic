@@ -28,12 +28,7 @@ func _ready():
 	SfxVolume.set_tooltip_text( str(db_to_linear(AudioServer.get_bus_volume_db(2))*100) + "%")
 
 func _process(delta):
-	#Fit the window size
-	if get_viewport().size.x < 1600 :	size.x = get_viewport().size.x * 0.75
-	else :								size.x = 1200
-	if get_viewport().size.y < 900 :	size.y = get_viewport().size.y * 0.8
-	else :								size.y = 750
-	position.x = ( get_viewport().size.x - size.x ) / 2
+	pass
 #Change tab
 func _input(event):
 	if get_parent().current_menu == "options":
@@ -66,8 +61,8 @@ func _on_fullscreen_button_toggled(toggled_on):
 	if toggled_on == true :
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else :
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-		#RenderingServer.viewport_set_size(DisplayServer.get_instance_id(),1600,900)
+		DisplayServer.window_set_size(Vector2(1600,900))
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	print(DisplayServer.window_get_mode())
 	Global.save_config()
 #Scale
@@ -90,11 +85,11 @@ func _on_sfx_button_value_changed(value):
 	SfxVolume.set_tooltip_text( str(value*100) + "%")
 	Global.save_config()
 
+func _on_tab_changed(tab):
+	tab_focus()
 func tab_focus():
 	match current_tab:
 		0:GameLanguage.grab_focus()
 		1:Fullscreen.grab_focus()
 		2:MasterVolume.grab_focus()
 		3:pass
-
-

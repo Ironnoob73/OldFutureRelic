@@ -250,6 +250,7 @@ focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../#options_game#")
 focus_previous = NodePath("../#options_audio#")
 
+[connection signal="tab_changed" from="." to="." method="_on_tab_changed"]
 [connection signal="item_selected" from="#options_game#/GameSetting/VSplit/Language/language_button" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="#options_game#/GameSetting/VSplit/DataPath/datapath_button" to="." method="_on_datapath_button_pressed"]
 [connection signal="dir_selected" from="#options_game#/GameSetting/VSplit/DataPath/datapath_button/path_choose" to="." method="_on_path_choose_dir_selected"]
