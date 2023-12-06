@@ -19,12 +19,13 @@ extends Control
 @onready var saves_s0 = $Saves/VBox/Slot0
 @onready var saves_pan_u = $Save_pan_u
 @onready var saves_pan_d = $Save_pan_d
-@onready var main_menu_start = $Main/ScrollContainer/MainMenu/StartButton
+@onready var main_menu_start = $Main/ScrollContainer/MainMenu/Start
 @onready var exit_menu_cancel = $Exit/VSplitContainer/CancelButton
 
 @onready var background = $Background
 @onready var click_sound = $ClickSound
-@onready var animation = $Animation
+@onready var main_player = $MainPlayer
+@onready var sub_player = $SubPlayer
 
 var current_menu = "null"
 
@@ -36,163 +37,43 @@ var background_color_fg = 0.75
 @onready var dir_y = get_viewport().size.y
 
 func _ready():
-	current_menu = "title"
+	current_menu = "Title"
 	main_menu_start.grab_focus()
 	button_sound(self)
 	launch_button.size.x = 200
+	for button in $Main/ScrollContainer/MainMenu.get_children():
+		button.pressed.connect(sub_menu_enter.bind(button.name), CONNECT_REFERENCE_COUNTED)
 
 func _process(delta):
-	#Menu switch animate
-	if current_menu in ["saves","beginning"]:
-		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y - 100.0 , 0.1 )
-		background_color_fr = lerp(background_color_fr,0.75,0.1)
-		background_color_fg = lerp(background_color_fg,0.9375,0.1)
-	else:
-		saves_pan_d.position.y = lerp( saves_pan_d.position.y , get_viewport().size.y + 1.0 , 0.1 )
-		if saves_pan_d.position.y > get_viewport().size.y + 0.0 : saves_pan_d.visible = false
-		background_color_fr = lerp(background_color_fr,0.0,0.1)
-	
-	if current_menu == "beginning":
-		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x -450.0 , 0.1 )
-		beginning_title.position.y = lerp( beginning_title.position.y , 25.0 , 0.1 )
-		beginning_description.position.x = lerp( beginning_description.position.x , 10.0 , 0.1 )
-		beginning_arrow.position.x = lerp( beginning_arrow.position.x , get_viewport().size.x -470.0 , 0.1 )
-		launch_button.position.y = lerp( launch_button.position.y , get_viewport().size.y - 150.0 , 0.1 )
-	else:
-		beginning_menu.position.x = lerp( beginning_menu.position.x , get_viewport().size.x +1.0 , 0.1 )
-		if beginning_menu.position.x > get_viewport().size.x : beginning_menu.visible = false
-		beginning_title.position.y = lerp( beginning_title.position.y , -201.0 , 0.1 )
-		if beginning_title.position.y < -80 : beginning_title.visible = false
-		beginning_description.position.x = lerp( beginning_description.position.x , - beginning_description.size.x - 1.0 , 0.1 )
-		if beginning_description.position.x < - beginning_description.size.x : beginning_description.visible = false
-		beginning_arrow.position.x = lerp( beginning_arrow.position.x , get_viewport().size.x +1.0 , 0.1 )
-		if beginning_arrow.position.x > get_viewport().size.x : beginning_arrow.visible = false
-		launch_button.position.y = lerp( launch_button.position.y , get_viewport().size.y +1.0 , 0.1 )
-		if launch_button.position.y > get_viewport().size.y : launch_button.visible = false
-		
-	if current_menu == "saves":
-		saves_menu.position.x = lerp( saves_menu.position.x , (get_viewport().size.x - saves_menu.size.x)/2.0 , 0.1 )
-		saves_pan_u.position.y = lerp( saves_pan_u.position.y , 0.0 , 0.1 )
-	else:
-		saves_menu.position.x = lerp( saves_menu.position.x ,get_viewport().size.x + 1.0 , 0.1 )
-		if saves_menu.position.x > get_viewport().size.x : saves_menu.visible = false
-		saves_pan_u.position.y = lerp( saves_pan_u.position.y , -101.0 , 0.1 )
-		if saves_pan_u.position.y < -100.0 : saves_pan_u.visible = false
-	
-	if current_menu == "online":
-		online_menu.position.x = lerp( online_menu.position.x , (get_viewport().size.x - online_menu.size.x)/2.0 , 0.1 )
-	else:
-		online_menu.position.x = lerp( online_menu.position.x , get_viewport().size.x + 1.0 , 0.1 )
-		if online_menu.position.x > get_viewport().size.x : online_menu.visible = false
-		
-	if current_menu == "options":pass
-		#options_menu.position.y = lerp( options_menu.position.y , (get_viewport().size.y - options_menu.size.y)/2.0 , 0.1 )
-	else:pass
-		#options_menu.position.y = lerp( options_menu.position.y , get_viewport().size.y + 1.0 , 0.1 )
-		#if options_menu.position.y > get_viewport().size.y : options_menu.visible = false
-		
-	if current_menu == "exit":
-		exit_menu.position.x = lerp( exit_menu.position.x , (get_viewport().size.x - exit_menu.size.x)/2.0 , 0.1 )
-		background_color = lerp(background_color,0.0,0.1)
-		background_color_fg = lerp(background_color_fg,0.0,0.1)
-	else:
-		exit_menu.position.x = lerp( exit_menu.position.x ,get_viewport().size.x + 1.0 , 0.1 )
-		if exit_menu.position.x > get_viewport().size.x : exit_menu.visible = false
-		background_color = lerp(background_color,1.0,0.1)
-	
-	#Change width
-	#saves_pan_u.size.x = get_viewport().size.x
-	#saves_pan_d.size.x = get_viewport().size.x
-	beginning_description.size.x = get_viewport().size.x - 500.0
-	beginning_description.size.y = get_viewport().size.y - 250.0
-	#Set Background color
-	if current_menu not in ["saves","beginning","exit"]:
-		background_color_fg = lerp(background_color_fg,0.75,0.1)
-	background.texture.gradient.set_color( 0 , Color(background_color,background_color,background_color) )
-	background.texture.gradient.set_color( 1 , Color(background_color_fr,background_color_fg,1.0) )
 	#Follow mouse
 	background.material.set_shader_parameter("mouse",get_global_mouse_position()*0.0005)
-	
-#UI transition
-func ui_transition():
-	if current_menu == "title" :	animation.play("Title")
-	else:							animation.play_backwards("Title")
-	
-	var tween_back = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
-	if current_menu in ["saves","beginning","online","options"]:
-		tween_back.tween_property(back_button, "position:y", get_viewport().size.y - 75.0, 0.5)
-	else:
-		tween_back.tween_property(back_button, "position:y", get_viewport().size.y, 0.5)
-		tween_back.tween_property(back_button, "visible", false, 0)
-	
-	if current_menu == "options" :	animation.play("Options")
-	else :							animation.play_backwards("Options")
-		
-#Start & Options
-func _on_start_button_pressed():
-	if current_menu == "title":
-		current_menu = "beginning"
-		ui_transition()
-		back_button.visible = true
-		saves_pan_d.visible = true
-		beginning_menu.visible = true
-		beginning_title.visible = true
-		beginning_description.visible = true
-		beginning_arrow.visible = true
-		launch_button.visible = true
-		beginning_tutorial.grab_focus()
 
-func _on_continue_button_pressed():
-	if current_menu == "title":
-		current_menu = "saves"
-		ui_transition()
-		back_button.visible = true
-		saves_pan_d.visible = true
-		saves_menu.visible = true
-		saves_pan_u.visible = true
-		saves_s0.grab_focus()
-func _on_online_button_pressed():
-	if current_menu == "title":
-		current_menu = "online"
-		ui_transition()
-		back_button.visible = true
-		online_menu.visible = true
-func _on_options_button_pressed():
-	if current_menu == "title":
-		current_menu = "options"
-		ui_transition()
-		back_button.visible = true
-		#options_menu.visible = true
-		options_menu.tab_focus()
-func _on_back_button_pressed():
-	if current_menu != "title":
-		current_menu = "title"
-		ui_transition()
-		main_menu.visible = true
+# 子窗口进入
+func sub_menu_enter(menu_name):
+	if current_menu == "Title":
+		$MainPlayer.play_backwards("Title")
+		$SubPlayer.play(menu_name)
+		current_menu = menu_name
+
+# 子窗口退出
+func sub_menu_exit():
+	if current_menu != "Title":
+		$MainPlayer.play("Title")
+		$SubPlayer.play_backwards(current_menu)
+		current_menu = "Title"
 		main_menu_start.grab_focus()
-#Exit
-func _on_exit_button_pressed():
-	if current_menu == "title":
-		current_menu = "exit"
-		ui_transition()
-		exit_menu.visible = true
-		exit_menu_cancel.grab_focus()
-func _on_cancel_button_pressed():
-	if current_menu == "exit":
-		current_menu = "title"
-		ui_transition()
-		main_menu.visible = true
-		main_menu_start.grab_focus()
-func _on_confirm_button_pressed():
-	if current_menu == "exit":
+
+# 退出游戏
+func exit_game():
+	if current_menu == "Exit":
 		get_tree().quit()
-
+#
 #Button sound
 func button_sound(node):
 	for child in node.get_children():
 		if child is Button :	child.button_down.connect(click_sound.play)
 		else :					button_sound(child)
-		
+
 #Change beginning discription
 func _on_beginning_index_changed():
 	#Set Beginning subtitle text & Beginning description
@@ -202,5 +83,3 @@ func _on_beginning_index_changed():
 	#Disable Launch
 	if beginning_menu.current_index not in [1,3] :	launch_button.disabled = true
 	else:											launch_button.disabled = false
-
-

@@ -47,56 +47,56 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="StartButton" type="Button" parent="ScrollContainer/MainMenu"]
+[node name="Start" type="Button" parent="ScrollContainer/MainMenu"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../ExitButton")
-focus_neighbor_top = NodePath("../ExitButton")
-focus_neighbor_right = NodePath("../ContinueButton")
-focus_neighbor_bottom = NodePath("../ContinueButton")
-focus_next = NodePath("../ContinueButton")
-focus_previous = NodePath("../ExitButton")
+focus_neighbor_left = NodePath("../Exit")
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_right = NodePath("../Continue")
+focus_neighbor_bottom = NodePath("../Continue")
+focus_next = NodePath("../Continue")
+focus_previous = NodePath("../Exit")
 mouse_default_cursor_shape = 2
 text = "title.menu.start"
 
-[node name="ContinueButton" type="Button" parent="ScrollContainer/MainMenu"]
+[node name="Continue" type="Button" parent="ScrollContainer/MainMenu"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../StartButton")
-focus_neighbor_top = NodePath("../StartButton")
-focus_neighbor_right = NodePath("../OnlineButton")
-focus_neighbor_bottom = NodePath("../OnlineButton")
-focus_next = NodePath("../OnlineButton")
-focus_previous = NodePath("../StartButton")
+focus_neighbor_left = NodePath("../Start")
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_right = NodePath("../Online")
+focus_neighbor_bottom = NodePath("../Online")
+focus_next = NodePath("../Online")
+focus_previous = NodePath("../Start")
 text = "title.menu.continue"
 
-[node name="OnlineButton" type="Button" parent="ScrollContainer/MainMenu"]
+[node name="Online" type="Button" parent="ScrollContainer/MainMenu"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../ContinueButton")
-focus_neighbor_top = NodePath("../ContinueButton")
-focus_neighbor_right = NodePath("../OptionsButton")
-focus_neighbor_bottom = NodePath("../OptionsButton")
-focus_next = NodePath("../OptionsButton")
-focus_previous = NodePath("../ContinueButton")
+focus_neighbor_left = NodePath("../Continue")
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_right = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Options")
+focus_next = NodePath("../Options")
+focus_previous = NodePath("../Continue")
 mouse_default_cursor_shape = 8
 text = "title.menu.online"
 
-[node name="OptionsButton" type="Button" parent="ScrollContainer/MainMenu"]
+[node name="Options" type="Button" parent="ScrollContainer/MainMenu"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../OnlineButton")
-focus_neighbor_top = NodePath("../OnlineButton")
-focus_neighbor_right = NodePath("../ExitButton")
-focus_neighbor_bottom = NodePath("../ExitButton")
-focus_next = NodePath("../ExitButton")
-focus_previous = NodePath("../OnlineButton")
+focus_neighbor_left = NodePath("../Online")
+focus_neighbor_top = NodePath("../Online")
+focus_neighbor_right = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Online")
 mouse_default_cursor_shape = 2
 text = "title.menu.options"
 
-[node name="ExitButton" type="Button" parent="ScrollContainer/MainMenu"]
+[node name="Exit" type="Button" parent="ScrollContainer/MainMenu"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../OptionsButton")
-focus_neighbor_top = NodePath("../OptionsButton")
-focus_neighbor_right = NodePath("../StartButton")
-focus_neighbor_bottom = NodePath("../StartButton")
-focus_next = NodePath("../StartButton")
-focus_previous = NodePath("../OptionsButton")
+focus_neighbor_left = NodePath("../Options")
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_right = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Start")
+focus_next = NodePath("../Start")
+focus_previous = NodePath("../Options")
 mouse_default_cursor_shape = 2
 text = "title.menu.exit"
