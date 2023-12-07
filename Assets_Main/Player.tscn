@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk6ihg1vf71uf"]
+
+[ext_resource type="Script" path="res://Assets_Main/Player.gd" id="1_twfth"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a500n"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_stt28"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_twfth")
+
+[node name="PlayerColl" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a500n")
+
+[node name="PlayerCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="VoxelViewer" type="VoxelViewer" parent="."]
+
+[node name="StandingDetected" type="ShapeCast3D" parent="."]
+shape = SubResource("BoxShape3D_stt28")
+target_position = Vector3(0, 0.65, 0)

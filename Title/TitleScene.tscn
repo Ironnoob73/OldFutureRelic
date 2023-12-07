@@ -847,7 +847,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [-160.0, 0.0]
+"values": [-160.0, 15.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1256,6 +1256,7 @@ libraries = {
 }
 
 [connection signal="index_changed" from="Beginning" to="." method="_on_beginning_index_changed"]
+[connection signal="pressed" from="LaunchButton" to="." method="_on_launch_button_pressed"]
 [connection signal="pressed" from="Exit/VSplitContainer/ConfirmButton" to="." method="exit_game"]
 [connection signal="pressed" from="Exit/VSplitContainer/CancelButton" to="." method="sub_menu_exit"]
 [connection signal="pressed" from="BackButton" to="." method="sub_menu_exit"]

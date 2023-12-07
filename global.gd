@@ -2,6 +2,9 @@ extends Node
 
 const CONFIG_PATH = "user://settings.cfg"
 var DATA_PATH = "user://"
+#Load world
+var map_path = "null"
+var player_pos = Vector3(0.0,0.0,0.0)
 
 func _ready():
 	load_config()
@@ -35,3 +38,11 @@ func load_config():
 		AudioServer.set_bus_volume_db(1,file.get_value("audio","bgm",AudioServer.get_bus_volume_db(1)))
 		AudioServer.set_bus_volume_db(2,file.get_value("audio","sfx",AudioServer.get_bus_volume_db(2)))
 	else:			push_warning("Fail to load config: %d" % err)
+
+#Load world
+func load_world_info(m_name,player_pos_f = Vector3(0.0,0.0,0.0),m_path = "null"):
+	player_pos = player_pos_f
+	if m_path == "null" :	map_path = "res://Map/"+m_name+".tscn"
+	else :					map_path = "res://Map/"+m_path+"/"+m_name+".tscn"
+	get_tree().change_scene_to_file("res://Assets_Main/Happend.tscn")
+	print(map_path,player_pos)

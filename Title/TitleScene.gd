@@ -19,6 +19,7 @@ extends Control
 @onready var saves_s0 = $Saves/VBox/Slot0
 @onready var saves_pan_u = $Save_pan_u
 @onready var saves_pan_d = $Save_pan_d
+@onready var main_menu_button = $Main/ScrollContainer/MainMenu
 @onready var main_menu_start = $Main/ScrollContainer/MainMenu/Start
 @onready var exit_menu_cancel = $Exit/VSplitContainer/CancelButton
 
@@ -42,7 +43,8 @@ func _ready():
 	main_menu_start.grab_focus()
 	button_sound(self)
 	launch_button.size.x = 200
-	for button in $Main/ScrollContainer/MainMenu.get_children():
+	#Mainmenu behavior
+	for button in main_menu_button.get_children():
 		button.pressed.connect(sub_menu_enter.bind(button.name), CONNECT_REFERENCE_COUNTED)
 
 func _process(delta):
@@ -52,8 +54,8 @@ func _process(delta):
 # 子窗口进入
 func sub_menu_enter(menu_name):
 	if current_menu == "Title" and not sub_player.is_playing():
-		$MainPlayer.play_backwards("Title")
-		$SubPlayer.play(menu_name)
+		main_player.play_backwards("Title")
+		sub_player.play(menu_name)
 		current_menu = menu_name
 		print(current_menu)
 		sub_garb_focus[current_menu].call()
@@ -61,8 +63,8 @@ func sub_menu_enter(menu_name):
 # 子窗口退出
 func sub_menu_exit():
 	if current_menu != "Title" and not sub_player.is_playing():
-		$MainPlayer.play("Title")
-		$SubPlayer.play_backwards(current_menu)
+		main_player.play("Title")
+		sub_player.play_backwards(current_menu)
 		current_menu = "Title"
 		main_menu_start.grab_focus()
 
@@ -86,3 +88,7 @@ func _on_beginning_index_changed():
 	#Disable Launch
 	if beginning_menu.current_index not in [1,3] :	launch_button.disabled = true
 	else:											launch_button.disabled = false
+
+#Launch game
+func _on_launch_button_pressed():
+	Global.load_world_info(beginning_menu.get_child(beginning_menu.current_index).name,Vector3(0.0,100.0,0.0))

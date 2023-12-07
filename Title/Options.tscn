@@ -92,7 +92,6 @@ theme = ExtResource("3_qlqe2")
 ok_button_text = "选择当前文件夹"
 file_mode = 2
 access = 2
-use_native_dialog = true
 
 [node name="#options_video#" type="TabBar" parent="."]
 visible = false

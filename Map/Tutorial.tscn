@@ -1,3 +1,40 @@
-[gd_scene format=3 uid="uid://cnoctvs0ti100"]
+[gd_scene load_steps=9 format=3 uid="uid://cnoctvs0ti100"]
 
-[node name="Tutorial" type="Node3D"]
+[sub_resource type="VoxelGeneratorFlat" id="VoxelGeneratorFlat_6jmdu"]
+channel = 0
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_md4tr"]
+resource_name = "air"
+
+[sub_resource type="Gradient" id="Gradient_iwmtk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0.498039, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uje8b"]
+gradient = SubResource("Gradient_iwmtk")
+width = 2
+height = 2
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+repeat = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k43ny"]
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_uje8b")
+texture_filter = 0
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_q0n2y"]
+resource_name = "dummy"
+material_override_0 = SubResource("StandardMaterial3D_k43ny")
+atlas_size_in_tiles = Vector2i(1, 1)
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_bf4fw"]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_md4tr"), SubResource("VoxelBlockyModelCube_q0n2y")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_roa7i"]
+library = SubResource("VoxelBlockyLibrary_bf4fw")
+
+[node name="Tutorial" type="VoxelTerrain"]
+generator = SubResource("VoxelGeneratorFlat_6jmdu")
+mesher = SubResource("VoxelMesherBlocky_roa7i")
