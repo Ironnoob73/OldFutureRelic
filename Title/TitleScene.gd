@@ -15,7 +15,7 @@ extends Control
 @onready var beginning_description = $Beginning_description
 @onready var beginning_description_text = $Beginning_description/description/description_text
 @onready var beginning_arrow = $Beginning_arrow
-@onready var beginning_tutorial = $Beginning/DemoScene
+@onready var beginning_tutorial = $Beginning/Tutorial
 @onready var saves_s0 = $Saves/VBox/Slot0
 @onready var saves_pan_u = $Save_pan_u
 @onready var saves_pan_d = $Save_pan_d
@@ -28,11 +28,11 @@ extends Control
 @onready var sub_player = $SubPlayer
 
 @onready var sub_garb_focus = {
-	"Start": $Beginning/DemoScene.grab_focus,
-	"Continue": $Saves/VBox/Slot0.grab_focus,
+	"Start": beginning_tutorial.grab_focus,
+	"Continue": saves_s0.grab_focus,
 	"Online": func(): pass,
-	"Options": $Options.tab_focus,
-	"Exit": $Exit/VSplitContainer/CancelButton.grab_focus
+	"Options": options_menu.tab_focus,
+	"Exit": exit_menu_cancel.grab_focus
 }
 
 var current_menu = "null"
@@ -55,6 +55,7 @@ func sub_menu_enter(menu_name):
 		$MainPlayer.play_backwards("Title")
 		$SubPlayer.play(menu_name)
 		current_menu = menu_name
+		print(current_menu)
 		sub_garb_focus[current_menu].call()
 
 # 子窗口退出

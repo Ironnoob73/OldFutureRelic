@@ -31,7 +31,7 @@ func _process(delta):
 	pass
 #Change tab
 func _input(event):
-	if get_parent().current_menu == "options":
+	if get_parent().current_menu == "Options":
 		if Input.is_action_just_pressed("tab_right"):
 			if current_tab == get_tab_count()-1 :	current_tab = 0
 			else :									current_tab += 1
@@ -59,10 +59,11 @@ func _on_path_choose_dir_selected(dir):
 #Fullscreen
 func _on_fullscreen_button_toggled(toggled_on):
 	if toggled_on == true :
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else :
-		DisplayServer.window_set_size(Vector2(1600,900))
+		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2(1600,900))
 	print(DisplayServer.window_get_mode())
 	Global.save_config()
 #Scale

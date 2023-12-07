@@ -10,7 +10,7 @@ func _process(delta):
 	pass
 #Change button
 func _input(event):
-	if get_parent().current_menu == "beginning":
+	if get_parent().current_menu == "Start":
 		if Input.is_action_just_pressed("tab_right"):
 			if current_index == get_child_count() -1 :	current_index = 1
 			elif get_child(current_index + 1) is Button:

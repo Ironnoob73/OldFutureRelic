@@ -26,25 +26,25 @@ theme = ExtResource("1_tq046")
 theme_override_constants/separation = 15
 script = ExtResource("2_3xpcg")
 
-[node name="Tutorial" type="PanelContainer" parent="."]
+[node name="Demo" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6ngni")
 
-[node name="tutorial_text" type="Label" parent="Tutorial"]
+[node name="demo_text" type="Label" parent="Demo"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 35
-text = "beginning.tutorial"
+text = "beginning.demo"
 
-[node name="DemoScene" type="Button" parent="."]
+[node name="Tutorial" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../BodyOfMetal")
 focus_neighbor_bottom = NodePath("../SpareTime")
 focus_next = NodePath("../SpareTime")
 focus_previous = NodePath("../BodyOfMetal")
-text = "beginning.tutorial.demo"
+text = "beginning.demo.tutorial"
 alignment = 0
 
 [node name="OriginalStory" type="PanelContainer" parent="."]
@@ -61,19 +61,19 @@ text = "beginning.original"
 [node name="SpareTime" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-focus_neighbor_top = NodePath("../DemoScene")
+focus_neighbor_top = NodePath("../Tutorial")
 focus_neighbor_bottom = NodePath("../BodyOfMetal")
 focus_next = NodePath("../BodyOfMetal")
-focus_previous = NodePath("../DemoScene")
-text = "beginning.spare_time"
+focus_previous = NodePath("../Tutorial")
+text = "beginning.original.spare_time"
 alignment = 0
 
 [node name="BodyOfMetal" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_neighbor_top = NodePath("../SpareTime")
-focus_neighbor_bottom = NodePath("../DemoScene")
-focus_next = NodePath("../DemoScene")
-focus_previous = NodePath("../DemoScene")
-text = "beginning.body_of_metal"
+focus_neighbor_bottom = NodePath("../Tutorial")
+focus_next = NodePath("../Tutorial")
+focus_previous = NodePath("../Tutorial")
+text = "beginning.original.body_of_metal"
 alignment = 0
