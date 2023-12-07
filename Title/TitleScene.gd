@@ -27,14 +27,15 @@ extends Control
 @onready var main_player = $MainPlayer
 @onready var sub_player = $SubPlayer
 
+@onready var sub_garb_focus = {
+	"Start": $Beginning/DemoScene.grab_focus,
+	"Continue": $Saves/VBox/Slot0.grab_focus,
+	"Online": func(): pass,
+	"Options": $Options.tab_focus,
+	"Exit": $Exit/VSplitContainer/CancelButton.grab_focus
+}
+
 var current_menu = "null"
-
-var background_color = 1.0
-var background_color_fr = 0.0
-var background_color_fg = 0.75
-
-@onready var dir_x = get_viewport().size.x
-@onready var dir_y = get_viewport().size.y
 
 func _ready():
 	current_menu = "Title"
@@ -50,14 +51,15 @@ func _process(delta):
 
 # 子窗口进入
 func sub_menu_enter(menu_name):
-	if current_menu == "Title":
+	if current_menu == "Title" and not sub_player.is_playing():
 		$MainPlayer.play_backwards("Title")
 		$SubPlayer.play(menu_name)
 		current_menu = menu_name
+		sub_garb_focus[current_menu].call()
 
 # 子窗口退出
 func sub_menu_exit():
-	if current_menu != "Title":
+	if current_menu != "Title" and not sub_player.is_playing():
 		$MainPlayer.play("Title")
 		$SubPlayer.play_backwards(current_menu)
 		current_menu = "Title"
