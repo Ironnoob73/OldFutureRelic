@@ -39,10 +39,12 @@ func load_config():
 		AudioServer.set_bus_volume_db(2,file.get_value("audio","sfx",AudioServer.get_bus_volume_db(2)))
 	else:			push_warning("Fail to load config: %d" % err)
 
+#Back to title
+func back_to_title():
+	get_tree().change_scene_to_file("res://Title/TitleScene.tscn")
 #Load world
-func load_world_info(m_name,player_pos_f = Vector3(0.0,0.0,0.0),m_path = "null"):
+func load_world_info(m_name,player_pos_f = Vector3(0.0,0.0,0.0)):
 	player_pos = player_pos_f
-	if m_path == "null" :	map_path = "res://Map/"+m_name+".tscn"
-	else :					map_path = "res://Map/"+m_path+"/"+m_name+".tscn"
+	map_path = "res://Map/"+m_name+".tscn"
 	get_tree().change_scene_to_file("res://Assets_Main/Happend.tscn")
 	print(map_path,player_pos)

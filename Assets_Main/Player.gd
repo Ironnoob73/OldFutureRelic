@@ -12,6 +12,7 @@ const FRICTION = 0.3
 @onready var player_collision = $PlayerColl
 @onready var player_camera = $PlayerCam
 @onready var standing_detected= $StandingDetected
+@onready var pause_menu = $Pause_menu
 
 var mouse_sens = 0.4
 
@@ -29,6 +30,7 @@ func _ready():
 	#process_mode=1
 	
 	#self.add_to_group("Player")
+	pause_menu.visible = false
 	
 func _input(event):
 	# Player camera.
@@ -36,9 +38,6 @@ func _input(event):
 		rotate_y(-deg_to_rad(event.relative.x * mouse_sens))
 		player_camera.rotate_x(-deg_to_rad(event.relative.y * mouse_sens))
 		player_camera.rotation.x = clamp(player_camera.rotation.x,deg_to_rad(-90),deg_to_rad(90))
-	
-func _physics_process(delta):
-	
 	# Pause.
 	if Input.is_action_just_pressed("pause"):
 		if isPause:
@@ -49,7 +48,9 @@ func _physics_process(delta):
 			isPause=true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			#get_tree().paused=true
+			pause_menu.visible = true
 	
+func _physics_process(delta):
 	# Record Inerita & Add the gravity.
 	if is_on_floor():
 		INERTIA.x = velocity.x
