@@ -1,11 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsynmnxiy47ku"]
-
-[ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_6xdmf"]
+[gd_scene format=3 uid="uid://bsynmnxiy47ku"]
 
 [node name="Exit" type="PanelContainer"]
 offset_right = 422.0
 offset_bottom = 100.0
-theme = ExtResource("1_6xdmf")
 
 [node name="Ask" type="Label" parent="."]
 layout_mode = 2

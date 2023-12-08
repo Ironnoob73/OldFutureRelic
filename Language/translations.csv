@@ -40,3 +40,4 @@ pause.title,Game paused,游戏暂停了
 pause.resume,Resume,继续
 ,,
 exit.ask,Are you sure to exit?,你确定退出吗？
+exit.save,Unsaved content will be lost!,未保存的内容将会丢失！

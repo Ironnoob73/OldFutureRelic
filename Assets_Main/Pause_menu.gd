@@ -5,7 +5,7 @@ var escape_released = false
 @onready var animation = $AnimationPlayer
 
 func _ready():
-	pass
+	animation.play("RESET")
 
 func _process(delta):
 	pass
@@ -36,5 +36,13 @@ func _on_back_button_pressed():
 		animation.play_backwards("Options")
 	
 func _on_exit_button_pressed():
+	current_menu = "Exit"
+	escape_released = false
+	animation.play("Exit")
+func _on_confirm_button_pressed():
 	Global.back_to_title()
 	visible = false
+func _on_cancel_button_pressed():
+	if current_menu == "Exit":
+		current_menu = "Pause"
+		animation.play_backwards("Exit")
