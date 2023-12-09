@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("2_mrs1c")
 
 [node name="#options_game#" type="TabBar" parent="."]
+visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../#options_control#")
 focus_neighbor_top = NodePath(".")
@@ -238,7 +239,6 @@ step = 0.01
 value = 1.0
 
 [node name="#options_control#" type="TabBar" parent="."]
-visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../#options_audio#")
 focus_neighbor_top = NodePath(".")
@@ -246,6 +246,35 @@ focus_neighbor_right = NodePath("../#options_game#")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../#options_game#")
 focus_previous = NodePath("../#options_audio#")
+
+[node name="ControlSetting" type="ScrollContainer" parent="#options_control#"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSpilt" type="VBoxContainer" parent="#options_control#/ControlSetting"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MouseSen" type="HBoxContainer" parent="#options_control#/ControlSetting/VSpilt"]
+layout_mode = 2
+
+[node name="mouse_text" type="Label" parent="#options_control#/ControlSetting/VSpilt/MouseSen"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "options.control.mouse_sen"
+
+[node name="mouse_button" type="HSlider" parent="#options_control#/ControlSetting/VSpilt/MouseSen"]
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+value = 0.4
 
 [connection signal="tab_changed" from="." to="." method="_on_tab_changed"]
 [connection signal="item_selected" from="#options_game#/GameSetting/VSplit/Language/language_button" to="." method="_on_option_button_item_selected"]
@@ -256,3 +285,4 @@ focus_previous = NodePath("../#options_audio#")
 [connection signal="value_changed" from="#options_audio#/AudioSetting/VSpilt/Master/master_button" to="." method="_on_master_button_value_changed"]
 [connection signal="value_changed" from="#options_audio#/AudioSetting/VSpilt/Music/bgm_button" to="." method="_on_bgm_button_value_changed"]
 [connection signal="value_changed" from="#options_audio#/AudioSetting/VSpilt/SFX/sfx_button" to="." method="_on_sfx_button_value_changed"]
+[connection signal="value_changed" from="#options_control#/ControlSetting/VSpilt/MouseSen/mouse_button" to="." method="_on_mouse_button_value_changed"]

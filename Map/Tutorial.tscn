@@ -38,3 +38,5 @@ library = SubResource("VoxelBlockyLibrary_bf4fw")
 [node name="Tutorial" type="VoxelTerrain"]
 generator = SubResource("VoxelGeneratorFlat_6jmdu")
 mesher = SubResource("VoxelMesherBlocky_roa7i")
+collision_layer = 15
+collision_mask = 8

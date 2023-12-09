@@ -14,7 +14,7 @@ func _process(delta):
 func _on_visibility_changed():
 	get_tree().paused = visible
 
-func _input(event):
+func _unhandled_input(event):
 	if Input.is_action_just_released("pause") :
 		if escape_released == false :
 			escape_released = true
@@ -23,7 +23,7 @@ func _input(event):
 			_on_resume_button_pressed()
 func _on_resume_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	get_parent().isPause=false
+	get_parent().current_menu = "HUD"
 	visible = false
 	
 func _on_options_button_pressed():

@@ -3,10 +3,14 @@ extends TabContainer
 @onready var GameLanguage = $"#options_game#/GameSetting/VSplit/Language/language_button"
 @onready var DataPath = $"#options_game#/GameSetting/VSplit/DataPath/datapath_button"
 @onready var path_choose = $"#options_game#/GameSetting/VSplit/DataPath/datapath_button/path_choose"
+
 @onready var Fullscreen = $"#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button"
+
 @onready var MasterVolume = $"#options_audio#/AudioSetting/VSpilt/Master/master_button"
 @onready var BgmVolume = $"#options_audio#/AudioSetting/VSpilt/Music/bgm_button"
 @onready var SfxVolume = $"#options_audio#/AudioSetting/VSpilt/SFX/sfx_button"
+
+@onready var MouseSen = $"#options_control#/ControlSetting/VSpilt/MouseSen/mouse_button"
 
 func _ready():
 	#Language
@@ -26,6 +30,9 @@ func _ready():
 	BgmVolume.set_tooltip_text( str(db_to_linear(AudioServer.get_bus_volume_db(1))*100) + "%")
 	SfxVolume.value = db_to_linear(AudioServer.get_bus_volume_db(2))
 	SfxVolume.set_tooltip_text( str(db_to_linear(AudioServer.get_bus_volume_db(2))*100) + "%")
+	#Control
+	MouseSen.value = Global.mouse_sens
+	MouseSen.set_tooltip_text( str((Global.mouse_sens)*100) + "%")
 
 func _process(delta):
 	pass
@@ -85,6 +92,12 @@ func _on_sfx_button_value_changed(value):
 	AudioServer.set_bus_volume_db(2,linear_to_db(value))
 	SfxVolume.set_tooltip_text( str(value*100) + "%")
 	Global.save_config()
+	
+#Mouse sensitivity
+func _on_mouse_button_value_changed(value):
+	Global.mouse_sens = value
+	MouseSen.set_tooltip_text( str(value*100) + "%")
+	Global.save_config()
 
 func _on_tab_changed(tab):
 	tab_focus()
@@ -94,3 +107,5 @@ func tab_focus():
 		1:Fullscreen.grab_focus()
 		2:MasterVolume.grab_focus()
 		3:pass
+
+

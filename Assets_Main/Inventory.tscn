@@ -1,0 +1,299 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtcknsjsvxg38"]
+
+[ext_resource type="Theme" uid="uid://cvtgnhbl452vj" path="res://Assets_Main/Inventory_theme.tres" id="1_d2m1m"]
+[ext_resource type="Shader" path="res://Assets_Main/Inventory_background.gdshader" id="1_p4cc5"]
+[ext_resource type="Script" path="res://Assets_Main/Inventory.gd" id="2_2362d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_744bd"]
+shader = ExtResource("1_p4cc5")
+shader_parameter/translucent = 0.0
+
+[sub_resource type="Gradient" id="Gradient_bk0mu"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.8)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.74902, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hcb5a"]
+gradient = SubResource("Gradient_bk0mu")
+width = 100
+height = 100
+fill = 2
+
+[sub_resource type="Animation" id="Animation_c23fc"]
+resource_name = "Show"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel_u:offset_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-3, 1),
+"update": 0,
+"values": [-80, -10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel_u:offset_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-3, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel_d:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-3, 1),
+"update": 0,
+"values": [20.0, 10.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel_d:offset_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-3, 1),
+"update": 0,
+"values": [0.0, -100.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonGroup:offset_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-3, 1),
+"update": 0,
+"values": [-500.0, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background:material:shader_parameter/translucent")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.75]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_if8jo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel_u:offset_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel_u:offset_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel_d:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel_d:offset_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonGroup:offset_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-500.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background:material:shader_parameter/translucent")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4uqo"]
+_data = {
+"RESET": SubResource("Animation_if8jo"),
+"Show": SubResource("Animation_c23fc")
+}
+
+[node name="Inventory" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d2m1m")
+script = ExtResource("2_2362d")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_744bd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_hcb5a")
+stretch_mode = 1
+
+[node name="Panel_u" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Panel_u"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 35
+text = "inventory.title"
+
+[node name="Panel_d" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtonGroup" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_right = 0.97
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = 150.0
+offset_bottom = -150.0
+grow_vertical = 2
+
+[node name="HBox0" type="HBoxContainer" parent="ButtonGroup"]
+layout_mode = 2
+
+[node name="ItemButton" type="Button" parent="ButtonGroup/HBox0"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+text = "inventory.item"
+alignment = 0
+clip_text = true
+
+[node name="EquipmentButton" type="Button" parent="ButtonGroup/HBox0"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+text = "inventory.equipment"
+alignment = 0
+clip_text = true
+
+[node name="HBox1" type="HBoxContainer" parent="ButtonGroup"]
+layout_mode = 2
+
+[node name="SpecialButton" type="Button" parent="ButtonGroup/HBox1"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+text = "inventory.special"
+alignment = 0
+clip_text = true
+
+[node name="CollectionButton" type="Button" parent="ButtonGroup/HBox1"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "inventory.collection"
+alignment = 0
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q4uqo")
+}

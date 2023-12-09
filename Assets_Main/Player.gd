@@ -13,12 +13,11 @@ const FRICTION = 0.3
 @onready var player_camera = $PlayerCam
 @onready var standing_detected= $StandingDetected
 @onready var pause_menu = $Pause_menu
-
-var mouse_sens = 0.4
+@onready var inventory_menu = $Inventory
 
 var INERTIA:Vector2 = Vector2.ZERO
 
-var isPause = false
+var current_menu = "HUD"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -31,24 +30,38 @@ func _ready():
 	
 	#self.add_to_group("Player")
 	pause_menu.visible = false
+	inventory_menu.visible = false
 	
 func _input(event):
 	# Player camera.
-	if event is InputEventMouseMotion and !isPause:
-		rotate_y(-deg_to_rad(event.relative.x * mouse_sens))
-		player_camera.rotate_x(-deg_to_rad(event.relative.y * mouse_sens))
+	if event is InputEventMouseMotion and current_menu == "HUD":
+		rotate_y(-deg_to_rad(event.relative.x * Global.mouse_sens))
+		player_camera.rotate_x(-deg_to_rad(event.relative.y * Global.mouse_sens))
 		player_camera.rotation.x = clamp(player_camera.rotation.x,deg_to_rad(-90),deg_to_rad(90))
+func _unhandled_key_input(event):
 	# Pause.
 	if Input.is_action_just_pressed("pause"):
-		if isPause:
-			isPause=false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			#get_tree().paused=false
-		else:
-			isPause=true
+		if current_menu == "HUD":
+			current_menu = "Pause"
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			#get_tree().paused=true
 			pause_menu.visible = true
+		elif current_menu == "Inventory":
+			current_menu = "HUD"
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			inventory_menu.close_inventory()
+		else:
+			current_menu = "HUD"
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# Inventory
+	if Input.is_action_just_pressed("inventory"):
+		if current_menu == "HUD":
+			current_menu = "Inventory"
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			inventory_menu.open_inventory()
+		else:
+			current_menu = "HUD"
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			inventory_menu.close_inventory()
 	
 func _physics_process(delta):
 	# Record Inerita & Add the gravity.

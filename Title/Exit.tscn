@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://bsynmnxiy47ku"]
+[gd_scene load_steps=3 format=3 uid="uid://bsynmnxiy47ku"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_qotme"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_6qgxi"]
+events = [SubResource("InputEventAction_qotme")]
 
 [node name="Exit" type="PanelContainer"]
 offset_right = 422.0
@@ -37,4 +43,5 @@ focus_neighbor_right = NodePath("../ConfirmButton")
 focus_neighbor_bottom = NodePath("../ConfirmButton")
 focus_next = NodePath("../ConfirmButton")
 focus_previous = NodePath("../ConfirmButton")
+shortcut = SubResource("Shortcut_6qgxi")
 text = "button.cancel"

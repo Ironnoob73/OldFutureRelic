@@ -110,12 +110,24 @@ crouch={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"echo":false,"script":null)
 ]
 }
+inventory={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
 locale/translations=PackedStringArray("res://Language/translations.en_US.translation", "res://Language/translations.zh_CN.translation", "res://Language/beginning_description.en_US.translation", "res://Language/beginning_description.zh_CN.translation")
 locale/translations_pot_files=PackedStringArray("res://Title/Main.tscn")
 locale/locale_filter_mode=0
+
+[layer_names]
+
+3d_physics/layer_1="Main"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Item"
+3d_physics/layer_4="Terrain"
 
 [rendering]
 

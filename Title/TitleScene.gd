@@ -16,7 +16,7 @@ extends Control
 @onready var beginning_description_text = $Beginning_description/description/description_text
 @onready var beginning_arrow = $Beginning_arrow
 @onready var beginning_tutorial = $Beginning/Tutorial
-@onready var saves_s0 = $Saves/VBox/Slot0
+@onready var saves_s0 = $Saves/List
 @onready var saves_pan_u = $Save_pan_u
 @onready var saves_pan_d = $Save_pan_d
 @onready var main_menu_button = $Main/ScrollContainer/MainMenu
@@ -29,11 +29,11 @@ extends Control
 @onready var sub_player = $SubPlayer
 
 @onready var sub_garb_focus = {
-	"Start": beginning_tutorial.grab_focus,
-	"Continue": saves_s0.grab_focus,
-	"Online": func(): pass,
-	"Options": options_menu.tab_focus,
-	"Exit": exit_menu_cancel.grab_focus
+	"Start":	beginning_tutorial.grab_focus,
+	"Continue":	saves_s0.grab_focus,
+	"Online":	func(): pass,
+	"Options":	options_menu.tab_focus,
+	"Exit":		exit_menu_cancel.grab_focus
 }
 
 var current_menu = "null"
@@ -88,6 +88,13 @@ func _on_beginning_index_changed():
 	#Disable Launch
 	if beginning_menu.current_index not in [1,3] :	launch_button.disabled = true
 	else:											launch_button.disabled = false
+#Refresh saves
+func _on_continue_pressed():
+	saves_menu.refresh()
+	button_sound(self)
+func _on_refresh_button_pressed():
+	saves_menu.refresh()
+	button_sound(self)
 
 #Launch game
 func _on_launch_button_pressed():
