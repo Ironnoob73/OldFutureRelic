@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bk6ihg1vf71uf"]
+[gd_scene load_steps=10 format=3 uid="uid://bk6ihg1vf71uf"]
 
 [ext_resource type="Script" path="res://Assets_Main/Player.gd" id="1_twfth"]
 [ext_resource type="Script" path="res://Assets_Main/Player_interact.gd" id="2_fls23"]
@@ -23,6 +23,8 @@ height = 1.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_stt28"]
 size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_33j34"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
@@ -64,3 +66,6 @@ target_position = Vector3(0, 0.65, 0)
 [node name="Inventory" parent="." instance=ExtResource("3_grckl")]
 
 [node name="Pause_menu" parent="." instance=ExtResource("2_ghaer")]
+
+[node name="Cursor" type="CSGMesh3D" parent="."]
+mesh = SubResource("BoxMesh_33j34")

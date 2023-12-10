@@ -2,37 +2,68 @@ extends RayCast3D
 
 var _terrain : VoxelTerrain = null
 var _terrain_tool = null
+var _cursor = null
 
 func _ready():
-	pass
+	_cursor = $"../../Cursor"
+	
 	
 func get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = get_global_transform().origin
-	var forward = get_transform().basis.z.normalized()
+	var forward = get_global_transform().basis.z.normalized()
 	var hit = _terrain_tool.raycast(origin, -forward, 20)
 	return hit
 	
 func _physics_process(delta):
-	print(get_collider())
 	if is_colliding() and get_collider() is VoxelTerrain:
 		_terrain = get_collider()
 		_terrain_tool = _terrain.get_voxel_tool()
+		if _cursor not in _terrain.get_children():
+			_terrain.add_child(_cursor)
+			print("add")
+	
+	if _terrain_tool != null:
+		var hit := get_pointed_voxel()
+		if hit != null:
+			_cursor.show()
+			_cursor.set_global_position(Vector3(hit.position)+Vector3(0.5,0.5,0.5))
+			#DDD.set_text("Pointed voxel", str(hit.position))
+		else:
+			_cursor.hide()
+			#DDD.set_text("Pointed voxel", "---")
 
 func _unhandled_input(event):
 	if _terrain_tool != null:
 		var hit := get_pointed_voxel()
 		if event is InputEventMouseButton:
-			if event.pressed:
+			if event.pressed and hit != null:
 				match event.button_index:
 					MOUSE_BUTTON_LEFT:
-						if hit != null:
-							dig(hit.position)
-						print(_terrain_tool)
+						dig(hit.position)
 					MOUSE_BUTTON_RIGHT:
-						pass
-
+						var pos = hit.previous_position
+						if can_place_voxel_at(pos):
+							place(pos)
+							
+func can_place_voxel_at(pos: Vector3i):
+	var space_state = get_viewport().get_world_3d().get_direct_space_state()
+	var params = PhysicsShapeQueryParameters3D.new()
+	params.collision_mask = 8
+	params.transform = Transform3D(Basis(), Vector3(pos + Vector3i(1,1,1)) * 0.5)
+	var shape = BoxShape3D.new()
+	var ex = 0.5
+	shape.extents = Vector3(ex, ex, ex)
+	params.set_shape(shape)
+	var hits = space_state.intersect_shape(params)
+	return hits.size() == 0
+	
 func dig(center: Vector3i):
 	#var type : int = _inventory[_inventory_index]
 	_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	_terrain_tool.value = 0
+	_terrain_tool.do_point(center)
+	
+func place(center: Vector3i):
+	_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
+	_terrain_tool.value = 1
 	_terrain_tool.do_point(center)
