@@ -9,7 +9,7 @@ func _ready():
 func get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = get_global_transform().origin
 	var forward = get_transform().basis.z.normalized()
-	var hit = _terrain_tool.raycast(origin, forward, 10)
+	var hit = _terrain_tool.raycast(origin, -forward, 20)
 	return hit
 	
 func _physics_process(delta):
@@ -25,7 +25,8 @@ func _unhandled_input(event):
 			if event.pressed:
 				match event.button_index:
 					MOUSE_BUTTON_LEFT:
-						dig(hit.position)
+						if hit != null:
+							dig(hit.position)
 						print(_terrain_tool)
 					MOUSE_BUTTON_RIGHT:
 						pass

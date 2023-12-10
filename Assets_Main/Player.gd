@@ -99,11 +99,11 @@ func _physics_process(delta):
 	
 	# Crouch.
 	if Input.is_action_pressed("crouch"):
-		player_collision.shape.height = lerp(player_collision.shape.height,2 - CROUCH_depth,0.5)
-		player_camera.position.y = lerp(player_camera.position.y,1.8 - CROUCH_depth,0.5)
+		player_collision.shape.height = lerp(player_collision.shape.height,1.8 - CROUCH_depth,0.5)
+		player_camera.position.y = lerp(player_camera.position.y,0.5 - CROUCH_depth,0.5)
 	elif !standing_detected.is_colliding():
-		player_collision.shape.height = lerp(player_collision.shape.height,2.0,0.5)
-		player_camera.position.y = lerp(player_camera.position.y,1.8,0.5)
+		player_collision.shape.height = lerp(player_collision.shape.height,1.8,0.5)
+		player_camera.position.y = lerp(player_camera.position.y,0.5,0.5)
 	
 	move_and_slide()
 	
