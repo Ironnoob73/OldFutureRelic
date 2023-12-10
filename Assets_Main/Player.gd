@@ -25,10 +25,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	# Lock Mouse.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	# Pause init.
-	#process_mode=1
 	
-	#self.add_to_group("Player")
 	pause_menu.visible = false
 	inventory_menu.visible = false
 	

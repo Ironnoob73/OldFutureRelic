@@ -425,13 +425,7 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="#options_game#" parent="Options" index="1"]
-visible = true
-
 [node name="DataPath" parent="Options/#options_game#/GameSetting/VSplit" index="1"]
-visible = false
-
-[node name="#options_control#" parent="Options" index="4"]
 visible = false
 
 [node name="BackButton" type="Button" parent="."]
