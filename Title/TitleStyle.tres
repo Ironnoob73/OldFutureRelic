@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=76 format=3 uid="uid://c2mgco1emm577"]
+[gd_resource type="Theme" load_steps=83 format=3 uid="uid://c2mgco1emm577"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8atls"]
 content_margin_left = 0.0
@@ -270,6 +270,53 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mwda"]
+bg_color = Color(0, 0.345098, 0.423529, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovoc6"]
+bg_color = Color(0, 0.345098, 0.423529, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3w4p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nm5d"]
+bg_color = Color(0.74902, 0.937255, 1, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfwaf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0, 0.74902, 1, 1)
+corner_radius_top_left = 15
+corner_radius_bottom_right = 15
+corner_detail = 1
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4f5h"]
+bg_color = Color(0, 0.74902, 1, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00kg5"]
+bg_color = Color(0, 0.74902, 1, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckgat"]
@@ -680,6 +727,18 @@ HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_v5l4l")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_r8e5s")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_jn1m4")
 HSlider/styles/slider = SubResource("StyleBoxFlat_v1okg")
+ItemList/colors/font_color = Color(0, 0.74902, 1, 1)
+ItemList/colors/font_hovered_color = Color(0, 0.74902, 1, 1)
+ItemList/colors/font_selected_color = Color(0, 1, 1, 1)
+ItemList/colors/guide_color = Color(0, 0.74902, 1, 1)
+ItemList/font_sizes/font_size = 25
+ItemList/styles/cursor = SubResource("StyleBoxFlat_4mwda")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_ovoc6")
+ItemList/styles/focus = SubResource("StyleBoxEmpty_k3w4p")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_7nm5d")
+ItemList/styles/panel = SubResource("StyleBoxFlat_wfwaf")
+ItemList/styles/selected = SubResource("StyleBoxFlat_u4f5h")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_00kg5")
 Label/colors/font_color = Color(0, 0.74902, 1, 1)
 Label/font_sizes/font_size = 25
 LineEdit/colors/caret_color = Color(0, 0.74902, 1, 1)

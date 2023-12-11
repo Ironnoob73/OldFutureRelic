@@ -11,8 +11,6 @@ var mouse_sens = 0.4
 func _ready():
 	load_config()
 	window_min_limit()
-func _process(delta):
-	pass
 	
 #Limit min window size
 func window_min_limit():
@@ -51,4 +49,3 @@ func load_world_info(m_name,player_pos_f = Vector3(0.0,0.0,0.0)):
 	player_pos = player_pos_f
 	map_path = "res://Map/"+m_name+".tscn"
 	get_tree().change_scene_to_file("res://Assets_Main/Happend.tscn")
-	print(map_path,player_pos)

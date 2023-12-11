@@ -3,25 +3,40 @@
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_hm2j0"]
 [ext_resource type="Script" path="res://Title/Saves.gd" id="2_exjy8"]
 
-[node name="Saves" type="ScrollContainer"]
+[node name="Saves" type="HBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -600.0
-offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_hm2j0")
-follow_focus = true
+theme_override_constants/separation = 10
 script = ExtResource("2_exjy8")
 
-[node name="List" type="VBoxContainer" parent="."]
+[node name="List" type="ItemList" parent="."]
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_constants/separation = 20
+item_count = 1
+item_0/text = "PLEASE REFRESH"
 
-[node name="empty" type="Label" parent="List"]
+[node name="Preview" type="VBoxContainer" parent="."]
 layout_mode = 2
-text = "PLEASE REFRESH"
-horizontal_alignment = 1
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Name" type="Label" parent="Preview"]
+layout_mode = 2
+text = "save.unselect"
+
+[node name="Cover" type="TextureRect" parent="Preview"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Discription" type="RichTextLabel" parent="Preview"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+threaded = true
+
+[connection signal="item_selected" from="List" to="." method="_on_list_item_selected"]

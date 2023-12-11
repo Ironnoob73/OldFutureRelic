@@ -47,7 +47,7 @@ func _ready():
 	for button in main_menu_button.get_children():
 		button.pressed.connect(sub_menu_enter.bind(button.name), CONNECT_REFERENCE_COUNTED)
 
-func _process(delta):
+func _process(_delta):
 	#Follow mouse
 	background.material.set_shader_parameter("mouse",get_global_mouse_position()*0.0005)
 
@@ -91,10 +91,10 @@ func _on_beginning_index_changed():
 #Refresh saves
 func _on_continue_pressed():
 	saves_menu.refresh()
-	button_sound(self)
+	#button_sound(self)
 func _on_refresh_button_pressed():
 	saves_menu.refresh()
-	button_sound(self)
+	#button_sound(self)
 
 #Launch game
 func _on_launch_button_pressed():

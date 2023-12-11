@@ -35,6 +35,7 @@ beginning.launch,Launch,启动
 ,,
 save.title,Select save,选择存档
 save.refresh,Refresh,刷新
+save.unselect,Please select a file,请选择一个文件
 ,,
 online.na,Coming s∞n,敬请期待
 ,,
@@ -45,7 +46,11 @@ exit.ask,Are you sure to exit?,你确定退出吗？
 exit.save,Unsaved content will be lost!,未保存的内容将会丢失！
 ,,
 inventory.title, Inventory, 背包
+inventory.item.t, Items, 物品
 inventory.item,\n\n\nItems,\n\n\n物品
+inventory.equipment.t, Equipments, 装备
 inventory.equipment,\n\n\nEquipments,\n\n\n装备
+inventory.special.t, Special, 特殊
 inventory.special,\n\n\nSpecial,\n\n\n特殊
+inventory.collection.t, Collections, 收藏
 inventory.collection,\n\n\nCollections,\n\n\n收藏

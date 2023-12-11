@@ -7,14 +7,10 @@ var escape_released = false
 func _ready():
 	animation.play("RESET")
 
-func _process(delta):
-	pass
-
-
 func _on_visibility_changed():
 	get_tree().paused = visible
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_released("pause") :
 		if escape_released == false :
 			escape_released = true

@@ -35,7 +35,7 @@ func _input(event):
 		rotate_y(-deg_to_rad(event.relative.x * Global.mouse_sens))
 		player_camera.rotate_x(-deg_to_rad(event.relative.y * Global.mouse_sens))
 		player_camera.rotation.x = clamp(player_camera.rotation.x,deg_to_rad(-90),deg_to_rad(90))
-func _unhandled_key_input(event):
+func _unhandled_key_input(_event):
 	# Pause.
 	if Input.is_action_just_pressed("pause"):
 		if current_menu == "HUD":
@@ -60,7 +60,7 @@ func _unhandled_key_input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			inventory_menu.close_inventory()
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Record Inerita & Add the gravity.
 	if is_on_floor():
 		INERTIA.x = velocity.x
@@ -96,8 +96,8 @@ func _physics_process(delta):
 	
 	# Crouch.
 	if Input.is_action_pressed("crouch"):
-		player_collision.shape.height = lerp(player_collision.shape.height,1.8 - CROUCH_depth,0.5)
-		player_camera.position.y = lerp(player_camera.position.y,0.5 - CROUCH_depth,0.5)
+		player_collision.shape.height = lerp(player_collision.shape.height,1.8 * CROUCH_depth,0.5)
+		player_camera.position.y = lerp(player_camera.position.y,0.5 * CROUCH_depth,0.5)
 	elif !standing_detected.is_colliding():
 		player_collision.shape.height = lerp(player_collision.shape.height,1.8,0.5)
 		player_camera.position.y = lerp(player_camera.position.y,0.5,0.5)

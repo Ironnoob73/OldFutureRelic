@@ -6,10 +6,8 @@ signal index_changed
 func _ready():
 	button_selected(self)
 
-func _process(delta):
-	pass
 #Change button
-func _input(event):
+func _input(_event):
 	if get_parent().current_menu == "Start":
 		if Input.is_action_just_pressed("tab_right"):
 			if current_index == get_child_count() -1 :	current_index = 1

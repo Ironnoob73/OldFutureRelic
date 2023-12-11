@@ -34,10 +34,8 @@ func _ready():
 	MouseSen.value = Global.mouse_sens
 	MouseSen.set_tooltip_text( str((Global.mouse_sens)*100) + "%")
 
-func _process(delta):
-	pass
 #Change tab
-func _input(event):
+func _input(_event):
 	if get_parent().current_menu == "Options":
 		if Input.is_action_just_pressed("tab_right"):
 			if current_tab == get_tab_count()-1 :	current_tab = 0
@@ -99,13 +97,13 @@ func _on_mouse_button_value_changed(value):
 	MouseSen.set_tooltip_text( str(value*100) + "%")
 	Global.save_config()
 
-func _on_tab_changed(tab):
+func _on_tab_changed(_tab):
 	tab_focus()
 func tab_focus():
 	match current_tab:
 		0:GameLanguage.grab_focus()
 		1:Fullscreen.grab_focus()
 		2:MasterVolume.grab_focus()
-		3:pass
+		3:MouseSen.grab_focus()
 
 

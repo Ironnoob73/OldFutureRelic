@@ -72,6 +72,7 @@ models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_md4tr"), Su
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_roa7i"]
 library = SubResource("VoxelBlockyLibrary_bf4fw")
+occlusion_darkness = 1.0
 
 [node name="Tutorial" type="VoxelTerrain"]
 generator = SubResource("VoxelGeneratorFlat_6jmdu")

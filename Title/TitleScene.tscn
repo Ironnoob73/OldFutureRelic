@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://6bs1wufcs5v1"]
+[gd_scene load_steps=39 format=3 uid="uid://6bs1wufcs5v1"]
 
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_6nm6v"]
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="2_b2r6n"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bsynmnxiy47ku" path="res://Title/Exit.tscn" id="6_201ko"]
 [ext_resource type="PackedScene" uid="uid://vjy54fve2amm" path="res://Title/Beginning.tscn" id="7_vog78"]
 [ext_resource type="PackedScene" uid="uid://c6vlyx2oac4o4" path="res://Title/Saves.tscn" id="7_wpuqt"]
+[ext_resource type="Texture2D" uid="uid://k0nnywwio66i" path="res://Resources/Image/unknown_file.svg" id="9_datpy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ymlre"]
 shader = ExtResource("2_b2r6n")
@@ -268,110 +269,110 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Saves:anchor_left")
+tracks/0/path = NodePath("../Save_pan_d:offset_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-3, -3),
 "update": 0,
-"values": [1.2, 0.2]
+"values": [0.0, -100.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Saves:anchor_right")
+tracks/1/path = NodePath("../Save_pan_d:offset_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-3, -3),
 "update": 0,
-"values": [1.8, 0.8]
+"values": [100.0, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Save_pan_d:offset_top")
+tracks/2/path = NodePath("../Save_pan_u:offset_top")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-3, -3),
 "update": 0,
-"values": [0.0, -100.0]
+"values": [-100.0, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Save_pan_d:offset_bottom")
+tracks/3/path = NodePath("../Save_pan_u:offset_bottom")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-3, -3),
 "update": 0,
-"values": [100.0, 0.0]
+"values": [0.0, 100.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Save_pan_u:offset_top")
+tracks/4/path = NodePath("../Background:texture:gradient:colors")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-3, -3),
 "update": 0,
-"values": [-100.0, 0.0]
+"values": [PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1), PackedColorArray(1, 1, 1, 1, 0.74902, 0.937255, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Save_pan_u:offset_bottom")
+tracks/5/path = NodePath("../RefreshButton:offset_top")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
-"values": [0.0, 100.0]
+"values": [35.0, -75.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Background:texture:gradient:colors")
+tracks/6/path = NodePath("../RefreshButton:offset_bottom")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
-"values": [PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1), PackedColorArray(1, 1, 1, 1, 0.74902, 0.937255, 1, 1)]
+"values": [35.0, -35.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../RefreshButton:offset_top")
+tracks/7/path = NodePath("../Saves:anchor_left")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
-"values": [35.0, -75.0]
+"values": [1.05, 0.05]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../RefreshButton:offset_bottom")
+tracks/8/path = NodePath("../Saves:anchor_right")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
-"values": [35.0, -35.0]
+"values": [1.95, 0.95]
 }
 
 [sub_resource type="Animation" id="Animation_sfgah"]
@@ -644,127 +645,127 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("../Saves:anchor_left")
+tracks/12/path = NodePath("../Save_pan_u:offset_top")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.2]
+"update": 1,
+"values": [-100.0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("../Saves:anchor_right")
+tracks/13/path = NodePath("../Save_pan_u:offset_bottom")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.8]
+"update": 1,
+"values": [0.0]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("../Save_pan_u:offset_top")
+tracks/14/path = NodePath("../Online:anchor_left")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-100.0]
+"update": 0,
+"values": [1.2]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("../Save_pan_u:offset_bottom")
+tracks/15/path = NodePath("../Online:anchor_right")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0.0]
+"update": 0,
+"values": [1.8]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("../Online:anchor_left")
+tracks/16/path = NodePath("../Exit:anchor_left")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.2]
+"values": [1.45]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("../Online:anchor_right")
+tracks/17/path = NodePath("../Exit:anchor_right")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.8]
+"values": [1.55]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("../Exit:anchor_left")
+tracks/18/path = NodePath("../Background:texture:gradient:colors")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.45]
+"update": 1,
+"values": [PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1)]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("../Exit:anchor_right")
+tracks/19/path = NodePath("../BackButton:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.55]
+"values": [true]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("../Background:texture:gradient:colors")
+tracks/20/path = NodePath("../Options:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1)]
+"values": [false]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("../BackButton:visible")
+tracks/21/path = NodePath("../Beginning_description:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"update": 1,
+"values": [false]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("../Options:visible")
+tracks/22/path = NodePath("../Beginning_title:clip_contents")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -776,7 +777,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("../Beginning_description:visible")
+tracks/23/path = NodePath("../Beginning:visible")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -788,74 +789,74 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("../Beginning_title:clip_contents")
+tracks/24/path = NodePath("../Beginning_arrow:anchor_left")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.1]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("../Beginning:visible")
+tracks/25/path = NodePath("../Beginning_arrow:anchor_right")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.1]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("../Beginning_arrow:anchor_left")
+tracks/26/path = NodePath("../RefreshButton:offset_top")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.1]
+"update": 1,
+"values": [35.0]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
 tracks/27/enabled = true
-tracks/27/path = NodePath("../Beginning_arrow:anchor_right")
+tracks/27/path = NodePath("../RefreshButton:offset_bottom")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.1]
+"update": 1,
+"values": [35.0]
 }
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("../RefreshButton:offset_top")
+tracks/28/path = NodePath("../Saves:anchor_left")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [35.0]
+"update": 0,
+"values": [1.05]
 }
 tracks/29/type = "value"
 tracks/29/imported = false
 tracks/29/enabled = true
-tracks/29/path = NodePath("../RefreshButton:offset_bottom")
+tracks/29/path = NodePath("../Saves:anchor_right")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [35.0]
+"update": 0,
+"values": [1.95]
 }
 
 [sub_resource type="Animation" id="Animation_jqmrq"]
@@ -1232,11 +1233,14 @@ text = "beginning.launch"
 [node name="Saves" parent="." instance=ExtResource("7_wpuqt")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.2
-anchor_right = 1.8
+anchor_left = 1.05
+anchor_right = 1.95
 offset_top = 120.0
-offset_right = 0.0
 offset_bottom = -120.0
+
+[node name="Cover" parent="Saves/Preview" index="1"]
+texture = ExtResource("9_datpy")
+stretch_mode = 3
 
 [node name="RefreshButton" type="Button" parent="."]
 custom_minimum_size = Vector2(150, 0)

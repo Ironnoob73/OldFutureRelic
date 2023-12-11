@@ -2,11 +2,10 @@ extends RayCast3D
 
 var _terrain : VoxelTerrain = null
 var _terrain_tool = null
-var _cursor = null
+@onready var _cursor = $"../../Cursor"
 
 func _ready():
-	_cursor = $"../../Cursor"
-	
+	_cursor.hide()
 	
 func get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = get_global_transform().origin
@@ -14,7 +13,7 @@ func get_pointed_voxel() -> VoxelRaycastResult:
 	var hit = _terrain_tool.raycast(origin, -forward, 5)
 	return hit
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_colliding() and get_collider() is VoxelTerrain:
 		_terrain = get_collider()
 		_terrain_tool = _terrain.get_voxel_tool()
@@ -22,8 +21,11 @@ func _physics_process(delta):
 	if _terrain_tool != null:
 		var hit := get_pointed_voxel()
 		if hit != null:
-			_cursor.show()
-			_cursor.set_global_position(Vector3(hit.position)+Vector3(0.5,0.5,0.5))
+			if _cursor.visible == true:
+				_cursor.set_global_position(lerp(_cursor.global_position,Vector3(hit.position)+Vector3(0.5,0.5,0.5),0.5))
+			else:
+				_cursor.show()
+				_cursor.set_global_position(Vector3(hit.position)+Vector3(0.5,0.5,0.5))
 		else:
 			_cursor.hide()
 
