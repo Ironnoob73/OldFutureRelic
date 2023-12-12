@@ -1,0 +1,18 @@
+# LD_Anvil, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Old Future Relic - Long text\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+
+#----------Beginning----------#
+msgid "{beginning_description.1:[color=red]TRANSLATION NOT FOUND[/color]}"
+msgstr "Teaching scenes, which have nothing to do with the original plot. You will learn the basic operations of the game in this scene, and will not proceed to the original story."
+
+msgid "{beginning_description.3:[color=red]TRANSLATION NOT FOUND[/color]}"
+msgstr "You are an unemployed young man with an ancestral apple orchard at home. To discover the secrets of your missing grandfather, you step into the dusty ruins."
+
+msgid "{beginning_description.4:[color=red]TRANSLATION NOT FOUND[/color]}"
+msgstr "You are a riot robot in White Canal City, and the management has been forced to remove your lethal weapon due to the opposition of the masses. Still, the prejudice from them against you remains undiminished. You've been sent to the pit room you don't know how many times, and today you're starting to think about whether or not to leave the city."

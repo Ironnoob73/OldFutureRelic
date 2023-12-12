@@ -118,7 +118,7 @@ inventory={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Language/translations.en_US.translation", "res://Language/translations.zh_CN.translation", "res://Language/beginning_description.en_US.translation", "res://Language/beginning_description.zh_CN.translation")
+locale/translations=PackedStringArray("res://Language/Main_en_US.po", "res://Language/Main_zh_CN.po", "res://Language/Long_en_US.po", "res://Language/Long_zh_CN.po")
 locale/translations_pot_files=PackedStringArray("res://Title/Main.tscn")
 locale/locale_filter_mode=0
 

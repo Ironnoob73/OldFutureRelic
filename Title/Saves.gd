@@ -6,12 +6,12 @@ extends HBoxContainer
 @onready var file_cover = $Preview/Cover
 @onready var file_discription = $Preview/Discription
 
-var broken_file_image = "res://Resources/Image/broken_file.svg"
-var unknown_file_image = "res://Resources/Image/unknown_file.svg"
-#var current_file_path = null
+var broken_file_image = preload("res://Resources/Image/broken_file.svg")
+var unknown_file_image = preload("res://Resources/Image/unknown_file.svg")
 
 func _ready():
 	refresh()
+	
 func refresh():
 	list.clear()
 	if file_path:
@@ -33,8 +33,12 @@ func _on_list_item_selected(index):
 	var current_file_path = Global.DATA_PATH + "\\" + file_name_label.text
 	if DirAccess.open(current_file_path):
 		file_discription.text = "AVALIABLE"
-		file_cover.texture.load(current_file_path + "\\cover.png")
+		var image = Image.load_from_file(current_file_path + "\\cover.png")
+		if image == null:
+			file_cover.texture = unknown_file_image
+		else:
+			var texture = ImageTexture.create_from_image(image)
+			file_cover.texture = texture
 	else:
 		file_discription.text = "[color=red]NOT AVALIABLE[/color]"
-		file_cover.texture.load(broken_file_image)
-	print(DirAccess.open(current_file_path))
+		file_cover.texture = broken_file_image

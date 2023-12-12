@@ -30,8 +30,11 @@ layout_mode = 2
 text = "save.unselect"
 
 [node name="Cover" type="TextureRect" parent="Preview"]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Discription" type="RichTextLabel" parent="Preview"]
 layout_mode = 2
