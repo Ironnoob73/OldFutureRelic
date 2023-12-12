@@ -4,7 +4,7 @@ extends HBoxContainer
 @onready var file_path = DirAccess.open(Global.DATA_PATH)
 @onready var file_name_label = $Preview/Name
 @onready var file_cover = $Preview/Cover
-@onready var file_discription = $Preview/Discription
+@onready var file_discription = $Preview/Description
 
 var broken_file_image = preload("res://Resources/Image/broken_file.svg")
 var unknown_file_image = preload("res://Resources/Image/unknown_file.svg")

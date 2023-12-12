@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dl7h4e8oiamf1"]
+
+[ext_resource type="Texture2D" uid="uid://djihtoyedwf5l" path="res://Resources/Block/Dummy/Texture.tres" id="1_p7stj"]
+
+[resource]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_p7stj")
+texture_filter = 0
