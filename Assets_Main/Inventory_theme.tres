@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cvtgnhbl452vj"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cvtgnhbl452vj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0mre"]
 content_margin_left = 4.0
@@ -109,6 +109,48 @@ border_width_bottom = 10
 border_color = Color(0.498039, 0.74902, 0.498039, 1)
 border_blend = true
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llxsv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16w60"]
+bg_color = Color(1, 1, 1, 0)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwjmw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.121569, 0.247059, 0.121569, 0.498039)
+border_width_top = 10
+border_width_bottom = 30
+border_color = Color(0, 0.74902, 0, 1)
+border_blend = true
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vega"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.121569, 0.247059, 0.121569, 0.498039)
+border_width_top = 10
+border_width_bottom = 30
+border_color = Color(0, 0.498039, 0, 1)
+border_blend = true
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gc33"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.121569, 0.247059, 0.121569, 0.498039)
+border_width_top = 10
+border_width_bottom = 30
+border_color = Color(0, 0.498039, 0.498039, 1)
+border_blend = true
+corner_detail = 5
+
 [resource]
 Button/font_sizes/font_size = 20
 Button/styles/disabled = SubResource("StyleBoxFlat_b0mre")
@@ -122,3 +164,8 @@ ItemList/colors/font_outline_color = Color(0.498039, 0.498039, 0.498039, 1)
 ItemList/constants/outline_size = 2
 ItemList/font_sizes/font_size = 20
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_m20gl")
+Tree/styles/focus = SubResource("StyleBoxEmpty_llxsv")
+Tree/styles/panel = SubResource("StyleBoxFlat_16w60")
+Tree/styles/title_button_hover = SubResource("StyleBoxFlat_cwjmw")
+Tree/styles/title_button_normal = SubResource("StyleBoxFlat_1vega")
+Tree/styles/title_button_pressed = SubResource("StyleBoxFlat_4gc33")

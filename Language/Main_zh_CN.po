@@ -30,16 +30,6 @@ msgstr "选项"
 msgid "title.menu.exit"
 msgstr "退出"
 
-#Commonly
-msgid "button.back"
-msgstr "返回"
-
-msgid "button.confirm"
-msgstr "确认"
-
-msgid "button.cancel"
-msgstr "取消"
-
 #Options
 msgid "#options_game#"
 msgstr "游戏"
@@ -139,6 +129,12 @@ msgstr " 物品"
 msgid "inventory.item"
 msgstr "\n\n\n物品"
 
+msgid "inventory.item.item"
+msgstr "物品"
+
+msgid "inventory.item.block"
+msgstr "方块"
+
 msgid "inventory.equipment.t"
 msgstr " 装备"
 
@@ -157,3 +153,18 @@ msgstr " 收藏"
 msgid "inventory.collection"
 msgstr "\n\n\n收藏"
 
+#----------Commonly----------#
+msgid "button.back"
+msgstr "返回"
+
+msgid "button.confirm"
+msgstr "确认"
+
+msgid "button.cancel"
+msgstr "取消"
+
+msgid "list.name"
+msgstr "名称"
+
+msgid "list.count"
+msgstr "数量"

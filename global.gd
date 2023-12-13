@@ -49,3 +49,4 @@ func load_world_info(m_name,player_pos_f = Vector3(0.0,0.0,0.0)):
 	player_pos = player_pos_f
 	map_path = "res://Map/"+m_name+".tscn"
 	get_tree().change_scene_to_file("res://Assets_Main/Happend.tscn")
+

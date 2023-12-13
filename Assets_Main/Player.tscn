@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk6ihg1vf71uf"]
+[gd_scene load_steps=18 format=3 uid="uid://bk6ihg1vf71uf"]
 
 [ext_resource type="Script" path="res://Assets_Main/Player.gd" id="1_twfth"]
+[ext_resource type="Resource" uid="uid://baju0uanbxmod" path="res://Assets_Main/Player_inventory.tres" id="2_017vv"]
 [ext_resource type="Script" path="res://Assets_Main/Player_interact.gd" id="2_fls23"]
 [ext_resource type="PackedScene" uid="uid://bledb03vcydda" path="res://Assets_Main/Pause_menu.tscn" id="2_ghaer"]
 [ext_resource type="Shader" path="res://Assets_Main/CrossHair.gdshader" id="2_ksj8u"]
@@ -55,6 +56,7 @@ shader_parameter/albedo = SubResource("GradientTexture2D_f0825")
 collision_layer = 3
 collision_mask = 11
 script = ExtResource("1_twfth")
+Inventory = ExtResource("2_017vv")
 
 [node name="CrossHair" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -77,8 +79,9 @@ shape = SubResource("CapsuleShape3D_a500n")
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cull_mask = 3
 
-[node name="InteractRay" type="RayCast3D" parent="PlayerCam"]
+[node name="VoxelInteractRay" type="RayCast3D" parent="PlayerCam"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 12
 script = ExtResource("2_fls23")
@@ -95,5 +98,13 @@ target_position = Vector3(0, 0.65, 0)
 
 [node name="Cursor" type="CSGMesh3D" parent="."]
 top_level = true
+layers = 6
 mesh = SubResource("BoxMesh_33j34")
 material = SubResource("ShaderMaterial_yjrry")
+
+[node name="CurrentBlock" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0"
+
+[connection signal="on_block_break" from="PlayerCam/VoxelInteractRay" to="." method="_on_interact_ray_on_block_break"]

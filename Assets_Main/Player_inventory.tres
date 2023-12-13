@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="InventoryClass" load_steps=13 format=3 uid="uid://baju0uanbxmod"]
+
+[ext_resource type="Script" path="res://Assets_Main/Basic_class/ItemClass.gd" id="1_a0x7e"]
+[ext_resource type="Script" path="res://Assets_Main/Basic_class/InventoryClass.gd" id="1_j87mq"]
+[ext_resource type="Script" path="res://Assets_Main/Basic_class/ItemStackClass.gd" id="2_u5cpj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wfnio"]
+
+[sub_resource type="Resource" id="Resource_cllwi"]
+script = ExtResource("1_a0x7e")
+item_name = "a"
+item_model = SubResource("BoxMesh_wfnio")
+item_discription = ""
+item_type = 0
+
+[sub_resource type="Resource" id="Resource_oebu7"]
+script = ExtResource("2_u5cpj")
+item = SubResource("Resource_cllwi")
+count = 1
+
+[sub_resource type="Resource" id="Resource_sfakq"]
+script = ExtResource("1_a0x7e")
+item_name = "b"
+item_discription = ""
+item_type = 0
+
+[sub_resource type="Resource" id="Resource_iurxk"]
+script = ExtResource("2_u5cpj")
+item = SubResource("Resource_sfakq")
+count = 1
+
+[sub_resource type="Resource" id="Resource_hw2v3"]
+script = ExtResource("1_a0x7e")
+item_name = "c"
+item_discription = ""
+item_type = 0
+
+[sub_resource type="Resource" id="Resource_5ck7m"]
+script = ExtResource("2_u5cpj")
+item = SubResource("Resource_hw2v3")
+count = 5
+
+[sub_resource type="Resource" id="Resource_oqsyc"]
+script = ExtResource("1_a0x7e")
+item_name = "d"
+item_discription = ""
+item_type = 0
+
+[sub_resource type="Resource" id="Resource_4dpff"]
+script = ExtResource("2_u5cpj")
+item = SubResource("Resource_oqsyc")
+count = 7
+
+[resource]
+script = ExtResource("1_j87mq")
+itemStack = Array[ExtResource("2_u5cpj")]([SubResource("Resource_oebu7"), SubResource("Resource_iurxk"), SubResource("Resource_5ck7m"), SubResource("Resource_4dpff")])

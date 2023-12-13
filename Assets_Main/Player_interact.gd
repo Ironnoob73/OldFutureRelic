@@ -4,6 +4,11 @@ var _terrain : VoxelTerrain = null
 var _terrain_tool = null
 @onready var _cursor = $"../../Cursor"
 
+@onready var block_lib = preload("res://Resources/Block/BlockLib_basic.tres")
+var current_block : int = 0
+@onready var current_block_show = $"../../CurrentBlock"
+signal on_block_break(block_name:String)
+
 func _ready():
 	_cursor.hide()
 	
@@ -30,9 +35,9 @@ func _physics_process(_delta):
 			_cursor.hide()
 
 func _unhandled_input(event):
-	if _terrain_tool != null:
-		var hit := get_pointed_voxel()
-		if event is InputEventMouseButton:
+	if event is InputEventMouseButton:
+		if _terrain_tool != null:
+			var hit := get_pointed_voxel()
 			if event.pressed and hit != null:
 				match event.button_index:
 					MOUSE_BUTTON_LEFT:
@@ -41,6 +46,13 @@ func _unhandled_input(event):
 						var pos = hit.previous_position
 						if can_place_voxel_at(pos):
 							place(pos)
+	#Switch block
+		if Input.is_action_just_pressed("roll_up") and event.pressed:
+			current_block += 1
+			current_block_show.text = str(current_block)
+		if Input.is_action_just_pressed("roll_down") and event.pressed:
+			current_block -= 1
+			current_block_show.text = str(current_block)
 							
 func can_place_voxel_at(pos: Vector3i):
 	var space_state = get_viewport().get_world_3d().get_direct_space_state()
@@ -55,12 +67,12 @@ func can_place_voxel_at(pos: Vector3i):
 	return hits.size() == 0
 	
 func dig(center: Vector3i):
-	#var type : int = _inventory[_inventory_index]
+	on_block_break.emit(block_lib.get_model(_terrain_tool.get_voxel(center)).resource_name)
 	_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	_terrain_tool.value = 0
 	_terrain_tool.do_point(center)
 	
 func place(center: Vector3i):
 	_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
-	_terrain_tool.value = 2
+	_terrain_tool.value = current_block
 	_terrain_tool.do_point(center)

@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ItemClass" load_steps=6 format=3 uid="uid://dulix7i4d15mp"]
 
 [ext_resource type="Texture2D" uid="uid://djihtoyedwf5l" path="res://Resources/Block/Dummy/Texture.tres" id="1_cok1o"]
-[ext_resource type="Shader" path="res://Resources/Block/BlockSixFace.gdshader" id="2_nlsf7"]
+[ext_resource type="Shader" path="res://Resources/Block/BlockSixFaces.gdshader" id="2_e1m1b"]
 [ext_resource type="Script" path="res://Assets_Main/Basic_class/ItemClass.gd" id="3_ylj1f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j11tt"]
 render_priority = 0
-shader = ExtResource("2_nlsf7")
+shader = ExtResource("2_e1m1b")
 shader_parameter/albedo = ExtResource("1_cok1o")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ipwt5"]
@@ -18,3 +18,4 @@ item_name = "tile.dummy"
 item_icon = ExtResource("1_cok1o")
 item_model = SubResource("BoxMesh_ipwt5")
 item_discription = ""
+item_type = 1

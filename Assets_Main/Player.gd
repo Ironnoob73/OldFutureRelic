@@ -19,6 +19,8 @@ var INERTIA:Vector2 = Vector2.ZERO
 
 var current_menu = "HUD"
 
+@export var Inventory : InventoryClass
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -104,5 +106,5 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 	
-	# Debug.
-	#print(velocity,position,input_vec,Input.is_action_pressed("crouch"),$StandingDetect.get_collider(0))
+func _on_interact_ray_on_block_break(block_name):
+	Inventory.add_item(AllItems.get_item_from_name(block_name))

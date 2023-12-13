@@ -1,5 +1,5 @@
 extends Resource
 class_name ItemStackClass
 
-@export var Item : ItemClass
-@export var Count : int
+@export var item : ItemClass
+@export var count : int

@@ -1,61 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnoctvs0ti100"]
+[gd_scene load_steps=4 format=3 uid="uid://cnoctvs0ti100"]
 
-[ext_resource type="Material" uid="uid://dl7h4e8oiamf1" path="res://Resources/Block/Dummy/Material.tres" id="1_aw54e"]
+[ext_resource type="VoxelBlockyLibrary" uid="uid://btij0v7fevj3g" path="res://Resources/Block/BlockLib_basic.tres" id="1_wnq75"]
 
 [sub_resource type="VoxelGeneratorFlat" id="VoxelGeneratorFlat_6jmdu"]
 channel = 0
 
-[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_md4tr"]
-resource_name = "air"
-
-[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_q0n2y"]
-resource_name = "dummy"
-material_override_0 = ExtResource("1_aw54e")
-atlas_size_in_tiles = Vector2i(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_mbc0m"]
-colors = PackedColorArray(0.498039, 0.498039, 0.498039, 1, 0.74902, 0.74902, 0.74902, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_x15uq"]
-noise_type = 3
-frequency = 0.1
-fractal_type = 2
-domain_warp_enabled = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j61ws"]
-width = 32
-height = 32
-color_ramp = SubResource("Gradient_mbc0m")
-noise = SubResource("FastNoiseLite_x15uq")
-
-[sub_resource type="Gradient" id="Gradient_gqdbl"]
-colors = PackedColorArray(0.498039, 0, 0, 1, 0, 0.498039, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_18ih2"]
-noise_type = 4
-frequency = 0.2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_piyar"]
-width = 32
-height = 32
-color_ramp = SubResource("Gradient_gqdbl")
-noise = SubResource("FastNoiseLite_18ih2")
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_xrtwl"]
-albedo_texture = SubResource("NoiseTexture2D_j61ws")
-normal_texture = SubResource("NoiseTexture2D_piyar")
-texture_filter = 0
-
-[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_6aisr"]
-resource_name = "concrete"
-material_override_0 = SubResource("ORMMaterial3D_xrtwl")
-atlas_size_in_tiles = Vector2i(1, 1)
-
-[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_bf4fw"]
-models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_md4tr"), SubResource("VoxelBlockyModelCube_q0n2y"), SubResource("VoxelBlockyModelCube_6aisr")])
-
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_roa7i"]
-library = SubResource("VoxelBlockyLibrary_bf4fw")
+library = ExtResource("1_wnq75")
 occlusion_darkness = 1.0
 
 [node name="Tutorial" type="VoxelTerrain"]

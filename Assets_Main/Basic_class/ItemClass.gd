@@ -5,3 +5,9 @@ class_name ItemClass
 @export var item_icon : Texture
 @export var item_model : Mesh
 @export var item_discription : String
+@export var item_type : ItemType
+
+enum ItemType{
+	Item,
+	Block
+}

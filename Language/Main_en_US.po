@@ -30,16 +30,6 @@ msgstr "Options"
 msgid "title.menu.exit"
 msgstr "Exit"
 
-#Commonly
-msgid "button.back"
-msgstr "Back"
-
-msgid "button.confirm"
-msgstr "Confirm"
-
-msgid "button.cancel"
-msgstr "Cancel"
-
 #Options
 msgid "#options_game#"
 msgstr "Game"
@@ -139,6 +129,12 @@ msgstr " Items"
 msgid "inventory.item"
 msgstr "\n\n\nItems"
 
+msgid "inventory.item.item"
+msgstr "Item"
+
+msgid "inventory.item.block"
+msgstr "Block"
+
 msgid "inventory.equipment.t"
 msgstr " Equipments"
 
@@ -157,3 +153,18 @@ msgstr " Collections"
 msgid "inventory.collection"
 msgstr "\n\n\nCollections"
 
+#----------Commonly----------#
+msgid "button.back"
+msgstr "Back"
+
+msgid "button.confirm"
+msgstr "Confirm"
+
+msgid "button.cancel"
+msgstr "Cancel"
+
+msgid "list.name"
+msgstr "Name"
+
+msgid "list.count"
+msgstr "Count"

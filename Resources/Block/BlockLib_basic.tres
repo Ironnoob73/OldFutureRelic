@@ -1,0 +1,20 @@
+[gd_resource type="VoxelBlockyLibrary" load_steps=6 format=3 uid="uid://btij0v7fevj3g"]
+
+[ext_resource type="Material" uid="uid://dl7h4e8oiamf1" path="res://Resources/Block/Dummy/Material.tres" id="1_b76pa"]
+[ext_resource type="Material" uid="uid://coih377jr25p4" path="res://Resources/Block/Concrete/Material.tres" id="2_dmey5"]
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_md4tr"]
+resource_name = "air"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_q0n2y"]
+resource_name = "dummy"
+material_override_0 = ExtResource("1_b76pa")
+atlas_size_in_tiles = Vector2i(1, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_6aisr"]
+resource_name = "concrete"
+material_override_0 = ExtResource("2_dmey5")
+atlas_size_in_tiles = Vector2i(1, 1)
+
+[resource]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_md4tr"), SubResource("VoxelBlockyModelCube_q0n2y"), SubResource("VoxelBlockyModelCube_6aisr")])
