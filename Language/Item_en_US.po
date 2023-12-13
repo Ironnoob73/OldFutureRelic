@@ -1,0 +1,21 @@
+# LD_Anvil, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Old Future Relic - Item\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+
+#----------Basic----------#
+msgid "tile.dummy"
+msgstr "Dummy Block"
+
+msgid "tile.dummy.discription"
+msgstr "Blocks used for placeholding, have no practical effect."
+
+msgid "tile.concrete"
+msgstr "Concrete Block"
+
+msgid "tile.concrete.discription"
+msgstr "Ordinary hard blocks."

@@ -8,6 +8,7 @@ var _terrain_tool = null
 var current_block : int = 0
 @onready var current_block_show = $"../../CurrentBlock"
 signal on_block_break(block_name:String)
+signal on_block_put(block_name:String,center:Vector3i)
 
 func _ready():
 	_cursor.hide()
@@ -45,7 +46,7 @@ func _unhandled_input(event):
 					MOUSE_BUTTON_RIGHT:
 						var pos = hit.previous_position
 						if can_place_voxel_at(pos):
-							place(pos)
+							place_detect(pos)
 	#Switch block
 		if Input.is_action_just_pressed("roll_up") and event.pressed:
 			current_block += 1
@@ -72,6 +73,8 @@ func dig(center: Vector3i):
 	_terrain_tool.value = 0
 	_terrain_tool.do_point(center)
 	
+func place_detect(center: Vector3i):
+	on_block_put.emit(block_lib.get_model(current_block).resource_name,center)
 func place(center: Vector3i):
 	_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	_terrain_tool.value = current_block

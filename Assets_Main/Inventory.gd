@@ -8,10 +8,11 @@ extends Control
 @onready var item_list = $ItemInv/ItemList
 @onready var item_name = $ItemInv/Preview/Name
 @onready var item_model = $ItemInv/Preview/View/Viewport/MeshView2d/Mesh
+@onready var item_discription = $ItemInv/Preview/Discription
 
 var current_inv = "Main"
 func _ready():
-	item_list.set_column_expand_ratio(0,9)
+	item_list.set_column_expand_ratio(0,7)
 	item_list.set_column_expand_ratio(1,1)
 	item_inv_update()
 	#print(inventory.get_signal_list())
@@ -21,11 +22,12 @@ func open_inventory():
 	animation.play("Show")
 func close_inventory():
 	title.text = "inventory.title"
-	match current_inv:
-		"Main" :	animation.play_backwards("Show")
-		"Item" :
-			current_inv = "Main"
-			animation.play_backwards("Item")
+	if !animation.is_playing():
+		match current_inv:
+			"Main" :	animation.play_backwards("Show")
+			"Item" :
+				current_inv = "Main"
+				animation.play_backwards("Item")
 
 func _on_back_button_pressed():
 	if current_inv == "Main":
@@ -57,8 +59,9 @@ func item_inv_update():
 			1:group = block_group
 		var subitem = item_list.create_item(group)
 		subitem.set_icon(0,i.item.item_icon)
-		subitem.set_text(0,i.item.item_name)
-		subitem.set_icon_max_width(0,25)
+		subitem.set_text(0,tr(i.item.item_name))
+		subitem.set_tooltip_text(0,tr(i.item.item_discription))
+		subitem.set_icon_max_width(0,30)
 		subitem.set_text(1,str(i.count))
 		subitem.set_text_alignment(1,HORIZONTAL_ALIGNMENT_RIGHT)
 		subitem.set_metadata(0,inventory.itemStack.find(i))
@@ -68,3 +71,4 @@ func _on_item_list_item_selected():
 	if index != null:
 		item_name.text = inventory.itemStack[index].item.item_name
 		item_model.mesh = inventory.itemStack[index].item.item_model
+		item_discription.text = inventory.itemStack[index].item.item_discription

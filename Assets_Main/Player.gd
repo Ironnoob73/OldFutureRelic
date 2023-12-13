@@ -15,6 +15,8 @@ const FRICTION = 0.3
 @onready var pause_menu = $Pause_menu
 @onready var inventory_menu = $Inventory
 
+@onready var voxel_interact = $PlayerCam/VoxelInteractRay
+
 var INERTIA:Vector2 = Vector2.ZERO
 
 var current_menu = "HUD"
@@ -108,3 +110,7 @@ func _physics_process(_delta):
 	
 func _on_interact_ray_on_block_break(block_name):
 	Inventory.add_item(AllItems.get_item_from_name(block_name))
+func _on_voxel_interact_ray_on_block_put(block_name,center):
+	#Inventory.remove_item(AllItems.get_item_from_name(block_name))
+	if Inventory.remove_item(AllItems.get_item_from_name(block_name)) not in ["out","off"]:
+		voxel_interact.place(center)

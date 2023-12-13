@@ -17,5 +17,5 @@ script = ExtResource("1_exmgc")
 item_name = "tile.concrete"
 item_icon = ExtResource("1_ycqpv")
 item_model = SubResource("BoxMesh_sgygn")
-item_discription = ""
+item_discription = "tile.concrete.discription"
 item_type = 1

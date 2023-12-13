@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="InventoryClass" load_steps=13 format=3 uid="uid://baju0uanbxmod"]
+[gd_resource type="Resource" script_class="InventoryClass" load_steps=15 format=3 uid="uid://baju0uanbxmod"]
 
 [ext_resource type="Script" path="res://Assets_Main/Basic_class/ItemClass.gd" id="1_a0x7e"]
 [ext_resource type="Script" path="res://Assets_Main/Basic_class/InventoryClass.gd" id="1_j87mq"]
 [ext_resource type="Script" path="res://Assets_Main/Basic_class/ItemStackClass.gd" id="2_u5cpj"]
+[ext_resource type="Resource" uid="uid://cvnegj1dg5uck" path="res://Resources/Block/Concrete/Tile_item.tres" id="3_u6n41"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wfnio"]
 
@@ -51,6 +52,11 @@ script = ExtResource("2_u5cpj")
 item = SubResource("Resource_oqsyc")
 count = 7
 
+[sub_resource type="Resource" id="Resource_wg78d"]
+script = ExtResource("2_u5cpj")
+item = ExtResource("3_u6n41")
+count = 2147483647
+
 [resource]
 script = ExtResource("1_j87mq")
-itemStack = Array[ExtResource("2_u5cpj")]([SubResource("Resource_oebu7"), SubResource("Resource_iurxk"), SubResource("Resource_5ck7m"), SubResource("Resource_4dpff")])
+itemStack = Array[ExtResource("2_u5cpj")]([SubResource("Resource_oebu7"), SubResource("Resource_iurxk"), SubResource("Resource_5ck7m"), SubResource("Resource_4dpff"), SubResource("Resource_wg78d")])

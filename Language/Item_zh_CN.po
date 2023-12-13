@@ -1,0 +1,21 @@
+# LD_Anvil, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Old Future Relic - Item\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+
+#----------Basic----------#
+msgid "tile.dummy"
+msgstr "“假人”方块"
+
+msgid "tile.dummy.discription"
+msgstr "用于占位的方块，没有实际作用。"
+
+msgid "tile.concrete"
+msgstr "混凝土块"
+
+msgid "tile.concrete.discription"
+msgstr "普通的硬质方块。"
