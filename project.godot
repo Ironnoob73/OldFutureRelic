@@ -36,6 +36,31 @@ AllItems="*res://Resources/Item/AllItems.gd"
 window/size/viewport_width=1600
 window/size/viewport_height=900
 
+[importer_defaults]
+
+texture={
+"compress/channel_pack": 0,
+"compress/hdr_compression": 1,
+"compress/high_quality": false,
+"compress/lossy_quality": 0.7,
+"compress/mode": 4,
+"compress/normal_map": 0,
+"detect_3d/compress_to": 2,
+"editor/convert_colors_with_editor_theme": false,
+"editor/scale_with_editor_scale": false,
+"mipmaps/generate": true,
+"mipmaps/limit": -1,
+"process/fix_alpha_border": true,
+"process/hdr_as_srgb": false,
+"process/hdr_clamp_exposure": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"process/size_limit": 0,
+"roughness/mode": 0,
+"roughness/src_normal": "",
+"svg/scale": 1.0
+}
+
 [input]
 
 ui_accept={
@@ -144,6 +169,8 @@ locale/locale_filter_mode=0
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Item"
 3d_physics/layer_4="Terrain"
+3d_physics/layer_5="LODT"
+3d_physics/layer_6="Building"
 
 [rendering]
 

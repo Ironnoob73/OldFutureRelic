@@ -501,7 +501,7 @@ stretch = true
 [node name="Viewport" type="SubViewport" parent="ItemInv/Preview/View"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(758, 295)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="MeshView2d" parent="ItemInv/Preview/View/Viewport" instance=ExtResource("4_ko8t7")]
@@ -517,4 +517,5 @@ libraries = {
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="ButtonGroup/HBox0/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="column_title_clicked" from="ItemInv/ItemList" to="." method="_on_item_list_column_title_clicked"]
 [connection signal="item_selected" from="ItemInv/ItemList" to="." method="_on_item_list_item_selected"]

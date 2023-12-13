@@ -9,8 +9,10 @@ extends Control
 @onready var item_name = $ItemInv/Preview/Name
 @onready var item_model = $ItemInv/Preview/View/Viewport/MeshView2d/Mesh
 @onready var item_discription = $ItemInv/Preview/Discription
+signal item_sort(by_count:bool,direction:bool)
 
 var current_inv = "Main"
+
 func _ready():
 	item_list.set_column_expand_ratio(0,7)
 	item_list.set_column_expand_ratio(1,1)
@@ -65,10 +67,13 @@ func item_inv_update():
 		subitem.set_text(1,str(i.count))
 		subitem.set_text_alignment(1,HORIZONTAL_ALIGNMENT_RIGHT)
 		subitem.set_metadata(0,inventory.itemStack.find(i))
-
+#View details
 func _on_item_list_item_selected():
 	var index = item_list.get_selected().get_metadata(0)
 	if index != null:
 		item_name.text = inventory.itemStack[index].item.item_name
 		item_model.mesh = inventory.itemStack[index].item.item_model
 		item_discription.text = inventory.itemStack[index].item.item_discription
+#Sort
+func _on_item_list_column_title_clicked(column, mouse_button_index):
+	item_sort.emit(bool(column),bool(mouse_button_index-1))

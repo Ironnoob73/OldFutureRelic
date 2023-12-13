@@ -26,3 +26,8 @@ func remove_item(item :ItemClass , count :int = 1 ):
 			itemStack.erase(stacks[0])
 	else :	return "off"
 	on_items_changed.emit()
+
+func sort_item(by_count:bool,direction:bool):
+	if by_count :	itemStack.sort_custom(func(a, b): return (a.count < b.count)!=direction)
+	else :	itemStack.sort_custom(func(a, b): return (a.item.item_name < b.item.item_name)!=direction)
+	on_items_changed.emit()

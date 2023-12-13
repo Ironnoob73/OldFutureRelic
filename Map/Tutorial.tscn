@@ -13,4 +13,4 @@ occlusion_darkness = 1.0
 generator = SubResource("VoxelGeneratorFlat_6jmdu")
 mesher = SubResource("VoxelMesherBlocky_roa7i")
 collision_layer = 9
-collision_mask = 15
+collision_mask = 7

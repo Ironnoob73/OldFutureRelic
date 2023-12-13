@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ItemClass" load_steps=6 format=3 uid="uid://cvnegj1dg5uck"]
+[gd_resource type="Resource" script_class="ItemClass" load_steps=7 format=3 uid="uid://cvnegj1dg5uck"]
 
+[ext_resource type="Texture2D" uid="uid://dxuc447ihm2uo" path="res://Resources/Block/Concrete/concrete.svg" id="1_bp3wv"]
 [ext_resource type="Script" path="res://Assets_Main/Basic_class/ItemClass.gd" id="1_exmgc"]
 [ext_resource type="Texture2D" uid="uid://qk3irepq32mt" path="res://Resources/Block/Concrete/Texture.tres" id="1_ycqpv"]
 [ext_resource type="Shader" path="res://Resources/Block/BlockSixFaces.gdshader" id="2_ovit8"]
@@ -15,7 +16,7 @@ material = SubResource("ShaderMaterial_3v5ly")
 [resource]
 script = ExtResource("1_exmgc")
 item_name = "tile.concrete"
-item_icon = ExtResource("1_ycqpv")
+item_icon = ExtResource("1_bp3wv")
 item_model = SubResource("BoxMesh_sgygn")
 item_discription = "tile.concrete.discription"
 item_type = 1

@@ -20,6 +20,8 @@ background_mode = 2
 background_energy_multiplier = 3.0
 sky = SubResource("Sky_d8ugg")
 glow_enabled = true
+glow_strength = 0.5
+glow_bloom = 0.5
 glow_blend_mode = 1
 
 [sub_resource type="Animation" id="Animation_h1djh"]

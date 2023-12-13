@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmeul2tdylr0t"]
+[gd_scene load_steps=6 format=3 uid="uid://dmeul2tdylr0t"]
 
 [ext_resource type="Script" path="res://Assets_Main/Happend.gd" id="1_e8in2"]
 [ext_resource type="PackedScene" uid="uid://bys33qmaoyw20" path="res://default_environment.tscn" id="1_jc240"]
 [ext_resource type="PackedScene" uid="uid://bk6ihg1vf71uf" path="res://Assets_Main/Player.tscn" id="1_qmywt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5ct60"]
+radius = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_apdk3"]
+top_radius = 3.0
+bottom_radius = 3.0
 
 [node name="Happend" type="Node3D"]
 script = ExtResource("1_e8in2")
@@ -10,3 +17,15 @@ script = ExtResource("1_e8in2")
 [node name="environment" parent="." instance=ExtResource("1_jc240")]
 
 [node name="Player" parent="." instance=ExtResource("1_qmywt")]
+collision_mask = 59
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+collision_layer = 33
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_5ct60")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("CylinderMesh_apdk3")
