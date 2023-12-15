@@ -3,7 +3,7 @@ extends Node
 const CONFIG_PATH = "user://settings.cfg"
 var DATA_PATH = "user://"
 #Load world
-var map_path = "null"
+var MapPath_block = "null"
 var player_pos = Vector3(0.0,0.0,0.0)
 #In game control
 var mouse_sens = 0.4
@@ -47,6 +47,6 @@ func back_to_title():
 #Load world
 func load_world_info(m_name,player_pos_f = Vector3(0.0,0.0,0.0)):
 	player_pos = player_pos_f
-	map_path = "res://Map/"+m_name+".tscn"
+	MapPath_block = "res://Map/"+m_name+"_generator_block.tres"
 	get_tree().change_scene_to_file("res://Assets_Main/Happend.tscn")
 

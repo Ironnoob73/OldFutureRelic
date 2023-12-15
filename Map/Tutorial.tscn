@@ -1,16 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnoctvs0ti100"]
 
+[ext_resource type="VoxelGeneratorFlat" uid="uid://be5snufw2m7ds" path="res://Map/Tutorial_generator_block.tres" id="1_sn4e5"]
 [ext_resource type="VoxelBlockyLibrary" uid="uid://btij0v7fevj3g" path="res://Resources/Block/BlockLib_basic.tres" id="1_wnq75"]
-
-[sub_resource type="VoxelGeneratorFlat" id="VoxelGeneratorFlat_6jmdu"]
-channel = 0
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_roa7i"]
 library = ExtResource("1_wnq75")
 occlusion_darkness = 1.0
 
 [node name="Tutorial" type="VoxelTerrain"]
-generator = SubResource("VoxelGeneratorFlat_6jmdu")
+generator = ExtResource("1_sn4e5")
 mesher = SubResource("VoxelMesherBlocky_roa7i")
 collision_layer = 9
 collision_mask = 7

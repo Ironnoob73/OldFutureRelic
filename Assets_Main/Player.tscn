@@ -50,6 +50,7 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yjrry"]
 render_priority = 0
 shader = ExtResource("5_u5uvm")
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/albedo = SubResource("GradientTexture2D_f0825")
 
 [node name="Player" type="CharacterBody3D"]

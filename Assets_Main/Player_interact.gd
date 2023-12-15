@@ -14,7 +14,10 @@ signal on_block_break(block_name:String)
 signal on_block_put(block_name:String,center:Vector3i)
 
 func _ready():
-	pass
+	get_world_terrain()
+	
+func get_world_terrain():
+	_terrain = get_parent().get_parent().get_parent().blockTerrain
 	
 func get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = get_global_transform().origin
@@ -28,10 +31,19 @@ func _physics_process(_delta):
 			_terrain = get_collider()
 			_terrain_tool = _terrain.get_voxel_tool()
 	#Get hit point
-	if _terrain_tool != null:
-		var hit := get_pointed_voxel()
-		if is_colliding() and !(get_collider() is VoxelTerrain) :	hit_point = floor(get_collision_point())
-		elif hit != null :	hit_point = hit.position
+	if is_colliding() :
+		if _terrain_tool == null:
+			hit_point = floor(get_collision_point())
+			_cursor.material.set_shader_parameter("color",Vector3(1,0,0))
+		else:
+			var hit := get_pointed_voxel()
+			if !(get_collider() is VoxelTerrain) :
+				get_world_terrain()
+				hit_point = floor(get_collision_point())
+				_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
+			elif hit != null :
+				hit_point = hit.position
+				_cursor.material.set_shader_parameter("color",Vector3(1,1,1))
 		
 	#Move cursor
 	if !is_colliding():	_cursor.hide()
@@ -41,7 +53,6 @@ func _physics_process(_delta):
 		_cursor.show()
 		_cursor.set_global_position(Vector3(hit_point)+Vector3(0.5,0.5,0.5))
 		
-
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if _terrain_tool != null:
