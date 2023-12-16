@@ -17,6 +17,8 @@ const FRICTION = 0.3
 
 @onready var voxel_interact = $PlayerCam/VoxelInteractRay
 
+@onready var first_person_cam = $PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam
+
 var INERTIA:Vector2 = Vector2.ZERO
 
 var current_menu = "HUD"
@@ -107,6 +109,9 @@ func _physics_process(_delta):
 		player_camera.position.y = lerp(player_camera.position.y,0.5,0.5)
 	
 	move_and_slide()
+
+func _process(delta):
+	first_person_cam.global_transform = player_camera.global_transform
 
 #Sort inventory items
 func _on_inventory_item_sort(by_count, direction):

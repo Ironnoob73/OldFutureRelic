@@ -83,16 +83,34 @@ shape = SubResource("CapsuleShape3D_a500n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 cull_mask = 3
 
-[node name="VoxelInteractRay" type="RayCast3D" parent="PlayerCam"]
-target_position = Vector3(0, 0, -5)
-collision_mask = 56
-script = ExtResource("2_fls23")
+[node name="FirstPersonHandled" type="SubViewportContainer" parent="PlayerCam"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
 
-[node name="HandHeld" type="Node3D" parent="PlayerCam"]
+[node name="SubViewport" type="SubViewport" parent="PlayerCam/FirstPersonHandled"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1600, 900)
+render_target_update_mode = 4
+
+[node name="FirstPersonCam" type="Camera3D" parent="PlayerCam/FirstPersonHandled/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cull_mask = 16
+
+[node name="HandHeld" type="Node3D" parent="PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.45, -0.25, -0.5)
 
-[node name="BlockPlacer" parent="PlayerCam/HandHeld" instance=ExtResource("5_adbxb")]
-layers = 3
+[node name="BlockPlacer" parent="PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld" instance=ExtResource("5_adbxb")]
+layers = 16
+
+[node name="VoxelInteractRay" type="RayCast3D" parent="PlayerCam"]
+target_position = Vector3(0, 0, -20)
+collision_mask = 56
+script = ExtResource("2_fls23")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
 

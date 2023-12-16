@@ -10,11 +10,12 @@ var _terrain_tool = null
 var current_block : int = 1
 
 @onready var inventory = preload("res://Assets_Main/Player_inventory.tres")
-@onready var HandHeldItem = $"../HandHeld/BlockPlacer"
+@onready var HandHeldItem = $"../FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld/BlockPlacer"
 
 func _ready():
+	await get_tree().create_timer(0.1).timeout
 	get_world_terrain()
-	#refresh_bp_tool()
+	refresh_bp_tool()
 	
 func get_world_terrain():
 	_terrain = get_parent().get_parent().get_parent().blockTerrain
@@ -22,7 +23,7 @@ func get_world_terrain():
 func get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = get_global_transform().origin
 	var forward = get_global_transform().basis.z.normalized()
-	var hit = _terrain_tool.raycast(origin, -forward, 5)
+	var hit = _terrain_tool.raycast(origin, -forward, 20)
 	return hit
 	
 func _physics_process(_delta):
@@ -115,20 +116,12 @@ func refresh_bp_tool():
 	HandHeldItem.refresh_screen(AllItems.get_tran_from_name(block_name),AllItems.get_icon_from_name(block_name),inventory.get_item_count(block_name))
 
 func create_trail(light_color:Color):
-	var trail_model = MeshInstance3D.new()
-	var trail = ImmediateMesh.new()
-	var trail_material = StandardMaterial3D.new()
-	trail_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	trail_material.albedo_color = Color(0.0,0.0,0.0,1.0)
-	trail_material.emission_enabled = true
-	trail_material.emission_energy_multiplier = 5.0
-	trail_material.emission = light_color
-	trail.surface_begin(Mesh.PRIMITIVE_LINE_STRIP,trail_material)
-	trail.surface_add_vertex(HandHeldItem.global_position)
-	trail.surface_add_vertex(get_collision_point())
-	trail.surface_end()
-	trail_model.mesh = trail
-	get_parent().get_parent().get_parent().add_child(trail_model)
+	var trail = load("res://Resources/Tool/BlockPlacer/trail.tscn").instantiate()
+	get_parent().get_parent().get_parent().add_child(trail)
+	trail.material_override.albedo_color = Color(0.0,0.0,0.0,1.0)
+	trail.material_override.emission = light_color
+	trail.trail_curve.set_point_position(0,HandHeldItem.global_position)
+	trail.trail_curve.set_point_position(1,get_collision_point())
 	var trail_tween = get_tree().create_tween()
-	trail_tween.tween_property(trail_material, "albedo_color:a", 0.0, 0.5)
-	trail_tween.tween_callback(trail_model.queue_free)
+	trail_tween.tween_property(trail.material_override, "albedo_color:a", 0.0, 0.5)
+	trail_tween.tween_callback(trail.queue_free)

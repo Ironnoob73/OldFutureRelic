@@ -39,12 +39,14 @@ center_offset = Vector3(0.123, 0.093, 0)
 orientation = 0
 
 [node name="ModelScene" type="MeshInstance3D"]
+layers = 16
 ignore_occlusion_culling = true
 mesh = SubResource("ArrayMesh_m6ku7")
 script = ExtResource("6_oi4h2")
 
 [node name="Screen" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.894934, -0.446198, 0, 0.446198, 0.894934, 0, 0, 0, 1, 0, 0, 0)
+layers = 16
 material_override = SubResource("StandardMaterial3D_5sb6h")
 mesh = SubResource("PlaneMesh_xumvj")
 

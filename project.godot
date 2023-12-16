@@ -168,6 +168,7 @@ locale/locale_filter_mode=0
 3d_render/layer_2="FirstPerson"
 3d_render/layer_3="ThirdPerson"
 3d_render/layer_4="Camera"
+3d_render/layer_5="FirstPersonHand"
 3d_physics/layer_1="Main"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Item"
