@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmeul2tdylr0t"]
+[gd_scene load_steps=8 format=3 uid="uid://dmeul2tdylr0t"]
 
 [ext_resource type="Script" path="res://Assets_Main/Happend.gd" id="1_e8in2"]
 [ext_resource type="PackedScene" uid="uid://bys33qmaoyw20" path="res://default_environment.tscn" id="1_jc240"]
@@ -8,6 +8,13 @@
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_46uqs"]
 library = ExtResource("4_7g3md")
 occlusion_darkness = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7p7mn"]
+radius = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_apmip"]
+radius = 3.0
+height = 6.0
 
 [node name="Happend" type="Node3D"]
 script = ExtResource("1_e8in2")
@@ -21,3 +28,14 @@ collision_mask = 59
 mesher = SubResource("VoxelMesherBlocky_46uqs")
 collision_layer = 9
 collision_mask = 7
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+collision_layer = 33
+collision_mask = 39
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_7p7mn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_apmip")

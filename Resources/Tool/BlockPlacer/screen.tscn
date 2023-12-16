@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://mftuavwg2mms"]
+
+[ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="1_m2sj6"]
+[ext_resource type="Texture2D" uid="uid://dfw6wwapseug3" path="res://Resources/Block/Dummy/dummy.svg" id="2_m32pi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc220"]
+shader = ExtResource("1_m2sj6")
+shader_parameter/mouse = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ngv4d"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.9)
+colors = PackedColorArray(1, 1, 1, 1, 0.74902, 0.937255, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_evk2c"]
+gradient = SubResource("Gradient_ngv4d")
+width = 25
+height = 25
+fill = 2
+
+[sub_resource type="Gradient" id="Gradient_khejo"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.8, 1)
+colors = PackedColorArray(0, 0, 0.498039, 1, 0.247059, 0.498039, 1, 1, 0, 0.247059, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k51ft"]
+gradient = SubResource("Gradient_khejo")
+width = 150
+height = 30
+fill_from = Vector2(1, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 235.0
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 2
+material = SubResource("ShaderMaterial_xc220")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_evk2c")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_k51ft")
+
+[node name="Main" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Mode" type="Label" parent="Main"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Mode"
+horizontal_alignment = 1
+
+[node name="BlockName" type="Label" parent="Main"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "test"
+horizontal_alignment = 1
+
+[node name="BlockIcon" type="TextureRect" parent="Main"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("2_m32pi")
+stretch_mode = 5
+
+[node name="LeftNumber" type="Label" parent="Main"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 25
+text = "999"
+horizontal_alignment = 1
+
+[node name="LeftText" type="Label" parent="Main"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 20
+text = "inventory.item.left"
+horizontal_alignment = 1

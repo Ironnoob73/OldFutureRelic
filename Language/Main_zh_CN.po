@@ -135,6 +135,9 @@ msgstr "物品"
 msgid "inventory.item.block"
 msgstr "方块"
 
+msgid "inventory.item.left"
+msgstr "剩余"
+
 msgid "inventory.equipment.t"
 msgstr " 装备"
 

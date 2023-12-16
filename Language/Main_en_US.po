@@ -135,6 +135,9 @@ msgstr "Item"
 msgid "inventory.item.block"
 msgstr "Block"
 
+msgid "inventory.item.left"
+msgstr "Left"
+
 msgid "inventory.equipment.t"
 msgstr " Equipments"
 

@@ -108,13 +108,6 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
-#Break and put block connect with inventory
-func _on_interact_ray_on_block_break(block_name):
-	Inventory.add_item(AllItems.get_item_from_name(block_name))
-func _on_voxel_interact_ray_on_block_put(block_name,center):
-	#Inventory.remove_item(AllItems.get_item_from_name(block_name))
-	if Inventory.remove_item(AllItems.get_item_from_name(block_name)) not in ["out","off"]:
-		voxel_interact.place(center)
 #Sort inventory items
 func _on_inventory_item_sort(by_count, direction):
 	Inventory.sort_item(by_count, direction)

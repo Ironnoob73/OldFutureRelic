@@ -499,6 +499,7 @@ size_flags_vertical = 3
 stretch = true
 
 [node name="Viewport" type="SubViewport" parent="ItemInv/Preview/View"]
+own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(2, 2)

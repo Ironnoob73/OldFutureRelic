@@ -7,14 +7,14 @@ var _terrain_tool = null
 @onready var _cursor = $"../../Cursor"
 
 @onready var block_lib = preload("res://Resources/Block/BlockLib_basic.tres")
-var current_block : int = 0
-@onready var current_block_show = $"../../CurrentBlock"
+var current_block : int = 1
 
-signal on_block_break(block_name:String)
-signal on_block_put(block_name:String,center:Vector3i)
+@onready var inventory = preload("res://Assets_Main/Player_inventory.tres")
+@onready var HandHeldItem = $"../HandHeld/BlockPlacer"
 
 func _ready():
 	get_world_terrain()
+	#refresh_bp_tool()
 	
 func get_world_terrain():
 	_terrain = get_parent().get_parent().get_parent().blockTerrain
@@ -71,10 +71,14 @@ func _unhandled_input(event):
 		if get_parent().get_parent().current_menu == "HUD":
 			if Input.is_action_just_pressed("roll_up") and event.pressed:
 				current_block += 1
-				current_block_show.text = str(current_block)
+				if current_block >= block_lib.models.size():
+					current_block = 1
+				refresh_bp_tool()
 			if Input.is_action_just_pressed("roll_down") and event.pressed:
 				current_block -= 1
-				current_block_show.text = str(current_block)
+				if current_block <= 0:
+					current_block = block_lib.models.size() - 1
+				refresh_bp_tool()
 							
 func can_place_voxel_at(pos: Vector3i):
 	var space_state = get_viewport().get_world_3d().get_direct_space_state()
@@ -90,14 +94,41 @@ func can_place_voxel_at(pos: Vector3i):
 	
 func dig(center: Vector3i):
 	if _terrain_tool.get_voxel(center):
-		on_block_break.emit(block_lib.get_model(_terrain_tool.get_voxel(center)).resource_name)
+		inventory.add_item(block_lib.get_model(_terrain_tool.get_voxel(center)).resource_name)
 		_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
 		_terrain_tool.value = 0
 		_terrain_tool.do_point(center)
+		create_trail(Color(1.0,0.0,0.0))
+	refresh_bp_tool()
 	
 func place_detect(center: Vector3i):
-	on_block_put.emit(block_lib.get_model(current_block).resource_name,center)
-func place(center: Vector3i):
-	_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
-	_terrain_tool.value = current_block
-	_terrain_tool.do_point(center)
+	if block_lib.get_model(current_block) and inventory.get_item_count(block_lib.get_model(current_block).resource_name) > 0:
+		inventory.remove_item(block_lib.get_model(current_block).resource_name)
+		_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
+		_terrain_tool.value = current_block
+		_terrain_tool.do_point(center)
+		create_trail(Color(0.0,1.0,1.0))
+	refresh_bp_tool()
+
+func refresh_bp_tool():
+	var block_name = block_lib.get_model(current_block).resource_name
+	HandHeldItem.refresh_screen(AllItems.get_tran_from_name(block_name),AllItems.get_icon_from_name(block_name),inventory.get_item_count(block_name))
+
+func create_trail(light_color:Color):
+	var trail_model = MeshInstance3D.new()
+	var trail = ImmediateMesh.new()
+	var trail_material = StandardMaterial3D.new()
+	trail_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	trail_material.albedo_color = Color(0.0,0.0,0.0,1.0)
+	trail_material.emission_enabled = true
+	trail_material.emission_energy_multiplier = 5.0
+	trail_material.emission = light_color
+	trail.surface_begin(Mesh.PRIMITIVE_LINE_STRIP,trail_material)
+	trail.surface_add_vertex(HandHeldItem.global_position)
+	trail.surface_add_vertex(get_collision_point())
+	trail.surface_end()
+	trail_model.mesh = trail
+	get_parent().get_parent().get_parent().add_child(trail_model)
+	var trail_tween = get_tree().create_tween()
+	trail_tween.tween_property(trail_material, "albedo_color:a", 0.0, 0.5)
+	trail_tween.tween_callback(trail_model.queue_free)

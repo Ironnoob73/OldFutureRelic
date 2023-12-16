@@ -16,13 +16,13 @@
 shader = ExtResource("2_b2r6n")
 shader_parameter/mouse = Vector2(0, 0)
 
-[sub_resource type="Gradient" id="Gradient_ngv4d"]
+[sub_resource type="Gradient" id="Gradient_fbw32"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.9)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_iir2o"]
-gradient = SubResource("Gradient_ngv4d")
+gradient = SubResource("Gradient_fbw32")
 width = 100
 height = 100
 fill = 2
