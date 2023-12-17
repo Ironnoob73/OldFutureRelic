@@ -110,7 +110,7 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
-func _process(delta):
+func _process(_delta):
 	first_person_cam.global_transform = player_camera.global_transform
 
 #Sort inventory items

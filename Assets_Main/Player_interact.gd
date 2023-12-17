@@ -120,8 +120,7 @@ func create_trail(light_color:Color):
 	get_parent().get_parent().get_parent().add_child(trail)
 	trail.material_override.albedo_color = Color(0.0,0.0,0.0,1.0)
 	trail.material_override.emission = light_color
-	trail.trail_curve.set_point_position(0,HandHeldItem.global_position)
-	trail.trail_curve.set_point_position(1,get_collision_point())
+	trail.init_pos(HandHeldItem.global_position,get_collision_point())
 	var trail_tween = get_tree().create_tween()
 	trail_tween.tween_property(trail.material_override, "albedo_color:a", 0.0, 0.5)
 	trail_tween.tween_callback(trail.queue_free)

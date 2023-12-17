@@ -13,6 +13,6 @@ func _ready():
 	screen.emission_texture = viewport.get_texture()
 
 func refresh_screen(block_name:String = "Null",block_icon:Texture = null,left_number:int = 0):
-	ToolBlockName.text = block_name
+	ToolBlockName.text = "[scroll span=" + str(block_name.length()) + "]" + tr(block_name) + "[/scroll]"
 	ToolBlockIcon.texture = block_icon
 	ToolLeftNumber.text = str(left_number)
