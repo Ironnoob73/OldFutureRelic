@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 30 30" overflow="visible" xml:space="preserve">
+<g id="Main">
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="10,2 10,13 12,13 13,26 13,28 20,28 
+		20,26 19,13 19,9 17,2 	"/>
+	<rect x="10" y="2" fill="#3F3F3F" width="3" height="11"/>
+	<polygon fill="#FFBF00" points="13,2 13,13 13,13 16,13 17,26 20,26 19,13 19,9 17,2 	"/>
+	<polygon fill="#7F7F7F" points="12,13 13,26 13,28 20,28 20,26 14,26 13,13 	"/>
+	<polygon points="13,13 14,26 17,26 16.08,14 16,13 	"/>
+	<polygon fill="#1F1F1F" stroke="#000000" stroke-miterlimit="10" points="19,14 20,25 17,25 16,14 	"/>
+	<path fill="#FFBF00" stroke="#000000" stroke-miterlimit="10" d="M15.2,5.1l-1.46,2.92c-0.11,0.22,0.05,0.48,0.3,0.48h2.92
+		c0.25,0,0.41-0.26,0.3-0.48L15.8,5.1C15.68,4.85,15.32,4.85,15.2,5.1z"/>
+</g>
+<g id="Ray">
+</g>
+</svg>

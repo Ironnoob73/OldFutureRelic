@@ -112,7 +112,3 @@ func _physics_process(_delta):
 
 func _process(_delta):
 	first_person_cam.global_transform = player_camera.global_transform
-
-#Sort inventory items
-func _on_inventory_item_sort(by_count, direction):
-	Inventory.sort_item(by_count, direction)

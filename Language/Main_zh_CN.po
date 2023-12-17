@@ -144,6 +144,15 @@ msgstr " 装备"
 msgid "inventory.equipment"
 msgstr "\n\n\n装备"
 
+msgid "inventory.equipment.tool"
+msgstr "工具"
+
+msgid "inventory.equipment.weapon"
+msgstr "武器"
+
+msgid "inventory.equipment.armor"
+msgstr "护甲"
+
 msgid "inventory.special.t"
 msgstr " 特殊"
 
@@ -171,3 +180,9 @@ msgstr "名称"
 
 msgid "list.count"
 msgstr "数量"
+
+msgid "list.favorite"
+msgstr "星标"
+
+msgid "list.equipped"
+msgstr "已装备"

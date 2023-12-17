@@ -7,7 +7,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 
-#----------Basic----------#
+####----------Item----------####
+#----------BasicBlock----------#
 msgid "tile.dummy"
 msgstr "“假人”方块"
 
@@ -19,3 +20,28 @@ msgstr "混凝土块"
 
 msgid "tile.concrete.discription"
 msgstr "普通的硬质方块。"
+
+####----------Equipment----------####
+###----------Tool----------###
+#----------Type----------#
+msgid "tool.type.undefined"
+msgstr "未定义"
+
+msgid "tool.type.wrench"
+msgstr "扳手"
+
+msgid "tool.type.screwdriver"
+msgstr "螺丝刀"
+
+msgid "tool.type.special"
+msgstr "特殊"
+
+#----------Special----------#
+msgid "tool.godfinger"
+msgstr "神指"
+
+msgid "tool.godfinger.subname"
+msgstr "多功能方块放置器"
+
+msgid "tool.godfinger.discription"
+msgstr "可以用来放置、破坏方块以及改变地形。"

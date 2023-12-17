@@ -1,22 +1,21 @@
-[gd_resource type="Resource" script_class="ItemClass" load_steps=7 format=3 uid="uid://dulix7i4d15mp"]
+[gd_resource type="Resource" script_class="IBlockClass" load_steps=7 format=3 uid="uid://dulix7i4d15mp"]
 
 [ext_resource type="Texture2D" uid="uid://djihtoyedwf5l" path="res://Resources/Block/Dummy/Texture.tres" id="1_cok1o"]
 [ext_resource type="Texture2D" uid="uid://dfw6wwapseug3" path="res://Resources/Block/Dummy/dummy.svg" id="1_mcfr8"]
 [ext_resource type="Shader" path="res://Resources/Block/BlockSixFaces.gdshader" id="2_e1m1b"]
-[ext_resource type="Script" path="res://Assets_Main/Basic_class/ItemClass.gd" id="3_ylj1f"]
+[ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Item/IBlockClass.gd" id="3_ylj1f"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j11tt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txw8g"]
 render_priority = 0
 shader = ExtResource("2_e1m1b")
 shader_parameter/albedo = ExtResource("1_cok1o")
 
-[sub_resource type="BoxMesh" id="BoxMesh_ipwt5"]
-material = SubResource("ShaderMaterial_j11tt")
+[sub_resource type="BoxMesh" id="BoxMesh_26qke"]
+material = SubResource("ShaderMaterial_txw8g")
 
 [resource]
 script = ExtResource("3_ylj1f")
-item_name = "tile.dummy"
-item_icon = ExtResource("1_mcfr8")
-item_model = SubResource("BoxMesh_ipwt5")
-item_discription = "tile.dummy.discription"
-item_type = 1
+name0 = "tile.dummy"
+icon = ExtResource("1_mcfr8")
+model = SubResource("BoxMesh_26qke")
+discription = "tile.dummy.discription"

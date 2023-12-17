@@ -9,7 +9,7 @@ var _terrain_tool = null
 @onready var block_lib = preload("res://Resources/Block/BlockLib_basic.tres")
 var current_block : int = 1
 
-@onready var inventory = preload("res://Assets_Main/Player_inventory.tres")
+@onready var inventory = preload("res://Assets_Main/Inventory/Player_inventory.tres")
 @onready var HandHeldItem = $"../FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld/BlockPlacer"
 
 func _ready():

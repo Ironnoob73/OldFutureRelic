@@ -7,7 +7,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: en_US\n"
 
-#----------Basic----------#
+####----------Item----------####
+#----------BasicBlock----------#
 msgid "tile.dummy"
 msgstr "Dummy Block"
 
@@ -19,3 +20,28 @@ msgstr "Concrete Block"
 
 msgid "tile.concrete.discription"
 msgstr "Ordinary hard blocks."
+
+####----------Equipment----------####
+###----------Tool----------###
+#----------Type----------#
+msgid "tool.type.undefined"
+msgstr "Undefined"
+
+msgid "tool.type.wrench"
+msgstr "Wrench"
+
+msgid "tool.type.screwdriver"
+msgstr "Screwdriver"
+
+msgid "tool.type.special"
+msgstr "Special"
+
+#----------Special----------#
+msgid "tool.godfinger"
+msgstr "God Finger"
+
+msgid "tool.godfinger.subname"
+msgstr "Multi-purpose block placer"
+
+msgid "tool.godfinger.discription"
+msgstr "Can be used to place and break blocks, as well as change terrain."

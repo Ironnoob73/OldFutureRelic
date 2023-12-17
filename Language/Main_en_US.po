@@ -144,6 +144,15 @@ msgstr " Equipments"
 msgid "inventory.equipment"
 msgstr "\n\n\nEquipments"
 
+msgid "inventory.equipment.tool"
+msgstr "Tool"
+
+msgid "inventory.equipment.weapon"
+msgstr "Weapon"
+
+msgid "inventory.equipment.armor"
+msgstr "Armor"
+
 msgid "inventory.special.t"
 msgstr " Special"
 
@@ -171,3 +180,9 @@ msgstr "Name"
 
 msgid "list.count"
 msgstr "Count"
+
+msgid "list.favorite"
+msgstr "Favorite"
+
+msgid "list.equipped"
+msgstr "Equipped"
