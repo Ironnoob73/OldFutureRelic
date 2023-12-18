@@ -12,4 +12,4 @@ name1 = "tool.godfinger.subname"
 name0 = "tool.godfinger"
 icon = ExtResource("1_pco53")
 model = ExtResource("1_s2el4")
-discription = "tool.godfinger.discription"
+discription = ""

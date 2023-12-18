@@ -36,6 +36,16 @@ msgstr "Screwdriver"
 msgid "tool.type.special"
 msgstr "Special"
 
+msgid "tool.type.pickaxe"
+msgstr "Pickaxe"
+
+#----------By Material----------#
+msgid "tool.platinum_pickaxe"
+msgstr "Platinum Pickaxe"
+
+msgid "tool.platinum_pickaxe.discription"
+msgstr "A pickaxe made of platinum."
+
 #----------Special----------#
 msgid "tool.godfinger"
 msgstr "God Finger"

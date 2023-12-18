@@ -36,6 +36,16 @@ msgstr "螺丝刀"
 msgid "tool.type.special"
 msgstr "特殊"
 
+msgid "tool.type.pickaxe"
+msgstr "镐"
+
+#----------By Material----------#
+msgid "tool.platinum_pickaxe"
+msgstr "铂镐"
+
+msgid "tool.platinum_pickaxe.discription"
+msgstr "由铂金制成的镐子。"
+
 #----------Special----------#
 msgid "tool.godfinger"
 msgstr "神指"

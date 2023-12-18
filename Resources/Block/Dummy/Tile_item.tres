@@ -18,4 +18,4 @@ script = ExtResource("3_ylj1f")
 name0 = "tile.dummy"
 icon = ExtResource("1_mcfr8")
 model = SubResource("BoxMesh_26qke")
-discription = "tile.dummy.discription"
+discription = ""

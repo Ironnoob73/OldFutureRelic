@@ -55,27 +55,25 @@ func _physics_process(_delta):
 		_cursor.set_global_position(Vector3(hit_point)+Vector3(0.5,0.5,0.5))
 		
 func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if _terrain_tool != null:
-			var hit := get_pointed_voxel()
-			if event.pressed and is_colliding():
-				match event.button_index:
-					MOUSE_BUTTON_LEFT:
-						if hit != null :	dig(hit_point)
-					MOUSE_BUTTON_RIGHT:
-						var pos : Vector3
-						if is_colliding() and !(get_collider() is VoxelTerrain) : pos = hit_point
-						elif hit != null :	pos = hit.previous_position
-						if can_place_voxel_at(pos):
-							place_detect(pos)
+	if _terrain_tool != null and !(event is InputEventMouseMotion):
+		var hit := get_pointed_voxel()
+		if event.pressed and is_colliding():
+			if Input.is_action_just_pressed("main_attack"):
+				if hit != null :	dig(hit_point)
+			elif Input.is_action_just_pressed("secondary_attack"):
+				var pos : Vector3
+				if is_colliding() and !(get_collider() is VoxelTerrain) : pos = hit_point
+				elif hit != null :	pos = hit.previous_position
+				if can_place_voxel_at(pos):
+					place_detect(pos)
 	#Switch block
-		if get_parent().get_parent().current_menu == "HUD":
-			if Input.is_action_just_pressed("roll_up") and event.pressed:
+		if get_parent().get_parent().current_menu == "HUD" and event.pressed:
+			if Input.is_action_just_pressed("tab_right"):
 				current_block += 1
 				if current_block >= block_lib.models.size():
 					current_block = 1
 				refresh_bp_tool()
-			if Input.is_action_just_pressed("roll_down") and event.pressed:
+			elif Input.is_action_just_pressed("tab_left"):
 				current_block -= 1
 				if current_block <= 0:
 					current_block = block_lib.models.size() - 1

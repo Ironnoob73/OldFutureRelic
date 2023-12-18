@@ -5,3 +5,7 @@ class_name ThingClass
 @export var icon : Texture
 @export var model : Mesh
 @export var discription : String
+
+func get_discription():
+	if discription :	return discription
+	else :	return name0 + ".discription"
