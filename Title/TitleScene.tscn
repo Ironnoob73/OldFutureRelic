@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://6bs1wufcs5v1"]
+[gd_scene load_steps=40 format=3 uid="uid://6bs1wufcs5v1"]
 
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_6nm6v"]
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="2_b2r6n"]
@@ -145,6 +145,9 @@ border_color = Color(0, 1, 1, 1)
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_ytkeo"]
+font_color = Color(0.054902, 0.054902, 0.054902, 1)
 
 [sub_resource type="InputEventAction" id="InputEventAction_8cm0h"]
 action = &"ui_cancel"
@@ -1271,6 +1274,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "online.na"
+label_settings = SubResource("LabelSettings_ytkeo")
 horizontal_alignment = 1
 
 [node name="Options" parent="." instance=ExtResource("4_oyfw7")]
@@ -1287,6 +1291,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="Exit" parent="." instance=ExtResource("6_201ko")]
+visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = -1
@@ -1324,6 +1329,7 @@ libraries = {
 }
 
 [connection signal="pressed" from="Main/ScrollContainer/MainMenu/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Main/ScrollContainer/MainMenu/Online" to="." method="_on_online_pressed"]
 [connection signal="index_changed" from="Beginning" to="." method="_on_beginning_index_changed"]
 [connection signal="pressed" from="LaunchButton" to="." method="_on_launch_button_pressed"]
 [connection signal="pressed" from="RefreshButton" to="." method="_on_refresh_button_pressed"]
