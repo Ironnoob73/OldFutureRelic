@@ -2,6 +2,8 @@ extends Node
 
 const CONFIG_PATH = "user://settings.cfg"
 var DATA_PATH = "user://"
+#Voxel usability
+var Voxel_useability : bool = false
 #Load world
 var MapPath_block = "null"
 var player_pos = Vector3(0.0,0.0,0.0)
@@ -11,6 +13,7 @@ var mouse_sens = 0.4
 func _ready():
 	load_config()
 	window_min_limit()
+	if ClassDB.class_exists("VoxelEngine") :	Voxel_useability = true
 	
 #Limit min window size
 func window_min_limit():

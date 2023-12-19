@@ -680,6 +680,7 @@ libraries = {
 [connection signal="pressed" from="ButtonGroup/HBox0/EquipmentButton" to="." method="_on_equipment_button_pressed"]
 [connection signal="column_title_clicked" from="ItemInv/ItemList" to="." method="_on_item_list_column_title_clicked"]
 [connection signal="item_selected" from="ItemInv/ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="column_title_clicked" from="EquipmentInv/EquipmentList" to="." method="_on_equipment_list_column_title_clicked"]
 [connection signal="item_selected" from="EquipmentInv/EquipmentList" to="." method="_on_equipment_list_item_selected"]
 
 [editable path="EquipmentInv/Preview/View/Viewport/MeshView2d"]

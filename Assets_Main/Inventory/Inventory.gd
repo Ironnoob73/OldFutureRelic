@@ -28,6 +28,7 @@ func _ready():
 	item_inv_update()
 	equipment_inv_update()
 	inventory.on_items_changed.connect(item_inv_update)
+	inventory.on_equipments_changed.connect(equipment_inv_update)
 
 func open_inventory():
 	animation.play("Show")
@@ -101,7 +102,7 @@ func _on_item_list_column_title_clicked(column, mouse_button_index):
 #Equipment
 func equipment_inv_update():
 	equipment_list.set_column_title(0,tr("list.name"))
-	equipment_list.set_column_title(1,tr("list.equipped"))
+	equipment_list.set_column_title(1,tr("list.performance"))
 	equipment_list.clear()
 	var root = equipment_list.create_item()
 	var tool_group = equipment_list.create_item(root)
@@ -117,10 +118,9 @@ func equipment_inv_update():
 		subitem.set_icon(0,i.equipment.icon)
 		subitem.set_icon_max_width(0,30)
 		subitem.set_text(0,tr(i.equipment.name0) + "   [" + str(int(((i.equipment.durability - i.damage)/i.equipment.durability)*100)) + "%]")
-		subitem.set_tooltip_text(0,tr(i.equipment.get_subname()))
-		if i.equipped != -1:
-			subitem.set_icon(1,equipped_star)
-			subitem.set_text(1,str(i.equipped))
+		subitem.set_tooltip_text(0,tr(i.equipment.get_subname()) + "\n" + str(i.equipment.durability - i.damage) + "/" + str(i.equipment.durability))
+		subitem.set_text(1,str(i.equipment.performance))
+		subitem.set_text_alignment(1,HORIZONTAL_ALIGNMENT_RIGHT)
 		subitem.set_metadata(0,inventory.eqMeta.find(i))
 #View details
 func _on_equipment_list_item_selected():
@@ -128,11 +128,14 @@ func _on_equipment_list_item_selected():
 	if index != null:
 		equipment_name.text = inventory.eqMeta[index].equipment.name0
 		equipment_subname.text = inventory.eqMeta[index].equipment.get_subname()
-		equipment_info.text = str(inventory.eqMeta[index].equipment.durability - inventory.eqMeta[index].damage) + "/" + str(inventory.eqMeta[index].equipment.durability)
+		equipment_info.text = \
+			tr("list.performance") + ":" + str(inventory.eqMeta[index].equipment.performance) + "\n" + \
+			tr("equipment.durability") + ":" + \
+			str(inventory.eqMeta[index].equipment.durability - inventory.eqMeta[index].damage) + "/" + str(inventory.eqMeta[index].equipment.durability)
 		equipment_model.mesh = inventory.eqMeta[index].equipment.model
 		equipment_discription.text = inventory.eqMeta[index].equipment.get_discription()
 #Sort
-#func _on_equipment_list_column_title_clicked(column, mouse_button_index):
-#	item_sort.emit(bool(column),bool(mouse_button_index-1))
+func _on_equipment_list_column_title_clicked(column, mouse_button_index):
+	inventory.sort_equipment(bool(column),bool(mouse_button_index-1))
 
 

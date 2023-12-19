@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("2_kbfjc")
 tool_type = "special"
+performance = 999.0
 durability = 10200.0
 name1 = "tool.godfinger.subname"
 name0 = "tool.godfinger"

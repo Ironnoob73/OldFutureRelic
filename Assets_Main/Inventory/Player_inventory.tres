@@ -1,71 +1,73 @@
-[gd_resource type="Resource" script_class="InventoryClass" load_steps=19 format=3 uid="uid://baju0uanbxmod"]
+[gd_resource type="Resource" script_class="CInventoryClass" load_steps=19 format=3 uid="uid://baju0uanbxmod"]
 
+[ext_resource type="Script" path="res://Assets_Main/Inventory/CInventoryClass.gd" id="1_3ttqg"]
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Item/ItemClass.gd" id="1_a0x7e"]
 [ext_resource type="Resource" uid="uid://7i1mom7pwv8p" path="res://Resources/Tool/BlockPlacer/Tool_item.tres" id="1_i42si"]
-[ext_resource type="Script" path="res://Assets_Main/Inventory/Class/InventoryClass.gd" id="1_j87mq"]
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Equipment/EqMetaClass.gd" id="2_0uag7"]
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Item/ItemStackClass.gd" id="2_u5cpj"]
 [ext_resource type="Resource" uid="uid://818gonafhpym" path="res://Resources/Tool/Platinum/Pickaxe/Tool_item.tres" id="3_n84h5"]
 [ext_resource type="Resource" uid="uid://cvnegj1dg5uck" path="res://Resources/Block/Concrete/Tile_item.tres" id="3_u6n41"]
 
-[sub_resource type="Resource" id="Resource_1y54u"]
+[sub_resource type="Resource" id="Resource_4t0pv"]
 script = ExtResource("2_0uag7")
 equipment = ExtResource("1_i42si")
-damage = 50.0
+damage = 20.0
 equipped = 1
 
-[sub_resource type="Resource" id="Resource_65ox0"]
+[sub_resource type="Resource" id="Resource_8sdx8"]
 script = ExtResource("2_0uag7")
 equipment = ExtResource("3_n84h5")
 damage = 0.0
 equipped = -1
 
-[sub_resource type="Resource" id="Resource_cllwi"]
+[sub_resource type="Resource" id="Resource_cpc10"]
 script = ExtResource("1_a0x7e")
 name0 = "a"
 discription = ""
 
-[sub_resource type="Resource" id="Resource_oebu7"]
+[sub_resource type="Resource" id="Resource_5536t"]
 script = ExtResource("2_u5cpj")
-item = SubResource("Resource_cllwi")
+item = SubResource("Resource_cpc10")
 count = 1
 
-[sub_resource type="Resource" id="Resource_sfakq"]
+[sub_resource type="Resource" id="Resource_rck0u"]
 script = ExtResource("1_a0x7e")
 name0 = "b"
-discription = ""
+discription = "1"
 
-[sub_resource type="Resource" id="Resource_iurxk"]
+[sub_resource type="Resource" id="Resource_8l504"]
 script = ExtResource("2_u5cpj")
-item = SubResource("Resource_sfakq")
-count = 1
+item = SubResource("Resource_rck0u")
+count = 0
 
-[sub_resource type="Resource" id="Resource_hw2v3"]
+[sub_resource type="Resource" id="Resource_7q4ah"]
 script = ExtResource("1_a0x7e")
 name0 = "c"
 discription = ""
 
-[sub_resource type="Resource" id="Resource_5ck7m"]
+[sub_resource type="Resource" id="Resource_rjbbl"]
 script = ExtResource("2_u5cpj")
-item = SubResource("Resource_hw2v3")
+item = SubResource("Resource_7q4ah")
 count = 5
 
-[sub_resource type="Resource" id="Resource_oqsyc"]
+[sub_resource type="Resource" id="Resource_78ix7"]
 script = ExtResource("1_a0x7e")
 name0 = "d"
 discription = ""
 
-[sub_resource type="Resource" id="Resource_4dpff"]
+[sub_resource type="Resource" id="Resource_aig3j"]
 script = ExtResource("2_u5cpj")
-item = SubResource("Resource_oqsyc")
+item = SubResource("Resource_78ix7")
 count = 7
 
-[sub_resource type="Resource" id="Resource_lei0b"]
+[sub_resource type="Resource" id="Resource_qctg3"]
 script = ExtResource("2_u5cpj")
 item = ExtResource("3_u6n41")
 count = 2147483647
 
 [resource]
-script = ExtResource("1_j87mq")
-itemStack = Array[ExtResource("2_u5cpj")]([SubResource("Resource_oebu7"), SubResource("Resource_iurxk"), SubResource("Resource_5ck7m"), SubResource("Resource_4dpff"), SubResource("Resource_lei0b")])
-eqMeta = Array[ExtResource("2_0uag7")]([SubResource("Resource_1y54u"), SubResource("Resource_65ox0")])
+script = ExtResource("1_3ttqg")
+ToolHotbar = Array[ExtResource("2_0uag7")]([null, null, null, null, null])
+ItemHotbar = Array[ExtResource("1_a0x7e")]([null, null, null, null, null])
+itemStack = Array[ExtResource("2_u5cpj")]([SubResource("Resource_5536t"), SubResource("Resource_8l504"), SubResource("Resource_rjbbl"), SubResource("Resource_aig3j"), SubResource("Resource_qctg3")])
+eqMeta = Array[ExtResource("2_0uag7")]([SubResource("Resource_4t0pv"), SubResource("Resource_8sdx8")])

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_1qkpx")
 tool_type = "pickaxe"
+performance = 30.0
 durability = 8192.0
 name1 = ""
 name0 = "tool.platinum_pickaxe"

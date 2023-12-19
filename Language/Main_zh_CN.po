@@ -181,8 +181,8 @@ msgstr "名称"
 msgid "list.count"
 msgstr "数量"
 
-msgid "list.favorite"
-msgstr "星标"
+msgid "list.performance"
+msgstr "性能"
 
-msgid "list.equipped"
-msgstr "已装备"
+msgid "equipment.durability"
+msgstr "耐久"

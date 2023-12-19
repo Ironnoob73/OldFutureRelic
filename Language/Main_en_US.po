@@ -181,8 +181,8 @@ msgstr "Name"
 msgid "list.count"
 msgstr "Count"
 
-msgid "list.favorite"
-msgstr "Favorite"
+msgid "list.performance"
+msgstr "Performance"
 
-msgid "list.equipped"
-msgstr "Equipped"
+msgid "equipment.durability"
+msgstr "Durability"
