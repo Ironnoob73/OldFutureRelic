@@ -79,7 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 layers = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "rotation"
 libraries = {
 "": SubResource("AnimationLibrary_8jyh6")
 }
+autoplay = "rotation"

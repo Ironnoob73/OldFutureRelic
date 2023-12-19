@@ -18,7 +18,6 @@ grow_vertical = 2
 script = ExtResource("2_mrs1c")
 
 [node name="#options_game#" type="TabBar" parent="."]
-visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../#options_control#")
 focus_neighbor_top = NodePath(".")
@@ -85,15 +84,17 @@ focus_previous = NodePath("../../Language/language_button")
 
 [node name="path_choose" type="FileDialog" parent="#options_game#/GameSetting/VSplit/DataPath/datapath_button"]
 gui_embed_subwindows = true
-title = "file.open_directory"
+title = "Open a Directory"
 initial_position = 2
 size = Vector2i(750, 500)
-ok_button_text = "button.confirm"
+ok_button_text = "选择当前文件夹"
 cancel_button_text = "button.cancel"
 file_mode = 2
 access = 2
+use_native_dialog = true
 
 [node name="#options_video#" type="TabBar" parent="."]
+visible = false
 layout_direction = 1
 layout_mode = 2
 focus_neighbor_left = NodePath("../#options_game#")

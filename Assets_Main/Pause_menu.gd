@@ -36,8 +36,8 @@ func _on_exit_button_pressed():
 	escape_released = false
 	animation.play("Exit")
 func _on_confirm_button_pressed():
-	Global.back_to_title()
 	visible = false
+	Global.back_to_title()
 func _on_cancel_button_pressed():
 	if current_menu == "Exit":
 		current_menu = "Pause"
