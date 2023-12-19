@@ -16,3 +16,7 @@ msgstr "You are an unemployed young man with an ancestral apple orchard at home.
 
 msgid "{beginning_description.4:[color=red]TRANSLATION NOT FOUND[/color]}"
 msgstr "You are a riot robot in White Canal City, and the management has been forced to remove your lethal weapon due to the opposition of the masses. Still, the prejudice from them against you remains undiminished. You've been sent to the pit room you don't know how many times, and today you're starting to think about whether or not to leave the city."
+
+#----------Fatal Window----------#
+msgid "fatal_window.fullscreen_warning"
+msgstr "It is strictly forbidden to enable full-screen mode when the window is maximized."

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnl53v0lrb1mv"]
 
 [ext_resource type="Script" path="res://Title/Options.gd" id="2_mrs1c"]
-[ext_resource type="Theme" uid="uid://ceygtpoj6mefb" path="res://default_theme.tres" id="3_qlqe2"]
+[ext_resource type="Theme" uid="uid://bitmw3ij7201m" path="res://Resources/os/fatal_window/fw_theme.tres" id="3_xn7oq"]
 
 [node name="Options" type="TabContainer"]
 anchors_preset = 8
@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("2_mrs1c")
 
 [node name="#options_game#" type="TabBar" parent="."]
+visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../#options_control#")
 focus_neighbor_top = NodePath(".")
@@ -83,16 +84,16 @@ focus_next = NodePath("../../Language/language_button")
 focus_previous = NodePath("../../Language/language_button")
 
 [node name="path_choose" type="FileDialog" parent="#options_game#/GameSetting/VSplit/DataPath/datapath_button"]
-title = "Open a Directory"
-position = Vector2i(10, 35)
+gui_embed_subwindows = true
+title = "file.open_directory"
+initial_position = 2
 size = Vector2i(750, 500)
-theme = ExtResource("3_qlqe2")
-ok_button_text = "选择当前文件夹"
+ok_button_text = "button.confirm"
+cancel_button_text = "button.cancel"
 file_mode = 2
 access = 2
 
 [node name="#options_video#" type="TabBar" parent="."]
-visible = false
 layout_direction = 1
 layout_mode = 2
 focus_neighbor_left = NodePath("../#options_game#")
@@ -134,6 +135,16 @@ focus_next = NodePath(".")
 focus_previous = NodePath(".")
 text = " "
 flat = true
+
+[node name="fullscreen_warn" type="AcceptDialog" parent="#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button"]
+title = ""
+initial_position = 2
+size = Vector2i(500, 250)
+unresizable = true
+theme = ExtResource("3_xn7oq")
+ok_button_text = "button.confirm"
+dialog_text = "fatal_window.fullscreen_warning"
+dialog_autowrap = true
 
 [node name="Scale" type="HBoxContainer" parent="#options_video#/VideoSetting/VSpilt"]
 layout_mode = 2
@@ -281,6 +292,7 @@ value = 0.4
 [connection signal="pressed" from="#options_game#/GameSetting/VSplit/DataPath/datapath_button" to="." method="_on_datapath_button_pressed"]
 [connection signal="dir_selected" from="#options_game#/GameSetting/VSplit/DataPath/datapath_button/path_choose" to="." method="_on_path_choose_dir_selected"]
 [connection signal="toggled" from="#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="close_requested" from="#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button/fullscreen_warn" to="." method="_on_fullscreen_warn_close_requested"]
 [connection signal="value_changed" from="#options_video#/VideoSetting/VSpilt/Scale/scale_button" to="." method="_on_scale_button_value_changed"]
 [connection signal="value_changed" from="#options_audio#/AudioSetting/VSpilt/Master/master_button" to="." method="_on_master_button_value_changed"]
 [connection signal="value_changed" from="#options_audio#/AudioSetting/VSpilt/Music/bgm_button" to="." method="_on_bgm_button_value_changed"]

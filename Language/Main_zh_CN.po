@@ -165,7 +165,8 @@ msgstr " 收藏"
 msgid "inventory.collection"
 msgstr "\n\n\n收藏"
 
-#----------Commonly----------#
+####----------Commonly----------####
+#----------Option----------#
 msgid "button.back"
 msgstr "返回"
 
@@ -175,6 +176,10 @@ msgstr "确认"
 msgid "button.cancel"
 msgstr "取消"
 
+msgid "file.open_directory"
+msgstr "选择文件夹"
+
+#----------In game----------#
 msgid "list.name"
 msgstr "名称"
 

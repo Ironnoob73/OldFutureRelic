@@ -5,6 +5,7 @@ extends TabContainer
 @onready var path_choose = $"#options_game#/GameSetting/VSplit/DataPath/datapath_button/path_choose"
 
 @onready var Fullscreen = $"#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button"
+@onready var fullscreen_warn = $"#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button/fullscreen_warn"
 
 @onready var MasterVolume = $"#options_audio#/AudioSetting/VSpilt/Master/master_button"
 @onready var BgmVolume = $"#options_audio#/AudioSetting/VSpilt/Music/bgm_button"
@@ -64,13 +65,19 @@ func _on_path_choose_dir_selected(dir):
 #Fullscreen
 func _on_fullscreen_button_toggled(toggled_on):
 	if toggled_on == true :
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		if DisplayServer.window_get_mode() != 2:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		else :	fullscreen_warn.visible = true
 	else :
-		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		DisplayServer.window_set_size(Vector2(1600,900))
+		while DisplayServer.window_get_mode() != 0:
+			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_size(Vector2(1600,900))
 	print(DisplayServer.window_get_mode())
 	Global.save_config()
+func _on_fullscreen_warn_close_requested():
+	await get_tree().create_timer(0.0001).timeout
+	fullscreen_warn.visible = true
 #Scale
 func _on_scale_button_value_changed(value):
 	ProjectSettings.set_setting("display/window/stretch/scale",value)
@@ -105,5 +112,7 @@ func tab_focus():
 		1:Fullscreen.grab_focus()
 		2:MasterVolume.grab_focus()
 		3:MouseSen.grab_focus()
+
+
 
 

@@ -1,7 +1,6 @@
 extends HBoxContainer
 
 @onready var list = $List
-@onready var file_path = DirAccess.open(Global.DATA_PATH)
 @onready var file_name_label = $Preview/Name
 @onready var file_cover = $Preview/Cover
 @onready var file_discription = $Preview/Description
@@ -14,6 +13,7 @@ func _ready():
 	
 func refresh():
 	list.clear()
+	var file_path = DirAccess.open(Global.DATA_PATH)
 	if file_path:
 		file_path.list_dir_begin()
 		var file_name = file_path.get_next()

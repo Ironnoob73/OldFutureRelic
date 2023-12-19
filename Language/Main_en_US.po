@@ -165,7 +165,8 @@ msgstr " Collections"
 msgid "inventory.collection"
 msgstr "\n\n\nCollections"
 
-#----------Commonly----------#
+####----------Commonly----------####
+#----------Option----------#
 msgid "button.back"
 msgstr "Back"
 
@@ -177,6 +178,11 @@ msgstr "Cancel"
 
 msgid "list.name"
 msgstr "Name"
+
+msgid "file.open_directory"
+msgstr "Choose a folder"
+
+#----------In game----------#
 
 msgid "list.count"
 msgstr "Count"

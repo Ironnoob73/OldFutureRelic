@@ -12,13 +12,11 @@
 script = ExtResource("2_0uag7")
 equipment = ExtResource("1_i42si")
 damage = 20.0
-equipped = 1
 
 [sub_resource type="Resource" id="Resource_8sdx8"]
 script = ExtResource("2_0uag7")
 equipment = ExtResource("3_n84h5")
 damage = 0.0
-equipped = -1
 
 [sub_resource type="Resource" id="Resource_cpc10"]
 script = ExtResource("1_a0x7e")

@@ -16,3 +16,7 @@ msgstr "你是一名无业青年，家里有祖传的苹果园。为了探寻你
 
 msgid "{beginning_description.4:[color=red]TRANSLATION NOT FOUND[/color]}"
 msgstr "你是白渠城中的一名制暴机器人，由于群众的反对管理层不得不撤下了你的致命性武器，尽管如此人们对你的偏见依旧不减。今天是你不知道第几次被送进维修室了，你开始思考要不要离开这座城市。"
+
+#----------Fatal Window----------#
+msgid "fatal_window.fullscreen_warning"
+msgstr "窗口最大化下禁止开启全屏模式"
