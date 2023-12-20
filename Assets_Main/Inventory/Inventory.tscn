@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtcknsjsvxg38"]
+[gd_scene load_steps=18 format=3 uid="uid://dtcknsjsvxg38"]
 
 [ext_resource type="Theme" uid="uid://cvtgnhbl452vj" path="res://Assets_Main/Inventory/Inventory_theme.tres" id="1_gewfw"]
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Inventory.gd" id="2_3naci"]
 [ext_resource type="Shader" path="res://Assets_Main/Inventory/Inventory_background.gdshader" id="3_qcbob"]
 [ext_resource type="PackedScene" uid="uid://nxxw5gbtnejd" path="res://Assets_Main/Inventory/MeshView2d.tscn" id="4_uebq1"]
+[ext_resource type="PackedScene" uid="uid://cwrhekn37toy4" path="res://Assets_Main/Inventory/item_choose_window.tscn" id="5_bckn1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_744bd"]
 shader = ExtResource("3_qcbob")
@@ -26,6 +27,27 @@ action = &"ui_cancel"
 [sub_resource type="Shortcut" id="Shortcut_q52yj"]
 events = [SubResource("InputEventAction_mfe8b")]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ln0lj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.498039)
+border_width_left = 5
+border_width_top = 10
+border_width_right = 5
+border_width_bottom = 30
+border_color = Color(0.498039, 0.498039, 0.498039, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 2
+shadow_offset = Vector2(0, 5)
+
 [sub_resource type="Animation" id="Animation_pgdh6"]
 resource_name = "Equipment"
 length = 0.25
@@ -33,7 +55,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ButtonGroup:anchor_left")
+tracks/0/path = NodePath("Main:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ButtonGroup:anchor_right")
+tracks/1/path = NodePath("Main:anchor_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -86,7 +108,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ButtonGroup:anchor_left")
+tracks/0/path = NodePath("Main:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -98,7 +120,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ButtonGroup:anchor_right")
+tracks/1/path = NodePath("Main:anchor_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -209,7 +231,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("ButtonGroup:anchor_left")
+tracks/6/path = NodePath("Main:anchor_left")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -221,7 +243,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("ButtonGroup:anchor_right")
+tracks/7/path = NodePath("Main:anchor_right")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -301,6 +323,30 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.975]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Hotbar:anchor_top")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Hotbar:anchor_bottom")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
 }
 
 [sub_resource type="Animation" id="Animation_c23fc"]
@@ -382,7 +428,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("ButtonGroup:anchor_left")
+tracks/6/path = NodePath("Main:anchor_left")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -394,7 +440,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("ButtonGroup:anchor_right")
+tracks/7/path = NodePath("Main:anchor_right")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -428,12 +474,66 @@ tracks/9/keys = {
 "values": [0.0, -75.0]
 }
 
+[sub_resource type="Animation" id="Animation_cajuj"]
+resource_name = "Status"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hotbar:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [2.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hotbar:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [2.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Main:anchor_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0.0, -1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Main:anchor_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q4uqo"]
 _data = {
 "Equipment": SubResource("Animation_pgdh6"),
 "Item": SubResource("Animation_ok5pw"),
 "RESET": SubResource("Animation_if8jo"),
-"Show": SubResource("Animation_c23fc")
+"Show": SubResource("Animation_c23fc"),
+"Status": SubResource("Animation_cajuj")
 }
 
 [node name="Inventory" type="Control"]
@@ -458,6 +558,74 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_hcb5a")
 stretch_mode = 1
+
+[node name="Main" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = 150.0
+offset_right = -45.0
+offset_bottom = -150.0
+grow_vertical = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Main"]
+clip_contents = false
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="ButtonGroup" type="VBoxContainer" parent="Main/Scroll"]
+layout_mode = 2
+
+[node name="HBox0" type="HBoxContainer" parent="Main/Scroll/ButtonGroup"]
+layout_mode = 2
+
+[node name="ItemButton" type="Button" parent="Main/Scroll/ButtonGroup/HBox0"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+text = "inventory.item"
+alignment = 0
+clip_text = true
+
+[node name="EquipmentButton" type="Button" parent="Main/Scroll/ButtonGroup/HBox0"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+text = "inventory.equipment"
+alignment = 0
+clip_text = true
+
+[node name="HBox1" type="HBoxContainer" parent="Main/Scroll/ButtonGroup"]
+layout_mode = 2
+
+[node name="SpecialButton" type="Button" parent="Main/Scroll/ButtonGroup/HBox1"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+text = "inventory.special"
+alignment = 0
+clip_text = true
+
+[node name="CollectionButton" type="Button" parent="Main/Scroll/ButtonGroup/HBox1"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "inventory.collection"
+alignment = 0
+clip_text = true
+
+[node name="HSeparator0" type="HSeparator" parent="Main/Scroll/ButtonGroup"]
+custom_minimum_size = Vector2(405, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="StatusButton" type="Button" parent="Main/Scroll/ButtonGroup"]
+custom_minimum_size = Vector2(405, 45)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_gewfw")
+theme_type_variation = &"BlueButton"
+text = "inventory.status.t"
+alignment = 0
 
 [node name="Panel_u" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -496,50 +664,6 @@ grow_vertical = 0
 shortcut = SubResource("Shortcut_q52yj")
 text = "button.back"
 
-[node name="ButtonGroup" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -1.0
-anchor_bottom = 1.0
-offset_left = 45.0
-offset_top = 150.0
-offset_bottom = -150.0
-grow_vertical = 2
-
-[node name="HBox0" type="HBoxContainer" parent="ButtonGroup"]
-layout_mode = 2
-
-[node name="ItemButton" type="Button" parent="ButtonGroup/HBox0"]
-custom_minimum_size = Vector2(150, 100)
-layout_mode = 2
-text = "inventory.item"
-alignment = 0
-clip_text = true
-
-[node name="EquipmentButton" type="Button" parent="ButtonGroup/HBox0"]
-custom_minimum_size = Vector2(250, 100)
-layout_mode = 2
-text = "inventory.equipment"
-alignment = 0
-clip_text = true
-
-[node name="HBox1" type="HBoxContainer" parent="ButtonGroup"]
-layout_mode = 2
-
-[node name="SpecialButton" type="Button" parent="ButtonGroup/HBox1"]
-custom_minimum_size = Vector2(250, 100)
-layout_mode = 2
-text = "inventory.special"
-alignment = 0
-clip_text = true
-
-[node name="CollectionButton" type="Button" parent="ButtonGroup/HBox1"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-text = "inventory.collection"
-alignment = 0
-clip_text = true
-
 [node name="ItemInv" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -552,7 +676,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ItemList" type="Tree" parent="ItemInv"]
-clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
@@ -580,7 +703,7 @@ stretch = true
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(798, 296)
 render_target_update_mode = 0
 
 [node name="MeshView2d" parent="ItemInv/Preview/View/Viewport" instance=ExtResource("4_uebq1")]
@@ -601,7 +724,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EquipmentList" type="Tree" parent="EquipmentInv"]
-clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
@@ -655,7 +777,7 @@ stretch = true
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(758, 464)
 render_target_update_mode = 0
 
 [node name="MeshView2d" parent="EquipmentInv/Preview/View/Viewport" instance=ExtResource("4_uebq1")]
@@ -670,17 +792,90 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -2)
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Hotbar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 2.0
+anchor_bottom = 2.0
+offset_left = 45.0
+offset_top = -345.0
+offset_right = 419.0
+offset_bottom = -125.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ln0lj")
+
+[node name="VBox" type="VBoxContainer" parent="Hotbar"]
+layout_mode = 2
+
+[node name="ToolHotBarTitle" type="Label" parent="Hotbar/VBox"]
+layout_mode = 2
+text = "inventory.equipment.tool"
+
+[node name="ToolHBox" type="HBoxContainer" parent="Hotbar/VBox"]
+layout_mode = 2
+
+[node name="ToolHotbar0" type="Button" parent="Hotbar/VBox/ToolHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ToolHotbar1" type="Button" parent="Hotbar/VBox/ToolHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ToolHotbar2" type="Button" parent="Hotbar/VBox/ToolHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ToolHotbar3" type="Button" parent="Hotbar/VBox/ToolHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ToolHotbar4" type="Button" parent="Hotbar/VBox/ToolHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ItemHotBarTitle" type="Label" parent="Hotbar/VBox"]
+layout_mode = 2
+text = "inventory.item.item"
+
+[node name="ItemHBox" type="HBoxContainer" parent="Hotbar/VBox"]
+layout_mode = 2
+
+[node name="ItemHotbar0" type="Button" parent="Hotbar/VBox/ItemHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ItemHotbar1" type="Button" parent="Hotbar/VBox/ItemHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ItemHotbar2" type="Button" parent="Hotbar/VBox/ItemHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ItemHotbar3" type="Button" parent="Hotbar/VBox/ItemHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ItemHotbar4" type="Button" parent="Hotbar/VBox/ItemHBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="ItemChooseWindow" parent="Hotbar" instance=ExtResource("5_bckn1")]
+visible = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_q4uqo")
 }
 
+[connection signal="pressed" from="Main/Scroll/ButtonGroup/HBox0/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="Main/Scroll/ButtonGroup/HBox0/EquipmentButton" to="." method="_on_equipment_button_pressed"]
+[connection signal="pressed" from="Main/Scroll/ButtonGroup/StatusButton" to="." method="_on_status_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="ButtonGroup/HBox0/ItemButton" to="." method="_on_item_button_pressed"]
-[connection signal="pressed" from="ButtonGroup/HBox0/EquipmentButton" to="." method="_on_equipment_button_pressed"]
 [connection signal="column_title_clicked" from="ItemInv/ItemList" to="." method="_on_item_list_column_title_clicked"]
 [connection signal="item_selected" from="ItemInv/ItemList" to="." method="_on_item_list_item_selected"]
 [connection signal="column_title_clicked" from="EquipmentInv/EquipmentList" to="." method="_on_equipment_list_column_title_clicked"]
 [connection signal="item_selected" from="EquipmentInv/EquipmentList" to="." method="_on_equipment_list_item_selected"]
+[connection signal="on_item_select" from="Hotbar/ItemChooseWindow" to="." method="_on_item_choose_window_on_item_select"]
 
 [editable path="EquipmentInv/Preview/View/Viewport/MeshView2d"]

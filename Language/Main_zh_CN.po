@@ -165,6 +165,9 @@ msgstr " 收藏"
 msgid "inventory.collection"
 msgstr "\n\n\n收藏"
 
+msgid "inventory.status.t"
+msgstr " 状态"
+
 ####----------Commonly----------####
 #----------Option----------#
 msgid "button.back"
@@ -191,3 +194,9 @@ msgstr "性能"
 
 msgid "equipment.durability"
 msgstr "耐久"
+
+msgid "hotbar.unequip"
+msgstr "卸下"
+
+msgid "hotbar.empty"
+msgstr "空"

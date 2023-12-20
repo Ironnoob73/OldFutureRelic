@@ -32,8 +32,8 @@ func _ready():
 	# Lock Mouse.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	pause_menu.visible = false
-	inventory_menu.visible = false
+	pause_menu.hide()
+	inventory_menu.hide()
 	
 func _input(event):
 	# Player camera.
@@ -47,7 +47,7 @@ func _unhandled_key_input(_event):
 		if current_menu == "HUD":
 			current_menu = "Pause"
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			pause_menu.visible = true
+			pause_menu.show()
 		elif current_menu == "Inventory":
 			current_menu = "HUD"
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

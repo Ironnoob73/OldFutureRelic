@@ -99,9 +99,3 @@ func _on_refresh_button_pressed():
 #Launch game
 func _on_launch_button_pressed():
 	Global.load_world_info(beginning_menu.get_child(beginning_menu.current_index).name,Vector3(0.0,100.0,0.0))
-
-
-func _on_online_pressed():
-	var trail_tween = get_tree().create_tween()
-	trail_tween.tween_property($Online/Label.label_settings, "font_color:a", 0.0, 0.5)
-	trail_tween.tween_property($Online/Label.label_settings, "font_color:a", 1.0, 0.5)

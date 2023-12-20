@@ -20,7 +20,7 @@ func _unhandled_input(_event):
 func _on_resume_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_parent().current_menu = "HUD"
-	visible = false
+	hide()
 	
 func _on_options_button_pressed():
 	current_menu = "Options"
@@ -36,7 +36,7 @@ func _on_exit_button_pressed():
 	escape_released = false
 	animation.play("Exit")
 func _on_confirm_button_pressed():
-	visible = false
+	hide()
 	Global.back_to_title()
 func _on_cancel_button_pressed():
 	if current_menu == "Exit":

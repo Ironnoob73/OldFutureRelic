@@ -56,7 +56,7 @@ func _on_option_button_item_selected(index):
 	Global.window_min_limit()
 #Choose data path
 func _on_datapath_button_pressed():
-	path_choose.visible = true
+	path_choose.show()
 func _on_path_choose_dir_selected(dir):
 	Global.DATA_PATH = dir
 	DataPath.text = Global.DATA_PATH
@@ -67,7 +67,7 @@ func _on_fullscreen_button_toggled(toggled_on):
 	if toggled_on == true :
 		if DisplayServer.window_get_mode() != 2:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		else :	fullscreen_warn.visible = true
+		else :	fullscreen_warn.show()
 	else :
 		while DisplayServer.window_get_mode() != 0:
 			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
@@ -77,7 +77,7 @@ func _on_fullscreen_button_toggled(toggled_on):
 	Global.save_config()
 func _on_fullscreen_warn_close_requested():
 	await get_tree().create_timer(0.0001).timeout
-	fullscreen_warn.visible = true
+	fullscreen_warn.show()
 #Scale
 func _on_scale_button_value_changed(value):
 	ProjectSettings.set_setting("display/window/stretch/scale",value)

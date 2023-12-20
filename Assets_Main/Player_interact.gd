@@ -99,9 +99,10 @@ func dig(center: Vector3i):
 		_terrain_tool.do_point(center)
 		create_trail(Color(1.0,0.0,0.0))
 	refresh_bp_tool()
+	_terrain.save_modified_blocks()
 	
 func place_detect(center: Vector3i):
-	if block_lib.get_model(current_block) and inventory.get_item_count(block_lib.get_model(current_block).resource_name) > 0:
+	if block_lib.get_model(current_block) and inventory.get_item_count_from_en(block_lib.get_model(current_block).resource_name) > 0:
 		inventory.remove_item(block_lib.get_model(current_block).resource_name)
 		_terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
 		_terrain_tool.value = current_block
@@ -111,7 +112,7 @@ func place_detect(center: Vector3i):
 
 func refresh_bp_tool():
 	var block_name = block_lib.get_model(current_block).resource_name
-	HandHeldItem.refresh_screen(AllItems.get_tran_from_name(block_name),AllItems.get_icon_from_name(block_name),inventory.get_item_count(block_name))
+	HandHeldItem.refresh_screen(AllItems.get_tran_from_name(block_name),AllItems.get_icon_from_name(block_name),inventory.get_item_count_from_en(block_name))
 
 func create_trail(light_color:Color):
 	var trail = load("res://Resources/Tool/BlockPlacer/trail.tscn").instantiate()

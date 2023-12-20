@@ -165,6 +165,9 @@ msgstr " Collections"
 msgid "inventory.collection"
 msgstr "\n\n\nCollections"
 
+msgid "inventory.status.t"
+msgstr " Status"
+
 ####----------Commonly----------####
 #----------Option----------#
 msgid "button.back"
@@ -192,3 +195,9 @@ msgstr "Performance"
 
 msgid "equipment.durability"
 msgstr "Durability"
+
+msgid "hotbar.unequip"
+msgstr "Unequip"
+
+msgid "hotbar.empty"
+msgstr "Empty"
