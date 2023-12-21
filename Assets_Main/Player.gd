@@ -15,15 +15,18 @@ const FRICTION = 0.3
 @onready var pause_menu = $Pause_menu
 @onready var inventory_menu = $Inventory
 
-@onready var voxel_interact = $PlayerCam/VoxelInteractRay
+#@onready var voxel_interact = $PlayerCam/VoxelInteractRay
 
 @onready var first_person_cam = $PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam
+@onready var hand_held = $PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld
 
 var INERTIA:Vector2 = Vector2.ZERO
 
 var current_menu = "HUD"
 
 @export var Inventory : InventoryClass
+var current_hotbar : int = 0
+@onready var current_hotbar_hud = $Label
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -34,6 +37,7 @@ func _ready():
 	
 	pause_menu.hide()
 	inventory_menu.hide()
+	refresh_handheld(current_hotbar)
 	
 func _input(event):
 	# Player camera.
@@ -41,7 +45,7 @@ func _input(event):
 		rotate_y(-deg_to_rad(event.relative.x * Global.mouse_sens))
 		player_camera.rotate_x(-deg_to_rad(event.relative.y * Global.mouse_sens))
 		player_camera.rotation.x = clamp(player_camera.rotation.x,deg_to_rad(-90),deg_to_rad(90))
-func _unhandled_key_input(_event):
+func _unhandled_input(event):
 	# Pause.
 	if Input.is_action_just_pressed("pause"):
 		if current_menu == "HUD":
@@ -65,6 +69,18 @@ func _unhandled_key_input(_event):
 			current_menu = "HUD"
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			inventory_menu.close_inventory()
+	#Hotbar
+	if !(event is InputEventMouseMotion) and event.pressed:
+		if Input.is_action_just_pressed("roll_down"):
+			if current_hotbar < 4 :	current_hotbar += 1
+			else :	current_hotbar = 0
+			current_hotbar_hud.text = str(current_hotbar)
+			refresh_handheld(current_hotbar)
+		elif Input.is_action_just_pressed("roll_up"):
+			if current_hotbar > 0 :	current_hotbar -= 1
+			else :	current_hotbar = 4
+			current_hotbar_hud.text = str(current_hotbar)
+			refresh_handheld(current_hotbar)
 	
 func _physics_process(_delta):
 	# Record Inerita & Add the gravity.
@@ -112,3 +128,17 @@ func _physics_process(_delta):
 
 func _process(_delta):
 	first_person_cam.global_transform = player_camera.global_transform
+	
+func refresh_handheld(index:int):
+	if index == current_hotbar:
+		if hand_held.get_children():
+			hand_held.get_child(0).queue_free()
+			hand_held.get_child(0).free()
+		if Inventory.ToolHotbar[current_hotbar]:
+			if Inventory.ToolHotbar[current_hotbar].equipment.scene:
+				hand_held.add_child(Inventory.ToolHotbar[current_hotbar].equipment.scene.instantiate())
+				hand_held.get_child(0)._tool_init()
+			else :
+				var handheld_model = MeshInstance3D.new()
+				handheld_model.mesh = Inventory.ToolHotbar[current_hotbar].equipment.model
+				hand_held.add_child(handheld_model)

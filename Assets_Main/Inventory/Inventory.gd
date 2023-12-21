@@ -226,3 +226,5 @@ func _on_item_choose_window_on_item_select(index):
 		if index != -1 :	inventory.ItemHotbar[current_hotbar_index] = inventory.itemStack[index].item
 		else :	inventory.ItemHotbar[current_hotbar_index] = null
 	hotbar_refresh()
+	get_parent().refresh_handheld(current_hotbar_index)
+	

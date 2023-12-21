@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk6ihg1vf71uf"]
+[gd_scene load_steps=18 format=3 uid="uid://bk6ihg1vf71uf"]
 
 [ext_resource type="Script" path="res://Assets_Main/Player.gd" id="1_twfth"]
 [ext_resource type="Resource" uid="uid://baju0uanbxmod" path="res://Assets_Main/Inventory/Player_inventory.tres" id="2_0d1nj"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bledb03vcydda" path="res://Assets_Main/Pause_menu.tscn" id="2_ghaer"]
 [ext_resource type="Shader" path="res://Assets_Main/CrossHair.gdshader" id="2_ksj8u"]
 [ext_resource type="PackedScene" uid="uid://dtcknsjsvxg38" path="res://Assets_Main/Inventory/Inventory.tscn" id="3_grckl"]
-[ext_resource type="PackedScene" uid="uid://cemsonsnw348p" path="res://Resources/Tool/BlockPlacer/BlockPlacer.tscn" id="5_adbxb"]
 [ext_resource type="Shader" path="res://Assets_Main/Cursor.gdshader" id="5_u5uvm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72mwx"]
@@ -104,8 +103,6 @@ cull_mask = 16
 [node name="HandHeld" type="Node3D" parent="PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.45, -0.25, -0.5)
 
-[node name="BlockPlacer" parent="PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld" instance=ExtResource("5_adbxb")]
-
 [node name="VoxelInteractRay" type="RayCast3D" parent="PlayerCam"]
 target_position = Vector3(0, 0, -20)
 collision_mask = 56
@@ -126,3 +123,7 @@ top_level = true
 layers = 6
 mesh = SubResource("BoxMesh_33j34")
 material = SubResource("ShaderMaterial_yjrry")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="EToolClass" load_steps=4 format=3 uid="uid://7i1mom7pwv8p"]
+[gd_resource type="Resource" script_class="EToolClass" load_steps=5 format=3 uid="uid://7i1mom7pwv8p"]
 
 [ext_resource type="Texture2D" uid="uid://be151ueubkmgb" path="res://Resources/Tool/BlockPlacer/block_placer.svg" id="1_pco53"]
 [ext_resource type="ArrayMesh" uid="uid://bu05yjf2svybh" path="res://Resources/Tool/BlockPlacer/ModelMesh.tres" id="1_s2el4"]
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Equipment/EToolClass.gd" id="2_kbfjc"]
+[ext_resource type="PackedScene" uid="uid://cemsonsnw348p" path="res://Resources/Tool/BlockPlacer/BlockPlacer.tscn" id="3_lon80"]
 
 [resource]
 script = ExtResource("2_kbfjc")
 tool_type = "special"
+scene = ExtResource("3_lon80")
 performance = 999.0
 durability = 10200.0
 name1 = "tool.godfinger.subname"
