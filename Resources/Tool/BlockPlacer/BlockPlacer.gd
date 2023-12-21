@@ -8,7 +8,7 @@ extends MeshInstance3D
 @onready var ToolBlockIcon = $Viewport/ScreenTexture/Main/BlockIcon
 @onready var ToolLeftNumber = $Viewport/ScreenTexture/Main/LeftNumber
 
-@onready var InteractRay = get_node("/root/Happend/Player/PlayerCam/VoxelInteractRay")
+@onready var InteractRay = get_node("/root/Happend/Player/PlayerCam/InteractRay")
 
 var current_block : int = 1
 

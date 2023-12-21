@@ -13,7 +13,7 @@ center_offset = Vector3(0.123, 0.093, 0)
 orientation = 0
 
 [node name="ModelScene" type="MeshInstance3D"]
-layers = 16
+layers = 19
 ignore_occlusion_culling = true
 mesh = ExtResource("1_j6y5y")
 script = ExtResource("6_oi4h2")

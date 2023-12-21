@@ -15,8 +15,6 @@ const FRICTION = 0.3
 @onready var pause_menu = $Pause_menu
 @onready var inventory_menu = $Inventory
 
-#@onready var voxel_interact = $PlayerCam/VoxelInteractRay
-
 @onready var first_person_cam = $PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam
 @onready var hand_held = $PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld
 
@@ -26,7 +24,7 @@ var current_menu = "HUD"
 
 @export var Inventory : InventoryClass
 var current_hotbar : int = 0
-@onready var current_hotbar_hud = $Label
+@onready var HUD_hotbar = $HudHotbar
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -74,12 +72,10 @@ func _unhandled_input(event):
 		if Input.is_action_just_pressed("roll_down"):
 			if current_hotbar < 4 :	current_hotbar += 1
 			else :	current_hotbar = 0
-			current_hotbar_hud.text = str(current_hotbar)
 			refresh_handheld(current_hotbar)
 		elif Input.is_action_just_pressed("roll_up"):
 			if current_hotbar > 0 :	current_hotbar -= 1
 			else :	current_hotbar = 4
-			current_hotbar_hud.text = str(current_hotbar)
 			refresh_handheld(current_hotbar)
 	
 func _physics_process(_delta):
@@ -130,15 +126,21 @@ func _process(_delta):
 	first_person_cam.global_transform = player_camera.global_transform
 	
 func refresh_handheld(index:int):
+	var handheld_tool = Inventory.ToolHotbar[current_hotbar]
 	if index == current_hotbar:
 		if hand_held.get_children():
 			hand_held.get_child(0).queue_free()
 			hand_held.get_child(0).free()
-		if Inventory.ToolHotbar[current_hotbar]:
-			if Inventory.ToolHotbar[current_hotbar].equipment.scene:
-				hand_held.add_child(Inventory.ToolHotbar[current_hotbar].equipment.scene.instantiate())
+		if handheld_tool:
+			if handheld_tool.equipment.scene:
+				hand_held.add_child(handheld_tool.equipment.scene.instantiate())
 				hand_held.get_child(0)._tool_init()
 			else :
 				var handheld_model = MeshInstance3D.new()
-				handheld_model.mesh = Inventory.ToolHotbar[current_hotbar].equipment.model
+				handheld_model.mesh = handheld_tool.equipment.model
 				hand_held.add_child(handheld_model)
+			HUD_hotbar.set_info(current_hotbar,\
+				handheld_tool.equipment.name0,\
+				handheld_tool.equipment.icon,\
+				((handheld_tool.equipment.durability - handheld_tool.damage)/handheld_tool.equipment.durability)*100)
+		else :	HUD_hotbar.set_info(current_hotbar)

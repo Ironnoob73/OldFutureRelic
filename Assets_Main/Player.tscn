@@ -1,14 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://bk6ihg1vf71uf"]
+[gd_scene load_steps=19 format=3 uid="uid://bk6ihg1vf71uf"]
 
 [ext_resource type="Script" path="res://Assets_Main/Player.gd" id="1_twfth"]
 [ext_resource type="Resource" uid="uid://baju0uanbxmod" path="res://Assets_Main/Inventory/Player_inventory.tres" id="2_0d1nj"]
 [ext_resource type="Script" path="res://Assets_Main/Player_interact.gd" id="2_fls23"]
 [ext_resource type="PackedScene" uid="uid://bledb03vcydda" path="res://Assets_Main/Pause_menu.tscn" id="2_ghaer"]
 [ext_resource type="Shader" path="res://Assets_Main/CrossHair.gdshader" id="2_ksj8u"]
+[ext_resource type="PackedScene" uid="uid://cerd3suomf3u2" path="res://Assets_Main/PlayerHUDHotbar.tscn" id="3_fnuc4"]
 [ext_resource type="PackedScene" uid="uid://dtcknsjsvxg38" path="res://Assets_Main/Inventory/Inventory.tscn" id="3_grckl"]
 [ext_resource type="Shader" path="res://Assets_Main/Cursor.gdshader" id="5_u5uvm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_72mwx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxpu5"]
 shader = ExtResource("2_ksj8u")
 
 [sub_resource type="Gradient" id="Gradient_srgr6"]
@@ -16,7 +17,7 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.5)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yxjjg"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vsdsi"]
 gradient = SubResource("Gradient_srgr6")
 width = 3
 height = 3
@@ -61,7 +62,7 @@ Inventory = ExtResource("2_0d1nj")
 
 [node name="CrossHair" type="TextureRect" parent="."]
 texture_repeat = 2
-material = SubResource("ShaderMaterial_72mwx")
+material = SubResource("ShaderMaterial_vxpu5")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -73,7 +74,7 @@ offset_right = 4.5
 offset_bottom = 4.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_yxjjg")
+texture = SubResource("GradientTexture2D_vsdsi")
 
 [node name="PlayerColl" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_a500n")
@@ -103,7 +104,7 @@ cull_mask = 16
 [node name="HandHeld" type="Node3D" parent="PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.45, -0.25, -0.5)
 
-[node name="VoxelInteractRay" type="RayCast3D" parent="PlayerCam"]
+[node name="InteractRay" type="RayCast3D" parent="PlayerCam"]
 target_position = Vector3(0, 0, -20)
 collision_mask = 56
 script = ExtResource("2_fls23")
@@ -113,6 +114,14 @@ script = ExtResource("2_fls23")
 [node name="StandingDetected" type="ShapeCast3D" parent="."]
 shape = SubResource("BoxShape3D_stt28")
 target_position = Vector3(0, 0.65, 0)
+
+[node name="HudHotbar" parent="." instance=ExtResource("3_fnuc4")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
 
 [node name="Inventory" parent="." instance=ExtResource("3_grckl")]
 
@@ -124,6 +133,4 @@ layers = 6
 mesh = SubResource("BoxMesh_33j34")
 material = SubResource("ShaderMaterial_yjrry")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[editable path="HudHotbar"]
