@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 @onready var screen = $Screen.material_override
 @onready var viewport = $Viewport
+@onready var animation = $AnimationPlayer
 
 @onready var ToolMode = $Viewport/ScreenTexture/Main/Mode
 @onready var ToolBlockName = $Viewport/ScreenTexture/Main/BlockName
@@ -41,16 +42,21 @@ func _unhandled_input(event):
 					place_detect(pos)
 	#Switch block
 		if InteractRay.Player.current_menu == "HUD" and event.pressed:
-			if Input.is_action_just_pressed("tab_right"):
+			if Input.is_action_just_pressed("tab_right") or Input.is_action_just_pressed("roll_down") and Input.is_action_pressed("tool_function_switch"):
 				current_block += 1
 				if current_block >= InteractRay.block_lib.models.size():
 					current_block = 1
 				_tool_init()
-			elif Input.is_action_just_pressed("tab_left"):
+			elif Input.is_action_just_pressed("tab_left") or Input.is_action_just_pressed("roll_up") and Input.is_action_pressed("tool_function_switch"):
 				current_block -= 1
 				if current_block <= 0:
 					current_block = InteractRay.block_lib.models.size() - 1
 				_tool_init()
+				
+		if Input.is_action_just_pressed("tool_function_switch"):
+			animation.play("Switch_block")
+		if Input.is_action_just_released("tool_function_switch"):
+			animation.play_backwards("Switch_block")
 				
 func can_place_voxel_at(pos: Vector3i):
 	var space_state = InteractRay.get_viewport().get_world_3d().get_direct_space_state()

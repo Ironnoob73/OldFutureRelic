@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cemsonsnw348p"]
+[gd_scene load_steps=10 format=3 uid="uid://cemsonsnw348p"]
 
 [ext_resource type="ArrayMesh" uid="uid://bu05yjf2svybh" path="res://Resources/Tool/BlockPlacer/ModelMesh.tres" id="1_j6y5y"]
 [ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/BlockPlacer.gd" id="6_oi4h2"]
@@ -12,9 +12,102 @@ size = Vector2(0.075, 0.117)
 center_offset = Vector3(0.123, 0.093, 0)
 orientation = 0
 
+[sub_resource type="Animation" id="Animation_5klcy"]
+resource_name = "Pick"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.523599), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rq2g6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7x14s"]
+resource_name = "Switch_block"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.261799, -0.261799)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjalm"]
+_data = {
+"Pick": SubResource("Animation_5klcy"),
+"RESET": SubResource("Animation_rq2g6"),
+"Switch_block": SubResource("Animation_7x14s")
+}
+
 [node name="ModelScene" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 layers = 19
 ignore_occlusion_culling = true
+gi_lightmap_scale = 1
 mesh = ExtResource("1_j6y5y")
 script = ExtResource("6_oi4h2")
 
@@ -29,5 +122,11 @@ own_world_3d = true
 size = Vector2i(150, 235)
 
 [node name="ScreenTexture" parent="Viewport" instance=ExtResource("7_k2oyq")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qjalm")
+}
+autoplay = "Pick"
 
 [editable path="Viewport/ScreenTexture"]

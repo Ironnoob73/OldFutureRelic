@@ -68,15 +68,32 @@ func _unhandled_input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			inventory_menu.close_inventory()
 	#Hotbar
-	if !(event is InputEventMouseMotion) and event.pressed:
-		if Input.is_action_just_pressed("roll_down"):
-			if current_hotbar < 4 :	current_hotbar += 1
-			else :	current_hotbar = 0
+	if !Input.is_action_pressed("tool_function_switch"):
+		if Input.is_action_just_pressed("hotbar_tool_0") :
+			current_hotbar = 0
 			refresh_handheld(current_hotbar)
-		elif Input.is_action_just_pressed("roll_up"):
-			if current_hotbar > 0 :	current_hotbar -= 1
-			else :	current_hotbar = 4
+		if Input.is_action_just_pressed("hotbar_tool_1") :
+			current_hotbar = 1
 			refresh_handheld(current_hotbar)
+		if Input.is_action_just_pressed("hotbar_tool_2") :
+			current_hotbar = 2
+			refresh_handheld(current_hotbar)
+		if Input.is_action_just_pressed("hotbar_tool_3") :
+			current_hotbar = 3
+			refresh_handheld(current_hotbar)
+		if Input.is_action_just_pressed("hotbar_tool_4") :
+			current_hotbar = 4
+			refresh_handheld(current_hotbar)
+			
+		if !(event is InputEventMouseMotion) and event.pressed:
+			if Input.is_action_just_pressed("roll_down"):
+				if current_hotbar < 4 :	current_hotbar += 1
+				else :	current_hotbar = 0
+				refresh_handheld(current_hotbar)
+			elif Input.is_action_just_pressed("roll_up"):
+				if current_hotbar > 0 :	current_hotbar -= 1
+				else :	current_hotbar = 4
+				refresh_handheld(current_hotbar)
 	
 func _physics_process(_delta):
 	# Record Inerita & Add the gravity.
