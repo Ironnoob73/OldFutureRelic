@@ -24,6 +24,7 @@ var current_menu = "HUD"
 
 @export var Inventory : InventoryClass
 var current_hotbar : int = 0
+var handheld_tool : EqMetaClass
 @onready var HUD_hotbar = $HudHotbar
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -143,7 +144,7 @@ func _process(_delta):
 	first_person_cam.global_transform = player_camera.global_transform
 	
 func refresh_handheld(index:int):
-	var handheld_tool = Inventory.ToolHotbar[current_hotbar]
+	handheld_tool = Inventory.ToolHotbar[current_hotbar]
 	if index == current_hotbar:
 		if hand_held.get_children():
 			hand_held.get_child(0).queue_free()
@@ -156,8 +157,10 @@ func refresh_handheld(index:int):
 				var handheld_model = MeshInstance3D.new()
 				handheld_model.mesh = handheld_tool.equipment.model
 				hand_held.add_child(handheld_model)
-			HUD_hotbar.set_info(current_hotbar,\
-				handheld_tool.equipment.name0,\
-				handheld_tool.equipment.icon,\
-				((handheld_tool.equipment.durability - handheld_tool.damage)/handheld_tool.equipment.durability)*100)
+			refresh_handheld_info()
 		else :	HUD_hotbar.set_info(current_hotbar)
+func refresh_handheld_info():
+	HUD_hotbar.set_info(current_hotbar,\
+		handheld_tool.equipment.name0,\
+		handheld_tool.equipment.icon,\
+		((handheld_tool.equipment.durability - handheld_tool.damage)/handheld_tool.equipment.durability)*100)

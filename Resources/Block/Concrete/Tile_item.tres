@@ -2,19 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://dxuc447ihm2uo" path="res://Resources/Block/Concrete/concrete.svg" id="1_bp3wv"]
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Item/IBlockClass.gd" id="1_exmgc"]
-[ext_resource type="Texture2D" uid="uid://qk3irepq32mt" path="res://Resources/Block/Concrete/Texture.tres" id="1_ycqpv"]
 [ext_resource type="Shader" path="res://Resources/Block/BlockSixFaces.gdshader" id="2_ovit8"]
+[ext_resource type="Texture2D" uid="uid://b3tng82btsq57" path="res://Resources/Block/Concrete/Texture_32x.tres" id="3_sgons"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_arusa"]
 render_priority = 0
 shader = ExtResource("2_ovit8")
-shader_parameter/albedo = ExtResource("1_ycqpv")
+shader_parameter/albedo = ExtResource("3_sgons")
 
 [sub_resource type="BoxMesh" id="BoxMesh_lyotc"]
 material = SubResource("ShaderMaterial_arusa")
 
 [resource]
 script = ExtResource("1_exmgc")
+hardness = 100.0
 name0 = "tile.concrete"
 icon = ExtResource("1_bp3wv")
 model = SubResource("BoxMesh_lyotc")

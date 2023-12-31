@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bys33qmaoyw20" path="res://default_environment.tscn" id="1_jc240"]
 [ext_resource type="PackedScene" uid="uid://bk6ihg1vf71uf" path="res://Assets_Main/Player.tscn" id="1_qmywt"]
 [ext_resource type="VoxelBlockyLibrary" uid="uid://btij0v7fevj3g" path="res://Resources/Block/BlockLib_basic.tres" id="4_5idhv"]
-[ext_resource type="VoxelStreamScript" uid="uid://wkauv1r5gk6e" path="res://Assets_Main/Terrain/VoxelStream.tres" id="4_efymv"]
+[ext_resource type="VoxelGeneratorFlat" uid="uid://be5snufw2m7ds" path="res://Map/Tutorial_generator_block.tres" id="4_lwm8j"]
 [ext_resource type="Script" path="res://Assets_Main/BlockTerrain.gd" id="6_t138f"]
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_65jvy"]
@@ -26,13 +26,12 @@ script = ExtResource("1_e8in2")
 collision_mask = 59
 
 [node name="BlockTerrain" type="VoxelTerrain" parent="."]
-stream = ExtResource("4_efymv")
+generator = ExtResource("4_lwm8j")
 mesher = SubResource("VoxelMesherBlocky_65jvy")
 gi_mode = 2
 cast_shadow = 2
 collision_layer = 9
 collision_mask = 7
-run_stream_in_editor = false
 script = ExtResource("6_t138f")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

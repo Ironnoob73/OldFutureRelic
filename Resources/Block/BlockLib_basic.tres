@@ -1,7 +1,8 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=6 format=3 uid="uid://btij0v7fevj3g"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=11 format=3 uid="uid://btij0v7fevj3g"]
 
 [ext_resource type="Material" uid="uid://dl7h4e8oiamf1" path="res://Resources/Block/Dummy/Material.tres" id="1_b76pa"]
-[ext_resource type="Material" uid="uid://coih377jr25p4" path="res://Resources/Block/Concrete/Material.tres" id="2_dmey5"]
+[ext_resource type="Shader" path="res://Resources/Block/Concrete/Material.gdshader" id="2_fi2pa"]
+[ext_resource type="Texture2D" uid="uid://b3tng82btsq57" path="res://Resources/Block/Concrete/Texture_32x.tres" id="3_itt0i"]
 
 [sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_md4tr"]
 resource_name = "air"
@@ -11,9 +12,30 @@ resource_name = "dummy"
 material_override_0 = ExtResource("1_b76pa")
 atlas_size_in_tiles = Vector2i(1, 1)
 
+[sub_resource type="Gradient" id="Gradient_mbc0m"]
+colors = PackedColorArray(0.498039, 0.498039, 0.498039, 1, 0.74902, 0.74902, 0.74902, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x15uq"]
+noise_type = 3
+frequency = 0.025
+fractal_type = 3
+domain_warp_enabled = true
+domain_warp_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yev1g"]
+color_ramp = SubResource("Gradient_mbc0m")
+noise = SubResource("FastNoiseLite_x15uq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cty8v"]
+render_priority = 0
+shader = ExtResource("2_fi2pa")
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_yev1g")
+shader_parameter/texture_albedo_over = ExtResource("3_itt0i")
+
 [sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_6aisr"]
 resource_name = "concrete"
-material_override_0 = ExtResource("2_dmey5")
+material_override_0 = SubResource("ShaderMaterial_cty8v")
 atlas_size_in_tiles = Vector2i(1, 1)
 
 [resource]

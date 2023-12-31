@@ -3,6 +3,7 @@ extends MeshInstance3D
 @onready var screen = $Screen.material_override
 @onready var viewport = $Viewport
 @onready var animation = $AnimationPlayer
+@onready var Player = get_node("/root/Happend/Player")
 
 @onready var ToolMode = $Viewport/ScreenTexture/Main/Mode
 @onready var ToolBlockName = $Viewport/ScreenTexture/Main/BlockName
@@ -78,7 +79,8 @@ func dig(center: Vector3i):
 		InteractRay._terrain_tool.do_point(center)
 		create_trail(Color(1.0,0.0,0.0))
 	refresh_screen()
-	InteractRay._terrain.save_modified_blocks()
+	Player.Inventory.ToolHotbar[Player.current_hotbar].damage += randf_range(0.0,2.0)
+	#InteractRay._terrain.save_modified_blocks()
 	
 func place_detect(center: Vector3i):
 	if InteractRay.block_lib.get_model(current_block) and InteractRay.inventory.get_item_count_from_en(InteractRay.block_lib.get_model(current_block).resource_name) > 0:
@@ -88,6 +90,7 @@ func place_detect(center: Vector3i):
 		InteractRay._terrain_tool.do_point(center)
 		create_trail(Color(0.0,1.0,1.0))
 	refresh_screen()
+	Player.Inventory.ToolHotbar[Player.current_hotbar].damage += randf_range(0.0,2.0)
 
 func create_trail(light_color:Color):
 	var trail = load("res://Resources/Tool/BlockPlacer/trail.tscn").instantiate()
