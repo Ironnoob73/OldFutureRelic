@@ -9,7 +9,7 @@ bg_color = Color(0.247059, 0.247059, 0.247059, 0.498039)
 bg_color = Color(0.498039, 0.247059, 0.247059, 0.498039)
 
 [sub_resource type="Gradient" id="Gradient_125rg"]
-colors = PackedColorArray(0, 1, 0, 1, 0, 0.74902, 0, 1)
+colors = PackedColorArray(0, 0.74902, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_654ha"]
 gradient = SubResource("Gradient_125rg")

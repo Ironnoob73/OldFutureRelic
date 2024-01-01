@@ -15,6 +15,7 @@ material = SubResource("ShaderMaterial_txw8g")
 
 [resource]
 script = ExtResource("3_ylj1f")
+hardness = 1.0
 name0 = "tile.dummy"
 icon = ExtResource("1_mcfr8")
 model = SubResource("BoxMesh_26qke")
