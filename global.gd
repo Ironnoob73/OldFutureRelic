@@ -7,6 +7,7 @@ var SAVE_PATH : String = "null"
 var Voxel_useability : bool = false
 #Load world
 var MapPath_block = "null"
+var MapPath_smooth = "null"
 var player_pos = Vector3(0.0,0.0,0.0)
 #In game control
 var mouse_sens = 0.4
@@ -53,6 +54,9 @@ func load_world_info(m_name,player_pos_f = Vector3(0.0,0.0,0.0)):
 	player_pos = player_pos_f
 	MapPath_block = "res://Map/"+m_name+"_generator_block.tres"
 	get_tree().change_scene_to_file("res://Assets_Main/Happend.tscn")
+	MapPath_smooth = "res://Map/"+m_name+"_generator_smooth.tres"
+	if FileAccess.file_exists(MapPath_smooth):
+		get_tree().change_scene_to_file("res://Assets_Main/Happend.tscn")
 
 #Current save
 func current_save_path():

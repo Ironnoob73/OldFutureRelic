@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://vjy54fve2amm"]
+[gd_scene load_steps=5 format=3 uid="uid://vjy54fve2amm"]
 
 [ext_resource type="Theme" uid="uid://c2mgco1emm577" path="res://Title/TitleStyle.tres" id="1_tq046"]
 [ext_resource type="Script" path="res://Title/Beginning.gd" id="2_3xpcg"]
+[ext_resource type="Script" path="res://Title/Begin_info.gd" id="3_pjluw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ngni"]
 bg_color = Color(0, 0.74902, 1, 1)
@@ -46,6 +47,9 @@ focus_next = NodePath("../SpareTime")
 focus_previous = NodePath("../BodyOfMetal")
 text = "beginning.demo.tutorial"
 alignment = 0
+script = ExtResource("3_pjluw")
+map_name = "Demo"
+player_pos = Vector3(0, 100, 0)
 
 [node name="OriginalStory" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(0, 50)
@@ -67,6 +71,9 @@ focus_next = NodePath("../BodyOfMetal")
 focus_previous = NodePath("../Tutorial")
 text = "beginning.original.spare_time"
 alignment = 0
+script = ExtResource("3_pjluw")
+map_name = "OFCRegular"
+player_pos = Vector3(0, 100, 0)
 
 [node name="BodyOfMetal" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 50)

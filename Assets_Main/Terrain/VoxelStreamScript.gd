@@ -29,4 +29,3 @@ func _save_voxel_block(out_buffer:VoxelBuffer, origin_in_voxels:Vector3i, lod:in
 			for iy in range(16):
 				data.append(out_buffer.get_voxel(ix,iy,iz))
 	file.store_buffer(data.compress(1))
-	

@@ -98,4 +98,5 @@ func _on_refresh_button_pressed():
 
 #Launch game
 func _on_launch_button_pressed():
-	Global.load_world_info(beginning_menu.get_child(beginning_menu.current_index).name,Vector3(0.0,100.0,0.0))
+	var selected_button = beginning_menu.get_child(beginning_menu.current_index)
+	Global.load_world_info(selected_button.map_name,selected_button.player_pos)

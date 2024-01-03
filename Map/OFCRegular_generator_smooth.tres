@@ -1,0 +1,10 @@
+[gd_resource type="VoxelGeneratorNoise2D" load_steps=2 format=3 uid="uid://4bt5sy7m0sxf"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_turvc"]
+noise_type = 4
+frequency = 0.0024
+
+[resource]
+height_range = 95.0
+iso_scale = 1.0
+noise = SubResource("FastNoiseLite_turvc")

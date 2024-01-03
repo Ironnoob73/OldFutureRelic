@@ -40,7 +40,7 @@ func _unhandled_input(event):
 				if InteractRay.is_colliding() and !(InteractRay.get_collider() is VoxelTerrain) : pos = InteractRay.hit_point
 				elif hit != null :	pos = hit.previous_position
 				if can_place_voxel_at(pos):
-					place_detect(pos)
+					place(pos)
 	#Switch block
 		if InteractRay.Player.current_menu == "HUD" and event.pressed:
 			if Input.is_action_just_pressed("tab_right") or Input.is_action_just_pressed("roll_down") and Input.is_action_pressed("tool_function_switch"):
@@ -82,7 +82,7 @@ func dig(center: Vector3i):
 	Player.Inventory.ToolHotbar[Player.current_hotbar].damage += randf_range(0.0,2.0)
 	InteractRay._terrain.save_modified_blocks()
 	
-func place_detect(center: Vector3i):
+func place(center: Vector3i):
 	if InteractRay.block_lib.get_model(current_block) and InteractRay.inventory.get_item_count_from_en(InteractRay.block_lib.get_model(current_block).resource_name) > 0:
 		InteractRay.inventory.remove_item(InteractRay.block_lib.get_model(current_block).resource_name)
 		InteractRay._terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
