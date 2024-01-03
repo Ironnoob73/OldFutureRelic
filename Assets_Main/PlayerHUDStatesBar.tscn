@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnrv8gbv38v6n"]
+[gd_scene load_steps=7 format=3 uid="uid://dnrv8gbv38v6n"]
+
+[ext_resource type="Texture2D" uid="uid://b4soesc0r8cwl" path="res://Resources/Image/hp_type/hp_t0.svg" id="1_gcjl0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0115"]
 bg_color = Color(0.247059, 0.247059, 0.247059, 0.498039)
-corner_radius_bottom_right = 25
+corner_radius_bottom_right = 20
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj0r3"]
@@ -19,27 +21,32 @@ texture = SubResource("GradientTexture1D_654ha")
 
 [node name="PlayerHudStatesBar" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
-offset_right = 560.0
+offset_right = 570.0
 offset_bottom = 50.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i0115")
 
 [node name="HBox" type="HBoxContainer" parent="Background"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Type" type="Label" parent="Background/HBox"]
+[node name="MarginContainer" type="MarginContainer" parent="Background/HBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "♥"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Type" type="TextureRect" parent="Background/HBox/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("1_gcjl0")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Bar" type="ProgressBar" parent="Background/HBox"]
 custom_minimum_size = Vector2(0, 25)
@@ -75,6 +82,6 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 25
 text = "100%"
 
-[node name="Empty" type="Container" parent="Background/HBox"]
-custom_minimum_size = Vector2(18, 0)
+[node name="Empty" type="Control" parent="Background/HBox"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2

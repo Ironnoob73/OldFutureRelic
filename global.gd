@@ -1,7 +1,8 @@
 extends Node
 
 const CONFIG_PATH = "user://settings.cfg"
-var DATA_PATH = "user://"
+var DATA_PATH : String = "user://"
+var SAVE_PATH : String = "null"
 #Voxel usability
 var Voxel_useability : bool = false
 #Load world
@@ -53,3 +54,10 @@ func load_world_info(m_name,player_pos_f = Vector3(0.0,0.0,0.0)):
 	MapPath_block = "res://Map/"+m_name+"_generator_block.tres"
 	get_tree().change_scene_to_file("res://Assets_Main/Happend.tscn")
 
+#Current save
+func current_save_path():
+	if SAVE_PATH != "null" :	return SAVE_PATH
+	else :
+		DirAccess.open(DATA_PATH).make_dir_recursive(DATA_PATH + "/TEMP/")
+		SAVE_PATH = DATA_PATH + "/TEMP/"
+		return str(DATA_PATH + "/TEMP/")

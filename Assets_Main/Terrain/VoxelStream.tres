@@ -1,16 +1,6 @@
 [gd_resource type="VoxelStreamScript" load_steps=2 format=3 uid="uid://wkauv1r5gk6e"]
 
-[sub_resource type="GDScript" id="GDScript_yfl2b"]
-script/source = "extends VoxelStreamScript
-
-func _get_used_channels_mask():
-	pass
-func _load_voxel_block(out_buffer:VoxelBuffer, origin_in_voxels:Vector3i, lod:int):
-	return 1
-func _save_voxel_block(out_buffer:VoxelBuffer, origin_in_voxels:Vector3i, lod:int):
-	pass
-"
+[ext_resource type="Script" path="res://Assets_Main/Terrain/VoxelStreamScript.gd" id="1_dll7v"]
 
 [resource]
-save_generator_output = true
-script = SubResource("GDScript_yfl2b")
+script = ExtResource("1_dll7v")

@@ -117,11 +117,6 @@ shape = SubResource("BoxShape3D_stt28")
 target_position = Vector3(0, 0.65, 0)
 
 [node name="HudHotbar" parent="." instance=ExtResource("3_fnuc4")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-grow_horizontal = 0
-grow_vertical = 0
 mouse_filter = 1
 
 [node name="HudStatesBar" parent="." instance=ExtResource("6_b8jq2")]

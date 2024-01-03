@@ -80,7 +80,7 @@ func dig(center: Vector3i):
 		create_trail(Color(1.0,0.0,0.0))
 	refresh_screen()
 	Player.Inventory.ToolHotbar[Player.current_hotbar].damage += randf_range(0.0,2.0)
-	#InteractRay._terrain.save_modified_blocks()
+	InteractRay._terrain.save_modified_blocks()
 	
 func place_detect(center: Vector3i):
 	if InteractRay.block_lib.get_model(current_block) and InteractRay.inventory.get_item_count_from_en(InteractRay.block_lib.get_model(current_block).resource_name) > 0:
