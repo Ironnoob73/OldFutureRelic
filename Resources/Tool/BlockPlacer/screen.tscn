@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://mftuavwg2mms"]
+[gd_scene load_steps=15 format=3 uid="uid://mftuavwg2mms"]
 
+[ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/screen_setting.gd" id="1_lanc1"]
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="1_m2sj6"]
 [ext_resource type="Texture2D" uid="uid://dfw6wwapseug3" path="res://Resources/Block/Dummy/dummy.svg" id="2_m32pi"]
 [ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/scroll_text.gd" id="4_8fweb"]
+[ext_resource type="Shader" path="res://Assets_Main/CrossHair.gdshader" id="4_g1e0y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xc220"]
 shader = ExtResource("1_m2sj6")
@@ -33,11 +35,29 @@ fill_from = Vector2(1, 1)
 [sub_resource type="RichTextEffect" id="RichTextEffect_i0hnd"]
 script = ExtResource("4_8fweb")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcp3x"]
+shader = ExtResource("4_g1e0y")
+
+[sub_resource type="Gradient" id="Gradient_8qj80"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l1ff0"]
+gradient = SubResource("Gradient_8qj80")
+width = 10
+height = 10
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+repeat = 1
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 235.0
+script = ExtResource("1_lanc1")
 
 [node name="Background" type="TextureRect" parent="."]
 texture_filter = 2
@@ -112,3 +132,72 @@ theme_override_font_sizes/font_size = 20
 text = "inventory.item.left"
 horizontal_alignment = 1
 clip_text = true
+
+[node name="Setting" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cursor" type="Sprite2D" parent="Setting"]
+z_index = 1
+material = SubResource("ShaderMaterial_tcp3x")
+texture = SubResource("GradientTexture2D_l1ff0")
+
+[node name="VBox" type="VBoxContainer" parent="Setting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="ModeSwitch" type="HBoxContainer" parent="Setting/VBox"]
+layout_mode = 2
+
+[node name="Left" type="Button" parent="Setting/VBox/ModeSwitch"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "  ◀  "
+flat = true
+
+[node name="Right" type="Button" parent="Setting/VBox/ModeSwitch"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "  ▶  "
+flat = true
+
+[node name="BlockSwitch" type="HBoxContainer" parent="Setting/VBox"]
+layout_mode = 2
+
+[node name="Left" type="Button" parent="Setting/VBox/BlockSwitch"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "◀"
+flat = true
+
+[node name="BlockList" type="Button" parent="Setting/VBox/BlockSwitch"]
+custom_minimum_size = Vector2(90, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+flat = true
+
+[node name="Right" type="Button" parent="Setting/VBox/BlockSwitch"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "▶"
+flat = true
+
+[connection signal="pressed" from="Setting/VBox/BlockSwitch/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Setting/VBox/BlockSwitch/Right" to="." method="_on_right_pressed"]

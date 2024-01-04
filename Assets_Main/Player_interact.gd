@@ -12,12 +12,9 @@ var _terrain_tool = null
 @onready var HandHeldItem = $"../FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld".get_child(0)
 @onready var Player = get_node("/root/Happend/Player")
 
-func _ready():
-	await get_tree().create_timer(0.1).timeout
-	get_world_terrain()
-	
 func get_world_terrain():
 	_terrain = get_node("/root/Happend").blockTerrain
+	_terrain_tool = _terrain.get_voxel_tool()
 	
 func get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = get_global_transform().origin
@@ -28,8 +25,9 @@ func get_pointed_voxel() -> VoxelRaycastResult:
 func _physics_process(_delta):
 	#Get terrain
 	if is_colliding() and get_collider() is VoxelTerrain:
-			_terrain = get_collider()
-			_terrain_tool = _terrain.get_voxel_tool()
+		_terrain = get_collider()
+		_terrain_tool = _terrain.get_voxel_tool()
+	else :	get_world_terrain()
 	#Get hit point
 	if is_colliding() :
 		if _terrain_tool == null:
@@ -38,7 +36,6 @@ func _physics_process(_delta):
 		else:
 			var hit := get_pointed_voxel()
 			if !(get_collider() is VoxelTerrain) :
-				get_world_terrain()
 				hit_point = floor(get_collision_point())
 				_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
 			elif hit != null :

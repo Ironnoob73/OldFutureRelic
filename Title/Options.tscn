@@ -148,20 +148,22 @@ dialog_text = "fatal_window.fullscreen_warning"
 dialog_autowrap = true
 
 [node name="Scale" type="HBoxContainer" parent="#options_video#/VideoSetting/VSpilt"]
+visible = false
 layout_mode = 2
 
 [node name="scale_text" type="Label" parent="#options_video#/VideoSetting/VSpilt/Scale"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "options.game.scale"
 
 [node name="scale_button" type="SpinBox" parent="#options_video#/VideoSetting/VSpilt/Scale"]
-visible = false
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../Fullscreen/fullscreen_button")
 focus_previous = NodePath("../../Fullscreen/fullscreen_button")
+max_value = 5.0
+step = 0.01
+value = 1.0
 
 [node name="#options_audio#" type="TabBar" parent="."]
 visible = false

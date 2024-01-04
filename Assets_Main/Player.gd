@@ -47,29 +47,39 @@ func _input(event):
 func _unhandled_input(event):
 	# Pause.
 	if Input.is_action_just_pressed("pause"):
-		if current_menu == "HUD":
-			current_menu = "Pause"
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			pause_menu.show()
-		elif current_menu == "Inventory":
-			current_menu = "HUD"
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			inventory_menu.close_inventory()
-		else:
-			current_menu = "HUD"
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		match current_menu :
+			"HUD":
+				current_menu = "Pause"
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				pause_menu.show()
+			"Inventory":
+				current_menu = "HUD"
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				inventory_menu.close_inventory()
+			"ToolSetting":
+				current_menu = "HUD"
+				hand_held.get_child(0).setting_off()
+			_:
+				current_menu = "HUD"
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Inventory
 	if Input.is_action_just_pressed("inventory"):
-		if current_menu == "HUD":
-			current_menu = "Inventory"
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			inventory_menu.open_inventory()
-		else:
-			current_menu = "HUD"
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			inventory_menu.close_inventory()
+		match current_menu :
+			"HUD":
+				current_menu = "Inventory"
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				inventory_menu.open_inventory()
+			"Inventory":
+				current_menu = "HUD"
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				inventory_menu.close_inventory()
+			"ToolSetting":
+				hand_held.get_child(0).setting_off()
+				current_menu = "Inventory"
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				inventory_menu.open_inventory()
 	#Hotbar
-	if !Input.is_action_pressed("tool_function_switch"):
+	if !Input.is_action_pressed("tool_function_switch") and current_menu == "HUD":
 		if Input.is_action_just_pressed("hotbar_tool_0") :
 			current_hotbar = 0
 			refresh_handheld(current_hotbar)

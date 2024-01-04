@@ -14,7 +14,7 @@ library = ExtResource("4_5idhv")
 texturing_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_n5op2"]
-colors = PackedColorArray(0.498039, 0.74902, 0.247059, 1, 0.372549, 0.623529, 0.247059, 1)
+colors = PackedColorArray(0.498039, 0.74902, 0.247059, 1, 0.372549, 0.498039, 0.247059, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_dpwnx"]
 noise_type = 2

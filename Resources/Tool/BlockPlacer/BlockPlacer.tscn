@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cemsonsnw348p"]
+[gd_scene load_steps=12 format=3 uid="uid://cemsonsnw348p"]
 
 [ext_resource type="ArrayMesh" uid="uid://bu05yjf2svybh" path="res://Resources/Tool/BlockPlacer/ModelMesh.tres" id="1_j6y5y"]
 [ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/BlockPlacer.gd" id="6_oi4h2"]
@@ -11,6 +11,9 @@ emission_enabled = true
 size = Vector2(0.075, 0.117)
 center_offset = Vector3(0.123, 0.093, 0)
 orientation = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4l3t0"]
+points = PackedVector3Array(0.123, 0.034, 0.038, 0.123, 0.034, -0.038, 0.123, 0.152, 0.038, 0.123, 0.152, -0.038)
 
 [sub_resource type="Animation" id="Animation_5klcy"]
 resource_name = "Pick"
@@ -67,6 +70,35 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_gmjah"]
+resource_name = "Setting"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.1, 0.2, 0.45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.261799)]
+}
+
 [sub_resource type="Animation" id="Animation_7x14s"]
 resource_name = "Switch_block"
 length = 0.25
@@ -100,6 +132,7 @@ tracks/1/keys = {
 _data = {
 "Pick": SubResource("Animation_5klcy"),
 "RESET": SubResource("Animation_rq2g6"),
+"Setting": SubResource("Animation_gmjah"),
 "Switch_block": SubResource("Animation_7x14s")
 }
 
@@ -117,6 +150,13 @@ layers = 16
 material_override = SubResource("StandardMaterial3D_5sb6h")
 mesh = SubResource("PlaneMesh_xumvj")
 
+[node name="ScreenCol" type="StaticBody3D" parent="Screen"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="ColShape" type="CollisionShape3D" parent="Screen/ScreenCol"]
+shape = SubResource("ConvexPolygonShape3D_4l3t0")
+
 [node name="Viewport" type="SubViewport" parent="."]
 own_world_3d = true
 size = Vector2i(150, 235)
@@ -124,6 +164,7 @@ size = Vector2i(150, 235)
 [node name="ScreenTexture" parent="Viewport" instance=ExtResource("7_k2oyq")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
 libraries = {
 "": SubResource("AnimationLibrary_qjalm")
 }

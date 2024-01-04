@@ -81,6 +81,8 @@ func _on_fullscreen_warn_close_requested():
 #Scale
 func _on_scale_button_value_changed(value):
 	ProjectSettings.set_setting("display/window/stretch/scale",value)
+	print(ProjectSettings.get_setting("display/window/stretch/scale"))
+	Global.save_config()
 	
 #Master volume
 func _on_master_button_value_changed(value):
@@ -112,7 +114,3 @@ func tab_focus():
 		1:Fullscreen.grab_focus()
 		2:MasterVolume.grab_focus()
 		3:MouseSen.grab_focus()
-
-
-
-

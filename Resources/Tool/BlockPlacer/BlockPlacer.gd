@@ -1,8 +1,10 @@
 extends MeshInstance3D
 
-@onready var screen = $Screen.material_override
+@onready var screen = $Screen
 @onready var viewport = $Viewport
 @onready var animation = $AnimationPlayer
+@onready var setting = $Viewport/ScreenTexture/Setting
+
 @onready var Player = get_node("/root/Happend/Player")
 
 @onready var ToolMode = $Viewport/ScreenTexture/Main/Mode
@@ -15,8 +17,9 @@ extends MeshInstance3D
 var current_block : int = 1
 
 func _ready():
-	screen.albedo_texture = viewport.get_texture()
-	screen.emission_texture = viewport.get_texture()
+	screen.material_override.albedo_texture = viewport.get_texture()
+	screen.material_override.emission_texture = viewport.get_texture()
+	setting.hide()
 
 func _tool_init():
 	refresh_screen()
@@ -31,34 +34,54 @@ func refresh_screen():
 #Interact
 func _unhandled_input(event):
 	if InteractRay._terrain_tool != null and !(event is InputEventMouseMotion):
-		var hit = InteractRay.get_pointed_voxel()
-		if event.pressed and InteractRay.is_colliding():
-			if Input.is_action_just_pressed("main_attack"):
-				if hit != null :	dig(InteractRay.hit_point)
-			elif Input.is_action_just_pressed("secondary_attack"):
-				var pos : Vector3
-				if InteractRay.is_colliding() and !(InteractRay.get_collider() is VoxelTerrain) : pos = InteractRay.hit_point
-				elif hit != null :	pos = hit.previous_position
-				if can_place_voxel_at(pos):
-					place(pos)
+		if InteractRay.Player.current_menu == "HUD":
+	#Dig & Place
+			var hit = InteractRay.get_pointed_voxel()
+			if event.pressed and InteractRay.is_colliding():
+				if Input.is_action_just_pressed("main_attack"):
+					if hit != null :	dig(InteractRay.hit_point)
+				elif Input.is_action_just_pressed("secondary_attack"):
+					var pos : Vector3
+					if InteractRay.is_colliding() and !(InteractRay.get_collider() is VoxelTerrain) : pos = InteractRay.hit_point
+					elif hit != null :	pos = hit.previous_position
+					if can_place_voxel_at(pos):
+						place(pos)
 	#Switch block
-		if InteractRay.Player.current_menu == "HUD" and event.pressed:
-			if Input.is_action_just_pressed("tab_right") or Input.is_action_just_pressed("roll_down") and Input.is_action_pressed("tool_function_switch"):
-				current_block += 1
-				if current_block >= InteractRay.block_lib.models.size():
-					current_block = 1
-				_tool_init()
-			elif Input.is_action_just_pressed("tab_left") or Input.is_action_just_pressed("roll_up") and Input.is_action_pressed("tool_function_switch"):
-				current_block -= 1
-				if current_block <= 0:
-					current_block = InteractRay.block_lib.models.size() - 1
-				_tool_init()
-				
-		if Input.is_action_just_pressed("tool_function_switch"):
-			animation.play("Switch_block")
-		if Input.is_action_just_released("tool_function_switch"):
-			animation.play_backwards("Switch_block")
-				
+			if event.pressed:
+				if Input.is_action_just_pressed("tab_right") or Input.is_action_just_pressed("roll_down") and ( Input.is_action_pressed("tool_function_switch") or InteractRay.Player.current_menu == "ToolSetting" ):
+					switch_block(true)
+				elif Input.is_action_just_pressed("tab_left") or Input.is_action_just_pressed("roll_up") and ( Input.is_action_pressed("tool_function_switch") or InteractRay.Player.current_menu == "ToolSetting" ):
+					switch_block(false)
+			if Input.is_action_just_pressed("tool_function_switch"):
+				animation.play("Switch_block")
+			if Input.is_action_just_released("tool_function_switch"):
+				animation.play_backwards("Switch_block")
+	#Setting
+		if Input.is_action_just_pressed("tool_setting"):
+			if InteractRay.Player.current_menu == "HUD":
+				InteractRay.Player.current_menu = "ToolSetting"
+				animation.play("Setting")
+				setting.show()
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			elif InteractRay.Player.current_menu == "ToolSetting":
+				InteractRay.Player.current_menu = "HUD"
+				setting_off()
+func setting_off():
+	setting.hide()
+	animation.play_backwards("Setting")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func switch_block(direction: bool):
+	if direction:
+		current_block += 1
+		if current_block >= InteractRay.block_lib.models.size():
+			current_block = 1
+	else:
+		current_block -= 1
+		if current_block <= 0:
+			current_block = InteractRay.block_lib.models.size() - 1
+	_tool_init()
+
 func can_place_voxel_at(pos: Vector3i):
 	var space_state = InteractRay.get_viewport().get_world_3d().get_direct_space_state()
 	var params = PhysicsShapeQueryParameters3D.new()
@@ -101,3 +124,29 @@ func create_trail(light_color:Color):
 	var trail_tween = get_tree().create_tween()
 	trail_tween.tween_property(trail.material_override, "albedo_color:a", 0.0, 0.5)
 	trail_tween.tween_callback(trail.queue_free)
+
+#Setting
+#Menthod from GOAT Template : https://github.com/miskatonicstudio/goat/blob/master/addons/goat/main_scenes/InteractiveScreen.gd
+func move_event(pos: Vector3):
+	var screen_coordinates = _convert_to_screen_coordinates(pos)
+	var event = InputEventMouseMotion.new()
+	event.global_position = screen_coordinates
+	event.position = screen_coordinates
+	viewport.push_input(event)
+func click_event(pos: Vector3):
+	var screen_coordinates = _convert_to_screen_coordinates(pos)
+	var event = InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_LEFT
+	event.global_position = screen_coordinates
+	event.position = screen_coordinates
+	event.pressed = true
+	event.button_mask = 1
+	viewport.push_input(event)
+	event.pressed = false
+	event.button_mask = 1
+	viewport.push_input(event)
+func _convert_to_screen_coordinates(global_point):
+	var local_point = screen.to_local(global_point)
+	return Vector2i(
+		Vector2( - ( local_point.z * 4 ) + 0.5 , 0.9 - ( local_point.y * 2.6 ) ) * Vector2(viewport.size)
+	)
