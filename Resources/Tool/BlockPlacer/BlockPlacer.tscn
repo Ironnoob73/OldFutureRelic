@@ -170,4 +170,10 @@ libraries = {
 }
 autoplay = "Pick"
 
+[connection signal="button_down" from="Viewport/ScreenTexture/Setting/VBox/ModeSwitch/Left" to="Viewport/ScreenTexture/Setting/VBox/ModeSwitch/Left" method="_on_button_down"]
+[connection signal="pressed" from="Viewport/ScreenTexture/Setting/VBox/ModeSwitch/Left" to="." method="_on_left_mode_pressed"]
+[connection signal="pressed" from="Viewport/ScreenTexture/Setting/VBox/ModeSwitch/Right" to="." method="_on_right_mode_pressed"]
+[connection signal="pressed" from="Viewport/ScreenTexture/Setting/VBox/BlockSwitch/Left" to="." method="_on_left_block_pressed"]
+[connection signal="pressed" from="Viewport/ScreenTexture/Setting/VBox/BlockSwitch/Right" to="." method="_on_right_block_pressed"]
+
 [editable path="Viewport/ScreenTexture"]

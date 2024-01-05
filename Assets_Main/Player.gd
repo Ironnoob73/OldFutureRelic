@@ -18,6 +18,8 @@ const FRICTION = 0.3
 @onready var first_person_cam = $PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam
 @onready var hand_held = $PlayerCam/FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld
 
+@onready var interact_ray = $PlayerCam/InteractRay
+
 var INERTIA:Vector2 = Vector2.ZERO
 
 var current_menu = "HUD"
@@ -59,9 +61,9 @@ func _unhandled_input(event):
 			"ToolSetting":
 				current_menu = "HUD"
 				hand_held.get_child(0).setting_off()
-			_:
-				current_menu = "HUD"
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			#_:
+			#	current_menu = "HUD"
+			#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Inventory
 	if Input.is_action_just_pressed("inventory"):
 		match current_menu :
@@ -159,6 +161,7 @@ func refresh_handheld(index:int):
 		if hand_held.get_children():
 			hand_held.get_child(0).queue_free()
 			hand_held.get_child(0).free()
+			interact_ray.affect_terrain = "none"
 		if handheld_tool:
 			if handheld_tool.equipment.scene:
 				hand_held.add_child(handheld_tool.equipment.scene.instantiate())
@@ -168,9 +171,13 @@ func refresh_handheld(index:int):
 				handheld_model.mesh = handheld_tool.equipment.model
 				hand_held.add_child(handheld_model)
 			refresh_handheld_info()
-		else :	HUD_hotbar.set_info(current_hotbar)
+		else :
+			HUD_hotbar.set_info(current_hotbar)
 func refresh_handheld_info():
 	HUD_hotbar.set_info(current_hotbar,\
 		handheld_tool.equipment.name0,\
 		handheld_tool.equipment.icon,\
 		((handheld_tool.equipment.durability - handheld_tool.damage)/handheld_tool.equipment.durability)*100)
+	interact_ray.affect_terrain = handheld_tool.equipment.affect_terrain
+	print("y")
+	#interact_ray.change_cursor_shape()

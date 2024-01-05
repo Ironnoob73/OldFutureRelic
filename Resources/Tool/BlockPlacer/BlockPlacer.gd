@@ -14,7 +14,11 @@ extends MeshInstance3D
 
 @onready var InteractRay = get_node("/root/Happend/Player/PlayerCam/InteractRay")
 
+@onready var screen_cursor = $Viewport/ScreenTexture/Setting/Cursor
+@onready var screen_texture = $Viewport/ScreenTexture
+
 var current_block : int = 1
+var current_mode : bool = false
 
 func _ready():
 	screen.material_override.albedo_texture = viewport.get_texture()
@@ -23,6 +27,11 @@ func _ready():
 
 func _tool_init():
 	refresh_screen()
+	if !current_mode :	InteractRay.affect_terrain = "blocky"
+	else :	InteractRay.affect_terrain = "smooth"
+
+func _process(delta):
+	screen_cursor.position = screen_texture.get_global_mouse_position()
 
 func refresh_screen():
 	var block = InteractRay.block_lib.get_model(current_block).resource_name
@@ -30,10 +39,12 @@ func refresh_screen():
 	ToolBlockName.text = "[scroll span=" + str(block_name.length()) + "]" + tr(block_name) + "[/scroll]"
 	ToolBlockIcon.texture = AllItems.get_icon_from_name(block)
 	ToolLeftNumber.text = str(InteractRay.inventory.get_item_count_from_en(block))
+	ToolMode.text =(	"terrain.blocky" if current_mode == false
+				else	"terrain.smooth" )
 
 #Interact
 func _unhandled_input(event):
-	if InteractRay._terrain_tool != null and !(event is InputEventMouseMotion):
+	if InteractRay.Bterrain_tool != null and !(event is InputEventMouseMotion):
 		if InteractRay.Player.current_menu == "HUD":
 	#Dig & Place
 			var hit = InteractRay.get_pointed_voxel()
@@ -81,6 +92,10 @@ func switch_block(direction: bool):
 		if current_block <= 0:
 			current_block = InteractRay.block_lib.models.size() - 1
 	_tool_init()
+func switch_mode():
+	current_mode = !current_mode
+	print(current_mode)
+	_tool_init()
 
 func can_place_voxel_at(pos: Vector3i):
 	var space_state = InteractRay.get_viewport().get_world_3d().get_direct_space_state()
@@ -95,22 +110,22 @@ func can_place_voxel_at(pos: Vector3i):
 	return hits.size() == 0
 	
 func dig(center: Vector3i):
-	if InteractRay._terrain_tool.get_voxel(center):
-		InteractRay.inventory.add_item(InteractRay.block_lib.get_model(InteractRay._terrain_tool.get_voxel(center)).resource_name)
-		InteractRay._terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
-		InteractRay._terrain_tool.value = 0
-		InteractRay._terrain_tool.do_point(center)
+	if InteractRay.Bterrain_tool.get_voxel(center):
+		InteractRay.inventory.add_item(InteractRay.block_lib.get_model(InteractRay.Bterrain_tool.get_voxel(center)).resource_name)
+		InteractRay.Bterrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
+		InteractRay.Bterrain_tool.value = 0
+		InteractRay.Bterrain_tool.do_point(center)
 		create_trail(Color(1.0,0.0,0.0))
 	refresh_screen()
 	Player.Inventory.ToolHotbar[Player.current_hotbar].damage += randf_range(0.0,2.0)
-	InteractRay._terrain.save_modified_blocks()
+	InteractRay.Bterrain.save_modified_blocks()
 	
 func place(center: Vector3i):
 	if InteractRay.block_lib.get_model(current_block) and InteractRay.inventory.get_item_count_from_en(InteractRay.block_lib.get_model(current_block).resource_name) > 0:
 		InteractRay.inventory.remove_item(InteractRay.block_lib.get_model(current_block).resource_name)
-		InteractRay._terrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
-		InteractRay._terrain_tool.value = current_block
-		InteractRay._terrain_tool.do_point(center)
+		InteractRay.Bterrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
+		InteractRay.Bterrain_tool.value = current_block
+		InteractRay.Bterrain_tool.do_point(center)
 		create_trail(Color(0.0,1.0,1.0))
 	refresh_screen()
 	Player.Inventory.ToolHotbar[Player.current_hotbar].damage += randf_range(0.0,2.0)
@@ -150,3 +165,18 @@ func _convert_to_screen_coordinates(global_point):
 	return Vector2i(
 		Vector2( - ( local_point.z * 4 ) + 0.5 , 0.9 - ( local_point.y * 2.6 ) ) * Vector2(viewport.size)
 	)
+
+#Setting screen
+func _on_left_block_pressed():
+	switch_block(true)
+	print(1)
+func _on_right_block_pressed():
+	switch_block(false)
+	print(2)
+
+func _on_left_mode_pressed():
+	switch_mode()
+	print(3)
+func _on_right_mode_pressed():
+	switch_mode()
+	print(4)

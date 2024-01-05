@@ -2,8 +2,10 @@ extends RayCast3D
 
 var hit_point : Vector3
 
-var _terrain : VoxelTerrain = null
-var _terrain_tool = null
+var Bterrain : VoxelTerrain = null
+var Sterrain : VoxelLodTerrain = null
+var Bterrain_tool = null
+var Sterrain_tool = null
 @onready var _cursor = $"../../Cursor"
 
 @onready var block_lib = preload("res://Resources/Block/BlockLib_basic.tres")
@@ -12,41 +14,72 @@ var _terrain_tool = null
 @onready var HandHeldItem = $"../FirstPersonHandled/SubViewport/FirstPersonCam/HandHeld".get_child(0)
 @onready var Player = get_node("/root/Happend/Player")
 
+var affect_terrain : String = "none" :
+	set(value):
+		change_cursor_shape()
+		affect_terrain = value
+	
 func get_world_terrain():
-	_terrain = get_node("/root/Happend").blockTerrain
-	_terrain_tool = _terrain.get_voxel_tool()
+	Bterrain = get_node("/root/Happend").blockTerrain
+	Sterrain = get_node("/root/Happend").smoothTerrain
+	Bterrain_tool = Bterrain.get_voxel_tool()
+	Sterrain_tool = Sterrain.get_voxel_tool()
 	
 func get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = get_global_transform().origin
 	var forward = get_global_transform().basis.z.normalized()
-	var hit = _terrain_tool.raycast(origin, -forward, 20)
+	var hit = Bterrain_tool.raycast(origin, -forward, 20)
 	return hit
 	
 func _physics_process(_delta):
 	#Get terrain
 	if is_colliding() and get_collider() is VoxelTerrain:
-		_terrain = get_collider()
-		_terrain_tool = _terrain.get_voxel_tool()
+		Bterrain = get_collider()
+		Bterrain_tool = Bterrain.get_voxel_tool()
 	else :	get_world_terrain()
-	#Get hit point
+	#Get hit point & Change cursor color
 	if is_colliding() :
-		if _terrain_tool == null:
-			hit_point = floor(get_collision_point())
-			_cursor.material.set_shader_parameter("color",Vector3(1,0,0))
-		else:
-			var hit := get_pointed_voxel()
-			if !(get_collider() is VoxelTerrain) :
+		match affect_terrain:
+			"blocky":
+				_cursor.material.get_shader_parameter("albedo").set_fill(2)
+				if Bterrain_tool == null:
+					hit_point = floor(get_collision_point())
+					_cursor.material.set_shader_parameter("color",Vector3(1,0,0))
+				else:
+					var hit := get_pointed_voxel()
+					if !(get_collider() is VoxelTerrain) :
+						hit_point = floor(get_collision_point())
+						_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
+					elif hit != null :
+						hit_point = hit.position
+						_cursor.material.set_shader_parameter("color",Vector3(1,1,1))
+			"smooth":
+				_cursor.material.get_shader_parameter("albedo").set_fill(1)
 				hit_point = floor(get_collision_point())
-				_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
-			elif hit != null :
-				hit_point = hit.position
-				_cursor.material.set_shader_parameter("color",Vector3(1,1,1))
+				if Sterrain_tool == null:
+					_cursor.material.set_shader_parameter("color",Vector3(1,0,0))
+				elif get_collider() is VoxelLodTerrain:
+					_cursor.material.set_shader_parameter("color",Vector3(1,1,0))
+				else:
+					_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
+	#Dynamic
+	if Player.handheld_tool:
+		if Player.handheld_tool.equipment.affect_terrain == "dynamic":
+			if get_collider() is VoxelTerrain :
+				affect_terrain = "blocky"
+			else :
+				affect_terrain = "smooth"
 		
 	#Move cursor
-	if !is_colliding():	_cursor.hide()
+	if affect_terrain == "none" or !is_colliding() :	_cursor.hide()
 	elif _cursor.visible == true:
 		_cursor.set_global_position(lerp(_cursor.global_position,Vector3(hit_point)+Vector3(0.5,0.5,0.5),0.5))
 	else:
 		_cursor.show()
 		_cursor.set_global_position(Vector3(hit_point)+Vector3(0.5,0.5,0.5))
 		
+func change_cursor_shape():
+	match affect_terrain:
+		"blocky" :	_cursor.material.get_shader_parameter("albedo").set_fill(2)
+		"smooth" :	_cursor.material.get_shader_parameter("albedo").set_fill(1)
+	print(affect_terrain)

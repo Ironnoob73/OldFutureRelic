@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="EToolClass" load_steps=10 format=3 uid="uid://818gonafhpym"]
+[gd_resource type="Resource" script_class="EToolClass" load_steps=9 format=3 uid="uid://818gonafhpym"]
 
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Equipment/EToolClass.gd" id="1_1qkpx"]
 [ext_resource type="ArrayMesh" uid="uid://dfwhusqelte5u" path="res://Resources/Tool/Platinum/Pickaxe/ModelMesh.tres" id="1_efvbp"]
-[ext_resource type="Texture2D" uid="uid://bdf4bii6gpswl" path="res://Resources/Tool/Platinum/Pickaxe/p_pickaxe.svg" id="1_v28hx"]
 [ext_resource type="Script" path="res://Resources/Tool/Platinum/Pickaxe/PlatinumPickaxe.gd" id="3_iveh0"]
 
 [sub_resource type="Animation" id="Animation_0664u"]
@@ -114,10 +113,10 @@ _bundled = {
 script = ExtResource("1_1qkpx")
 tool_type = "pickaxe"
 scene = SubResource("PackedScene_7pgxf")
+affect_terrain = "dynamic"
 performance = 30.0
 durability = 8192.0
 name1 = ""
 name0 = "tool.platinum_pickaxe"
-icon = ExtResource("1_v28hx")
 model = ExtResource("1_efvbp")
 discription = ""

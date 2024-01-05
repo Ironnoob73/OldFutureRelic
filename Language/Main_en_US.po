@@ -201,3 +201,10 @@ msgstr "Unequip"
 
 msgid "hotbar.empty"
 msgstr "Empty"
+
+#Terrain
+msgid "terrain.blocky"
+msgstr "Blocky"
+
+msgid "terrain.smooth"
+msgstr "Smooth"

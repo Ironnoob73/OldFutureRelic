@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://mftuavwg2mms"]
+[gd_scene load_steps=14 format=3 uid="uid://mftuavwg2mms"]
 
-[ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/screen_setting.gd" id="1_lanc1"]
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="1_m2sj6"]
-[ext_resource type="Texture2D" uid="uid://dfw6wwapseug3" path="res://Resources/Block/Dummy/dummy.svg" id="2_m32pi"]
 [ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/scroll_text.gd" id="4_8fweb"]
 [ext_resource type="Shader" path="res://Assets_Main/CrossHair.gdshader" id="4_g1e0y"]
+[ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/Left.gd" id="5_pvmxl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xc220"]
 shader = ExtResource("1_m2sj6")
@@ -57,7 +56,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 235.0
-script = ExtResource("1_lanc1")
 
 [node name="Background" type="TextureRect" parent="."]
 texture_filter = 2
@@ -113,7 +111,6 @@ custom_effects = [SubResource("RichTextEffect_i0hnd")]
 [node name="BlockIcon" type="TextureRect" parent="Main"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-texture = ExtResource("2_m32pi")
 stretch_mode = 5
 
 [node name="LeftNumber" type="Label" parent="Main"]
@@ -165,6 +162,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "  ◀  "
 flat = true
+script = ExtResource("5_pvmxl")
 
 [node name="Right" type="Button" parent="Setting/VBox/ModeSwitch"]
 layout_mode = 2
@@ -199,5 +197,4 @@ theme_override_constants/outline_size = 5
 text = "▶"
 flat = true
 
-[connection signal="pressed" from="Setting/VBox/BlockSwitch/Left" to="." method="_on_left_pressed"]
-[connection signal="pressed" from="Setting/VBox/BlockSwitch/Right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="Setting/VBox/ModeSwitch/Left" to="Setting/VBox/ModeSwitch/Left" method="_on_pressed"]

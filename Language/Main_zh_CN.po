@@ -200,3 +200,10 @@ msgstr "卸下"
 
 msgid "hotbar.empty"
 msgstr "空"
+
+#Terrain
+msgid "terrain.blocky"
+msgstr "方块"
+
+msgid "terrain.smooth"
+msgstr "平滑"
