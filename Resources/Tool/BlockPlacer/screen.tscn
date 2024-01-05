@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://mftuavwg2mms"]
+[gd_scene load_steps=13 format=3 uid="uid://mftuavwg2mms"]
 
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="1_m2sj6"]
 [ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/scroll_text.gd" id="4_8fweb"]
 [ext_resource type="Shader" path="res://Assets_Main/CrossHair.gdshader" id="4_g1e0y"]
-[ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/Left.gd" id="5_pvmxl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xc220"]
 shader = ExtResource("1_m2sj6")
@@ -162,7 +161,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "  ◀  "
 flat = true
-script = ExtResource("5_pvmxl")
 
 [node name="Right" type="Button" parent="Setting/VBox/ModeSwitch"]
 layout_mode = 2
@@ -196,5 +194,3 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "▶"
 flat = true
-
-[connection signal="pressed" from="Setting/VBox/ModeSwitch/Left" to="Setting/VBox/ModeSwitch/Left" method="_on_pressed"]

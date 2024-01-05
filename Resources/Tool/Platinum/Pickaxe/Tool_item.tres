@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="EToolClass" load_steps=9 format=3 uid="uid://818gonafhpym"]
+[gd_resource type="Resource" script_class="EToolClass" load_steps=10 format=3 uid="uid://818gonafhpym"]
 
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Equipment/EToolClass.gd" id="1_1qkpx"]
 [ext_resource type="ArrayMesh" uid="uid://dfwhusqelte5u" path="res://Resources/Tool/Platinum/Pickaxe/ModelMesh.tres" id="1_efvbp"]
+[ext_resource type="Texture2D" uid="uid://bdf4bii6gpswl" path="res://Resources/Tool/Platinum/Pickaxe/p_pickaxe.svg" id="1_thgvx"]
 [ext_resource type="Script" path="res://Resources/Tool/Platinum/Pickaxe/PlatinumPickaxe.gd" id="3_iveh0"]
 
 [sub_resource type="Animation" id="Animation_0664u"]
@@ -14,8 +15,8 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
-"transitions": PackedFloat32Array(2, 1, 1),
+"times": PackedFloat64Array(0, 0.1, 0.5),
+"transitions": PackedFloat64Array(2, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -0.261799), Vector3(0, 0, 1.0472), Vector3(0, 0, -0.261799)]
 }
@@ -26,8 +27,8 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
-"transitions": PackedFloat32Array(2, -2, 1),
+"times": PackedFloat64Array(0, 0.1, 0.5),
+"transitions": PackedFloat64Array(2, -2, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
 }
@@ -42,8 +43,8 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(0.5, 1),
 "update": 0,
 "values": [Vector3(-1.5708, 1.0472, 0.261799), Vector3(0, 0, 0)]
 }
@@ -54,8 +55,8 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(0.5, 1),
 "update": 0,
 "values": [Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
 }
@@ -69,8 +70,8 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
@@ -81,8 +82,8 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
@@ -118,5 +119,6 @@ performance = 30.0
 durability = 8192.0
 name1 = ""
 name0 = "tool.platinum_pickaxe"
+icon = ExtResource("1_thgvx")
 model = ExtResource("1_efvbp")
 discription = ""

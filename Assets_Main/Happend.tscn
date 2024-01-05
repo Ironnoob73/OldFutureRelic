@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmeul2tdylr0t"]
+[gd_scene load_steps=14 format=3 uid="uid://dmeul2tdylr0t"]
 
 [ext_resource type="Script" path="res://Assets_Main/Happend.gd" id="1_e8in2"]
 [ext_resource type="PackedScene" uid="uid://bys33qmaoyw20" path="res://default_environment.tscn" id="1_jc240"]
 [ext_resource type="PackedScene" uid="uid://bk6ihg1vf71uf" path="res://Assets_Main/Player.tscn" id="1_qmywt"]
 [ext_resource type="VoxelStreamScript" uid="uid://wkauv1r5gk6e" path="res://Assets_Main/Terrain/VoxelStream.tres" id="4_2su5t"]
 [ext_resource type="VoxelBlockyLibrary" uid="uid://btij0v7fevj3g" path="res://Resources/Block/BlockLib_basic.tres" id="4_5idhv"]
-[ext_resource type="VoxelGeneratorNoise2D" uid="uid://4bt5sy7m0sxf" path="res://Map/OFCRegular_generator_smooth.tres" id="6_6ggud"]
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_65jvy"]
 library = ExtResource("4_5idhv")
@@ -60,7 +59,7 @@ collision_mask = 7
 run_stream_in_editor = false
 
 [node name="SmoothTerrain" type="VoxelLodTerrain" parent="."]
-generator = ExtResource("6_6ggud")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
 mesher = SubResource("VoxelMesherTransvoxel_t22n0")
 material = SubResource("StandardMaterial3D_64nlb")
 collision_layer = 17

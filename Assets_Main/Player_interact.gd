@@ -25,10 +25,11 @@ func get_world_terrain():
 	Bterrain_tool = Bterrain.get_voxel_tool()
 	Sterrain_tool = Sterrain.get_voxel_tool()
 	
-func get_pointed_voxel() -> VoxelRaycastResult:
+func get_pointed_voxel(Mode: bool) -> VoxelRaycastResult:
 	var origin = get_global_transform().origin
 	var forward = get_global_transform().basis.z.normalized()
-	var hit = Bterrain_tool.raycast(origin, -forward, 20)
+	var hit =	Bterrain_tool.raycast(origin, -forward, 20) if !Mode \
+		else	Sterrain_tool.raycast(origin, -forward, 20)
 	return hit
 	
 func _physics_process(_delta):
@@ -46,7 +47,7 @@ func _physics_process(_delta):
 					hit_point = floor(get_collision_point())
 					_cursor.material.set_shader_parameter("color",Vector3(1,0,0))
 				else:
-					var hit := get_pointed_voxel()
+					var hit := get_pointed_voxel(false)
 					if !(get_collider() is VoxelTerrain) :
 						hit_point = floor(get_collision_point())
 						_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
@@ -55,13 +56,18 @@ func _physics_process(_delta):
 						_cursor.material.set_shader_parameter("color",Vector3(1,1,1))
 			"smooth":
 				_cursor.material.get_shader_parameter("albedo").set_fill(1)
-				hit_point = floor(get_collision_point())
 				if Sterrain_tool == null:
+					hit_point = floor(get_collision_point())
 					_cursor.material.set_shader_parameter("color",Vector3(1,0,0))
-				elif get_collider() is VoxelLodTerrain:
-					_cursor.material.set_shader_parameter("color",Vector3(1,1,0))
 				else:
-					_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
+					var hit := get_pointed_voxel(true)
+					if !(get_collider() is VoxelLodTerrain):
+						hit_point = floor(get_collision_point())
+						_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
+					elif hit != null :
+						#hit_point = hit.position
+						hit_point = floor(get_collision_point())
+						_cursor.material.set_shader_parameter("color",Vector3(1,1,0))
 	#Dynamic
 	if Player.handheld_tool:
 		if Player.handheld_tool.equipment.affect_terrain == "dynamic":
@@ -82,4 +88,3 @@ func change_cursor_shape():
 	match affect_terrain:
 		"blocky" :	_cursor.material.get_shader_parameter("albedo").set_fill(2)
 		"smooth" :	_cursor.material.get_shader_parameter("albedo").set_fill(1)
-	print(affect_terrain)

@@ -165,6 +165,7 @@ func refresh_handheld(index:int):
 		if handheld_tool:
 			if handheld_tool.equipment.scene:
 				hand_held.add_child(handheld_tool.equipment.scene.instantiate())
+				interact_ray.affect_terrain = handheld_tool.equipment.affect_terrain
 				hand_held.get_child(0)._tool_init()
 			else :
 				var handheld_model = MeshInstance3D.new()
@@ -178,6 +179,3 @@ func refresh_handheld_info():
 		handheld_tool.equipment.name0,\
 		handheld_tool.equipment.icon,\
 		((handheld_tool.equipment.durability - handheld_tool.damage)/handheld_tool.equipment.durability)*100)
-	interact_ray.affect_terrain = handheld_tool.equipment.affect_terrain
-	print("y")
-	#interact_ray.change_cursor_shape()
