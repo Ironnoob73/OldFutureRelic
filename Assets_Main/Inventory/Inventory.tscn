@@ -59,8 +59,8 @@ tracks/0/path = NodePath("Main:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [0.0, -1.0]
 }
@@ -71,8 +71,8 @@ tracks/1/path = NodePath("Main:anchor_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.0, 0.0]
 }
@@ -83,8 +83,8 @@ tracks/2/path = NodePath("EquipmentInv:anchor_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.025, 0.025]
 }
@@ -95,8 +95,8 @@ tracks/3/path = NodePath("EquipmentInv:anchor_right")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.975, 0.975]
 }
@@ -112,8 +112,8 @@ tracks/0/path = NodePath("Main:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [0.0, -1.0]
 }
@@ -124,8 +124,8 @@ tracks/1/path = NodePath("Main:anchor_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.0, 0.0]
 }
@@ -136,8 +136,8 @@ tracks/2/path = NodePath("ItemInv:anchor_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.025, 0.025]
 }
@@ -148,8 +148,8 @@ tracks/3/path = NodePath("ItemInv:anchor_right")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.975, 0.975]
 }
@@ -163,8 +163,8 @@ tracks/0/path = NodePath("Panel_u:offset_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [-100.0]
 }
@@ -175,8 +175,8 @@ tracks/1/path = NodePath("Panel_u:offset_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0.0]
 }
@@ -187,8 +187,8 @@ tracks/2/path = NodePath("Panel_d:offset_bottom")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [20.0]
 }
@@ -199,8 +199,8 @@ tracks/3/path = NodePath("Panel_d:offset_top")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0.0]
 }
@@ -211,8 +211,8 @@ tracks/4/path = NodePath("Background:material:shader_parameter/translucent")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [0.0]
 }
@@ -223,8 +223,8 @@ tracks/5/path = NodePath(".:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [false]
 }
@@ -235,8 +235,8 @@ tracks/6/path = NodePath("Main:anchor_left")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [-1.0]
 }
@@ -247,8 +247,8 @@ tracks/7/path = NodePath("Main:anchor_right")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [0.0]
 }
@@ -259,8 +259,8 @@ tracks/8/path = NodePath("ItemInv:anchor_left")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.0]
 }
@@ -271,8 +271,8 @@ tracks/9/path = NodePath("ItemInv:anchor_right")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [2.0]
 }
@@ -283,8 +283,8 @@ tracks/10/path = NodePath("BackButton:offset_bottom")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [50.0]
 }
@@ -295,8 +295,8 @@ tracks/11/path = NodePath("BackButton:offset_top")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0.0]
 }
@@ -307,8 +307,8 @@ tracks/12/path = NodePath("EquipmentInv:anchor_left")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.025]
 }
@@ -319,8 +319,8 @@ tracks/13/path = NodePath("EquipmentInv:anchor_right")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.975]
 }
@@ -331,8 +331,8 @@ tracks/14/path = NodePath("Hotbar:anchor_top")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [2.0]
 }
@@ -343,8 +343,8 @@ tracks/15/path = NodePath("Hotbar:anchor_bottom")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [2.0]
 }
@@ -360,8 +360,8 @@ tracks/0/path = NodePath("Panel_u:offset_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-3, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-3, 1),
 "update": 0,
 "values": [-80, -10.0]
 }
@@ -372,8 +372,8 @@ tracks/1/path = NodePath("Panel_u:offset_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-3, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-3, 1),
 "update": 0,
 "values": [0.0, 100.0]
 }
@@ -384,8 +384,8 @@ tracks/2/path = NodePath("Panel_d:offset_bottom")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-3, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-3, 1),
 "update": 0,
 "values": [20.0, 10.0]
 }
@@ -396,8 +396,8 @@ tracks/3/path = NodePath("Panel_d:offset_top")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-3, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-3, 1),
 "update": 0,
 "values": [0.0, -100.0]
 }
@@ -408,8 +408,8 @@ tracks/4/path = NodePath("Background:material:shader_parameter/translucent")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(1, 1),
 "update": 0,
 "values": [0.0, 0.75]
 }
@@ -420,8 +420,8 @@ tracks/5/path = NodePath(".:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat64Array(0, 0.01),
+"transitions": PackedFloat64Array(1, 1),
 "update": 0,
 "values": [false, true]
 }
@@ -432,8 +432,8 @@ tracks/6/path = NodePath("Main:anchor_left")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [-1.0, 0.0]
 }
@@ -444,8 +444,8 @@ tracks/7/path = NodePath("Main:anchor_right")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
@@ -456,8 +456,8 @@ tracks/8/path = NodePath("BackButton:offset_bottom")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [50.0, -25.0]
 }
@@ -468,8 +468,8 @@ tracks/9/path = NodePath("BackButton:offset_top")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [0.0, -75.0]
 }
@@ -485,8 +485,8 @@ tracks/0/path = NodePath("Hotbar:anchor_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [2.0, 1.0]
 }
@@ -497,8 +497,8 @@ tracks/1/path = NodePath("Hotbar:anchor_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [2.0, 1.0]
 }
@@ -509,8 +509,8 @@ tracks/2/path = NodePath("Main:anchor_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [0.0, -1.0]
 }
@@ -521,8 +521,8 @@ tracks/3/path = NodePath("Main:anchor_right")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.25),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.0, 0.0]
 }

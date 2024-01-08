@@ -25,24 +25,20 @@ func dig(center: Vector3i):
 		#InteractRay.inventory.add_item(InteractRay.block_lib.get_model(InteractRay._terrain_tool.get_voxel(center)).resource_name)
 		InteractRay.Bterrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
 		var interacted_block = AllItems.get_item_from_name(InteractRay.block_lib.get_model(InteractRay.Bterrain_tool.get_voxel(center)).resource_name)
+		# By Lry722:
 		var break_progress = tool_info.equipment.performance / interacted_block.hardness
-		if break_progress >= 1.0 :
+		var block_meta = InteractRay.Bterrain_tool.get_voxel_metadata(center)
+		if block_meta:
+			block_meta["damage"] += break_progress
+		else:
+			block_meta = {"damage":break_progress}
+		if block_meta["damage"] >= 1.0 :
 			InteractRay.Bterrain_tool.value = 0
 			InteractRay.Bterrain_tool.do_point(center)
-		elif !InteractRay.Bterrain_tool.get_voxel_metadata(center):
-			var new_block_meta = {"damage":break_progress}
-			InteractRay.Bterrain_tool.set_voxel_metadata(center,new_block_meta)
-		else:
-			var block_meta = InteractRay.Bterrain_tool.get_voxel_metadata(center)
-			block_meta["damage"] += break_progress
-			if block_meta["damage"] >= 1.0 :
-				InteractRay.Bterrain_tool.value = 0
-				InteractRay.Bterrain_tool.do_point(center)
-				block_meta = null
-			InteractRay.Bterrain_tool.set_voxel_metadata(center,block_meta)
+			block_meta = null
+		InteractRay.Bterrain_tool.set_voxel_metadata(center,block_meta)
+		# ---
 		print(InteractRay.Bterrain_tool.get_voxel_metadata(center))
-		#InteractRay._terrain_tool.value = 0
-		#InteractRay._terrain_tool.do_point(center)
 		tool_info.damage += randf_range(0.0,2.0)
 		Player.refresh_handheld_info()
-	#InteractRay._terrain.save_modified_blocks()
+	InteractRay.Bterrain.save_modified_blocks()

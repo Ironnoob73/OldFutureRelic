@@ -55,15 +55,12 @@ func _unhandled_input(event):
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				pause_menu.show()
 			"Inventory":
-				current_menu = "HUD"
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-				inventory_menu.close_inventory()
+				if inventory_menu.close_inventory():
+					current_menu = "HUD"
+					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			"ToolSetting":
 				current_menu = "HUD"
 				hand_held.get_child(0).setting_off()
-			#_:
-			#	current_menu = "HUD"
-			#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Inventory
 	if Input.is_action_just_pressed("inventory"):
 		match current_menu :

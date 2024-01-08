@@ -63,6 +63,7 @@ func close_inventory():
 			"Status" :
 				current_inv = "Main"
 				animation.play_backwards("Status")
+	return true
 
 func _on_back_button_pressed():
 	if current_inv == "Main":
@@ -101,11 +102,11 @@ func item_inv_update():
 	block_group.set_text(0,tr("inventory.item.block"))
 	for i in inventory.itemStack:
 		var group : Object
-		#match i.item:
-		#	IBlockClass :	group = block_group
-		#	ItemClass :	group = item_group
-		if i.item is IBlockClass :	group = block_group
-		elif i.item is ItemClass :	group = item_group
+		match i.item.get_original_class():
+			"IBlockClass" :	group = block_group
+			"ItemClass" :	group = item_group
+		#if i.item is IBlockClass :	group = block_group
+		#elif i.item is ItemClass :	group = item_group
 		var subitem = item_list.create_item(group)
 		subitem.set_icon(0,i.item.icon)
 		subitem.set_icon_max_width(0,30)
