@@ -123,7 +123,7 @@ func dig(center: Vector3i):
 		create_trail(Color(1.0,0.0,0.0))
 	elif current_mode and InteractRay.Sterrain_tool.get_voxel(center):
 		InteractRay.Sterrain_tool.channel = VoxelBuffer.CHANNEL_SDF
-		InteractRay.Sterrain_tool.mode = 1
+		InteractRay.Sterrain_tool.mode = VoxelTool.MODE_REMOVE
 		#InteractRay.Sterrain_tool.do_sphere(center,1.0)
 		InteractRay.Sterrain_tool.do_point(center)
 		create_trail(Color(1.0,0.0,0.0))
@@ -141,8 +141,9 @@ func place(center: Vector3i):
 			create_trail(Color(0.0,1.0,1.0))
 	else:
 		InteractRay.Sterrain_tool.channel = VoxelBuffer.CHANNEL_SDF
-		InteractRay.Sterrain_tool.mode = 2
-		#InteractRay.Sterrain_tool.do_sphere(center,1.0)
+		InteractRay.Sterrain_tool.mode = VoxelTool.MODE_ADD
+		InteractRay.Sterrain_tool.set_sdf_scale(0.002)
+		#InteractRay.Sterrain_tool.do_sphere(center,1)
 		InteractRay.Sterrain_tool.do_point(center)
 		create_trail(Color(1.0,1.0,0.0))
 	refresh_screen()

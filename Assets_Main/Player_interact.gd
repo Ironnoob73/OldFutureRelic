@@ -65,8 +65,8 @@ func _physics_process(_delta):
 						hit_point = floor(get_collision_point())
 						_cursor.material.set_shader_parameter("color",Vector3(0,0,1))
 					elif hit != null :
-						#hit_point = hit.position
-						hit_point = floor(get_collision_point())
+						hit_point = hit.position
+						#hit_point = floor(get_collision_point())
 						_cursor.material.set_shader_parameter("color",Vector3(1,1,0))
 	#Dynamic
 	if Player.handheld_tool:

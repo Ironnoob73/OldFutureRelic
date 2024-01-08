@@ -30,7 +30,7 @@ noise = SubResource("FastNoiseLite_dpwnx")
 albedo_texture = SubResource("NoiseTexture2D_oumdo")
 uv1_scale = Vector3(0.025, 0.025, 0.025)
 uv1_triplanar = true
-uv1_triplanar_sharpness = 103.969
+uv1_triplanar_sharpness = 100.0
 uv1_world_triplanar = true
 texture_filter = 0
 
@@ -61,9 +61,15 @@ run_stream_in_editor = false
 [node name="SmoothTerrain" type="VoxelLodTerrain" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
 mesher = SubResource("VoxelMesherTransvoxel_t22n0")
+lod_fade_duration = 1.0
 material = SubResource("StandardMaterial3D_64nlb")
+normalmap_tile_resolution_min = 8
+normalmap_tile_resolution_max = 16
 collision_layer = 17
 collision_mask = 7
+collision_lod_count = 1
+full_load_mode_enabled = true
+threaded_update_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)

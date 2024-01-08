@@ -21,6 +21,12 @@ msgstr "混凝土块"
 msgid "tile.concrete.discription"
 msgstr "普通的硬质方块。"
 
+msgid "tile.wood"
+msgstr "木块"
+
+msgid "tile.wood.discription"
+msgstr "普通的硬质方块。"
+
 ####----------Equipment----------####
 ###----------Tool----------###
 #----------Type----------#

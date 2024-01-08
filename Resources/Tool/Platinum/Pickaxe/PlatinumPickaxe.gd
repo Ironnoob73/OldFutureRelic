@@ -14,7 +14,7 @@ func _physics_process(_delta):
 		if Input.is_action_pressed("main_attack") and !animation.is_playing():
 			animation.play("Attack")
 			if InteractRay.Bterrain_tool != null:
-				var hit = InteractRay.get_pointed_voxel()
+				var hit = InteractRay.get_pointed_voxel(false)
 				if hit != null :	dig(InteractRay.hit_point)
 		elif Input.is_action_just_pressed("secondary_attack"):
 			pass
@@ -26,14 +26,16 @@ func dig(center: Vector3i):
 		InteractRay.Bterrain_tool.channel = VoxelBuffer.CHANNEL_TYPE
 		var interacted_block = AllItems.get_item_from_name(InteractRay.block_lib.get_model(InteractRay.Bterrain_tool.get_voxel(center)).resource_name)
 		var break_progress = tool_info.equipment.performance / interacted_block.hardness
-		if !InteractRay.Bterrain_tool.get_voxel_metadata(center):
+		if break_progress >= 1.0 :
+			InteractRay.Bterrain_tool.value = 0
+			InteractRay.Bterrain_tool.do_point(center)
+		elif !InteractRay.Bterrain_tool.get_voxel_metadata(center):
 			var new_block_meta = {"damage":break_progress}
 			InteractRay.Bterrain_tool.set_voxel_metadata(center,new_block_meta)
 		else:
 			var block_meta = InteractRay.Bterrain_tool.get_voxel_metadata(center)
-			if !block_meta.has("damage") :						block_meta["damage"] = break_progress
-			elif 1.0 - block_meta["damage"] > break_progress:	block_meta["damage"] += break_progress
-			else:
+			block_meta["damage"] += break_progress
+			if block_meta["damage"] >= 1.0 :
 				InteractRay.Bterrain_tool.value = 0
 				InteractRay.Bterrain_tool.do_point(center)
 				block_meta = null

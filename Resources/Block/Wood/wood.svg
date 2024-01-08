@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.2" baseProfile="tiny" id="BackGround"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30"
+	 overflow="visible" xml:space="preserve">
+<polygon fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="15,2 3,8 3,22 15,28 27,22 27,8 "/>
+<polygon fill="#C29D62" points="15,2 3,8 3,22 15,28 27,22 27,8 "/>
+<polygon fill="#825D22" points="15,28 15,14 27,8 27,22 "/>
+<polygon fill="#A27D42" points="3,22 3,8 15,14 15,28 "/>
+<polygon fill="#67502C" points="15,2 13,3 23,10 25,9 "/>
+<polygon fill="#67502C" points="9,5 7,6 21,11 23,10 "/>
+<polygon fill="#67502C" points="7,6 5,7 15,14 17,13 "/>
+<polygon fill="#47300C" points="3,9 3,11 15,18 15,16 "/>
+<polygon fill="#47300C" points="3,15 3,17 15,21 15,19 "/>
+<polygon fill="#47300C" points="3,18 3,20 15,27 15,25 "/>
+<polygon fill="#271000" points="15,15 15,17 27,12 27,10 "/>
+<polygon fill="#271000" points="15,21 15,23 27,15 27,13 "/>
+<polygon fill="#271000" points="15,24 15,26 27,21 27,19 "/>
+</svg>

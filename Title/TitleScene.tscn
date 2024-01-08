@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://Title/BackGround.gdshader" id="2_b2r6n"]
 [ext_resource type="Script" path="res://Title/TitleScene.gd" id="2_ft3rn"]
 [ext_resource type="PackedScene" uid="uid://dj71foidl1nbr" path="res://Title/Main.tscn" id="3_6h4ks"]
-[ext_resource type="AudioStream" uid="uid://bcwxh0xd32hek" path="res://Audio/Music/demo_scene.ogg" id="3_r8x1g"]
+[ext_resource type="AudioStream" uid="uid://cw0246a2kelt" path="res://Audio/Music/demo_scene_synth_edition.ogg" id="3_gh2ty"]
 [ext_resource type="PackedScene" uid="uid://cnl53v0lrb1mv" path="res://Title/Options.tscn" id="4_oyfw7"]
 [ext_resource type="AudioStream" uid="uid://bx3abwfykx10p" path="res://Audio/Sound/knock_iron.ogg" id="4_yg5wx"]
 [ext_resource type="PackedScene" uid="uid://bsynmnxiy47ku" path="res://Title/Exit.tscn" id="6_201ko"]
@@ -161,8 +161,8 @@ tracks/0/path = NodePath("BackButton:offset_bottom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [40.0]
 }
@@ -173,8 +173,8 @@ tracks/1/path = NodePath("BackButton:offset_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0.0]
 }
@@ -185,8 +185,8 @@ tracks/2/path = NodePath("Main:offset_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0]
 }
@@ -197,8 +197,8 @@ tracks/3/path = NodePath("Main:offset_right")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [800]
 }
@@ -214,8 +214,8 @@ tracks/0/path = NodePath("BackButton:offset_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [-75.0, 25.0]
 }
@@ -226,8 +226,8 @@ tracks/1/path = NodePath("BackButton:offset_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [-35.0, 65.0]
 }
@@ -238,8 +238,8 @@ tracks/2/path = NodePath("Main:offset_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [-800.0, 0.0]
 }
@@ -250,8 +250,8 @@ tracks/3/path = NodePath("Main:offset_right")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [0.0, 800.0]
 }
@@ -273,8 +273,8 @@ tracks/0/path = NodePath("../Save_pan_d:offset_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [0.0, -100.0]
 }
@@ -285,8 +285,8 @@ tracks/1/path = NodePath("../Save_pan_d:offset_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [100.0, 0.0]
 }
@@ -297,8 +297,8 @@ tracks/2/path = NodePath("../Save_pan_u:offset_top")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [-100.0, 0.0]
 }
@@ -309,8 +309,8 @@ tracks/3/path = NodePath("../Save_pan_u:offset_bottom")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [0.0, 100.0]
 }
@@ -321,8 +321,8 @@ tracks/4/path = NodePath("../Background:texture:gradient:colors")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1), PackedColorArray(1, 1, 1, 1, 0.74902, 0.937255, 1, 1)]
 }
@@ -333,8 +333,8 @@ tracks/5/path = NodePath("../RefreshButton:offset_top")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [35.0, -75.0]
 }
@@ -345,8 +345,8 @@ tracks/6/path = NodePath("../RefreshButton:offset_bottom")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [35.0, -35.0]
 }
@@ -357,8 +357,8 @@ tracks/7/path = NodePath("../Saves:anchor_left")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.05, 0.05]
 }
@@ -369,8 +369,8 @@ tracks/8/path = NodePath("../Saves:anchor_right")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.95, 0.95]
 }
@@ -386,8 +386,8 @@ tracks/0/path = NodePath("../Exit:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [1.45, 0.45]
 }
@@ -398,8 +398,8 @@ tracks/1/path = NodePath("../Exit:anchor_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [1.55, 0.55]
 }
@@ -410,8 +410,8 @@ tracks/2/path = NodePath("../Background:texture:gradient:colors")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1), PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)]
 }
@@ -422,8 +422,8 @@ tracks/3/path = NodePath("../Exit:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat64Array(0, 0.01),
+"transitions": PackedFloat64Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
@@ -434,8 +434,8 @@ tracks/4/path = NodePath("../BackButton:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat64Array(0, 0.01),
+"transitions": PackedFloat64Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
@@ -450,8 +450,8 @@ tracks/0/path = NodePath("../Online:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [1.2, 0.2]
 }
@@ -462,8 +462,8 @@ tracks/1/path = NodePath("../Online:anchor_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [1.8, 0.8]
 }
@@ -479,8 +479,8 @@ tracks/0/path = NodePath("../Options:anchor_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [1.1, 0.1]
 }
@@ -491,8 +491,8 @@ tracks/1/path = NodePath("../Options:anchor_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-3, -3),
 "update": 0,
 "values": [1.85, 0.85]
 }
@@ -503,8 +503,8 @@ tracks/2/path = NodePath("../Options:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat64Array(0, 0.01),
+"transitions": PackedFloat64Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
@@ -518,8 +518,8 @@ tracks/0/path = NodePath("../Options:anchor_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.1]
 }
@@ -530,8 +530,8 @@ tracks/1/path = NodePath("../Options:anchor_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.9]
 }
@@ -542,8 +542,8 @@ tracks/2/path = NodePath("../Beginning_description:anchor_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [-0.6]
 }
@@ -554,8 +554,8 @@ tracks/3/path = NodePath("../Beginning_description:anchor_right")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [0.0]
 }
@@ -566,8 +566,8 @@ tracks/4/path = NodePath("../Beginning_title:offset_top")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [-160.0]
 }
@@ -578,8 +578,8 @@ tracks/5/path = NodePath("../Beginning_title:offset_bottom")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0.0]
 }
@@ -590,8 +590,8 @@ tracks/6/path = NodePath("../Beginning:anchor_left")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.0]
 }
@@ -602,8 +602,8 @@ tracks/7/path = NodePath("../Beginning:anchor_right")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.4]
 }
@@ -614,8 +614,8 @@ tracks/8/path = NodePath("../Save_pan_d:offset_top")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0.0]
 }
@@ -626,8 +626,8 @@ tracks/9/path = NodePath("../Save_pan_d:offset_bottom")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [100.0]
 }
@@ -638,8 +638,8 @@ tracks/10/path = NodePath("../LaunchButton:offset_top")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0.0]
 }
@@ -650,8 +650,8 @@ tracks/11/path = NodePath("../LaunchButton:offset_bottom")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [100.0]
 }
@@ -662,8 +662,8 @@ tracks/12/path = NodePath("../Save_pan_u:offset_top")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [-100.0]
 }
@@ -674,8 +674,8 @@ tracks/13/path = NodePath("../Save_pan_u:offset_bottom")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [0.0]
 }
@@ -686,8 +686,8 @@ tracks/14/path = NodePath("../Online:anchor_left")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.2]
 }
@@ -698,8 +698,8 @@ tracks/15/path = NodePath("../Online:anchor_right")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.8]
 }
@@ -710,8 +710,8 @@ tracks/16/path = NodePath("../Exit:anchor_left")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.45]
 }
@@ -722,8 +722,8 @@ tracks/17/path = NodePath("../Exit:anchor_right")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.55]
 }
@@ -734,8 +734,8 @@ tracks/18/path = NodePath("../Background:texture:gradient:colors")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1)]
 }
@@ -746,8 +746,8 @@ tracks/19/path = NodePath("../Options:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [false]
 }
@@ -758,8 +758,8 @@ tracks/20/path = NodePath("../Beginning_description:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [false]
 }
@@ -770,8 +770,8 @@ tracks/21/path = NodePath("../Beginning_title:clip_contents")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [false]
 }
@@ -782,8 +782,8 @@ tracks/22/path = NodePath("../Beginning:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [false]
 }
@@ -794,8 +794,8 @@ tracks/23/path = NodePath("../Beginning_arrow:anchor_left")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.1]
 }
@@ -806,8 +806,8 @@ tracks/24/path = NodePath("../Beginning_arrow:anchor_right")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.1]
 }
@@ -818,8 +818,8 @@ tracks/25/path = NodePath("../RefreshButton:offset_top")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [35.0]
 }
@@ -830,8 +830,8 @@ tracks/26/path = NodePath("../RefreshButton:offset_bottom")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [35.0]
 }
@@ -842,8 +842,8 @@ tracks/27/path = NodePath("../Saves:anchor_left")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.05]
 }
@@ -854,8 +854,8 @@ tracks/28/path = NodePath("../Saves:anchor_right")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 0,
 "values": [1.95]
 }
@@ -866,8 +866,8 @@ tracks/29/path = NodePath("../Exit:visible")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [false]
 }
@@ -878,8 +878,8 @@ tracks/30/path = NodePath("../BackButton:visible")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
 "update": 1,
 "values": [true]
 }
@@ -895,8 +895,8 @@ tracks/0/path = NodePath("../Beginning_description:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [-0.6, 0.0]
 }
@@ -907,8 +907,8 @@ tracks/1/path = NodePath("../Beginning_description:anchor_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [0.0, 0.55]
 }
@@ -919,8 +919,8 @@ tracks/2/path = NodePath("../Beginning_title:offset_top")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [-160.0, 15.0]
 }
@@ -931,8 +931,8 @@ tracks/3/path = NodePath("../Beginning_title:offset_bottom")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [0.0, 160.0]
 }
@@ -943,8 +943,8 @@ tracks/4/path = NodePath("../Beginning:anchor_left")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [1.0, 0.6]
 }
@@ -955,8 +955,8 @@ tracks/5/path = NodePath("../Beginning:anchor_right")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [1.4, 1.1]
 }
@@ -967,8 +967,8 @@ tracks/6/path = NodePath("../Save_pan_d:offset_top")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [0.0, -100.0]
 }
@@ -979,8 +979,8 @@ tracks/7/path = NodePath("../Save_pan_d:offset_bottom")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [100.0, 0.0]
 }
@@ -991,8 +991,8 @@ tracks/8/path = NodePath("../LaunchButton:offset_top")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [0.0, -150.0]
 }
@@ -1003,8 +1003,8 @@ tracks/9/path = NodePath("../LaunchButton:offset_bottom")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [100.0, -50.0]
 }
@@ -1015,8 +1015,8 @@ tracks/10/path = NodePath("../Background:texture:gradient:colors")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, -2),
 "update": 0,
 "values": [PackedColorArray(1, 1, 1, 1, 0, 0.74902, 1, 1), PackedColorArray(1, 1, 1, 1, 0.74902, 0.937255, 1, 1)]
 }
@@ -1027,8 +1027,8 @@ tracks/11/path = NodePath("../Beginning_description:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat64Array(0, 0.01),
+"transitions": PackedFloat64Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
@@ -1039,8 +1039,8 @@ tracks/12/path = NodePath("../Beginning_title:clip_contents")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat64Array(0, 0.01),
+"transitions": PackedFloat64Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
@@ -1051,8 +1051,8 @@ tracks/13/path = NodePath("../Beginning:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat64Array(0, 0.01),
+"transitions": PackedFloat64Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
@@ -1063,8 +1063,8 @@ tracks/14/path = NodePath("../Beginning_arrow:anchor_left")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.1, 0.6]
 }
@@ -1075,8 +1075,8 @@ tracks/15/path = NodePath("../Beginning_arrow:anchor_right")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat64Array(0, 0.5),
+"transitions": PackedFloat64Array(-2, 1),
 "update": 0,
 "values": [1.1, 0.6]
 }
@@ -1102,7 +1102,7 @@ theme = ExtResource("1_6nm6v")
 script = ExtResource("2_ft3rn")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_r8x1g")
+stream = ExtResource("3_gh2ty")
 autoplay = true
 bus = &"Music"
 

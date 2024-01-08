@@ -21,6 +21,12 @@ msgstr "Concrete Block"
 msgid "tile.concrete.discription"
 msgstr "Ordinary hard blocks."
 
+msgid "tile.wood"
+msgstr "Wood block"
+
+msgid "tile.wood.discription"
+msgstr "Ordinary hard blocks."
+
 ####----------Equipment----------####
 ###----------Tool----------###
 #----------Type----------#

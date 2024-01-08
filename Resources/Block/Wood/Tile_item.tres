@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="IBlockClass" load_steps=7 format=3 uid="uid://q3pol3pqi182"]
+
+[ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Item/IBlockClass.gd" id="1_qvwqq"]
+[ext_resource type="Texture2D" uid="uid://ea8kk0olgfe2" path="res://Resources/Block/Wood/wood.svg" id="1_x7ai4"]
+[ext_resource type="Shader" path="res://Resources/Block/BlockSixFaces.gdshader" id="2_ldqgw"]
+[ext_resource type="Texture2D" uid="uid://xyqqmlwbeby7" path="res://Resources/Block/Wood/Texture_16x128.tres" id="3_ybesu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwa5s"]
+render_priority = 0
+shader = ExtResource("2_ldqgw")
+shader_parameter/albedo = ExtResource("3_ybesu")
+
+[sub_resource type="BoxMesh" id="BoxMesh_fjsuo"]
+material = SubResource("ShaderMaterial_qwa5s")
+
+[resource]
+script = ExtResource("1_qvwqq")
+hardness = 60.0
+name0 = "tile.wood"
+icon = ExtResource("1_x7ai4")
+model = SubResource("BoxMesh_fjsuo")
+discription = ""

@@ -1,8 +1,10 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=11 format=3 uid="uid://btij0v7fevj3g"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=15 format=3 uid="uid://btij0v7fevj3g"]
 
 [ext_resource type="Material" uid="uid://dl7h4e8oiamf1" path="res://Resources/Block/Dummy/Material.tres" id="1_b76pa"]
-[ext_resource type="Shader" path="res://Resources/Block/Concrete/Material.gdshader" id="2_fi2pa"]
+[ext_resource type="Shader" path="res://Resources/Block/TerrainMaterial.gdshader" id="2_r62jx"]
 [ext_resource type="Texture2D" uid="uid://b3tng82btsq57" path="res://Resources/Block/Concrete/Texture_32x.tres" id="3_itt0i"]
+[ext_resource type="Texture2D" uid="uid://t7dg2gayeb8" path="res://Resources/Block/Wood/Texture.tres" id="4_57x2f"]
+[ext_resource type="Texture2D" uid="uid://xyqqmlwbeby7" path="res://Resources/Block/Wood/Texture_16x128.tres" id="5_waxdb"]
 
 [sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_md4tr"]
 resource_name = "air"
@@ -28,7 +30,7 @@ noise = SubResource("FastNoiseLite_x15uq")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cty8v"]
 render_priority = 0
-shader = ExtResource("2_fi2pa")
+shader = ExtResource("2_r62jx")
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/texture_albedo = SubResource("NoiseTexture2D_yev1g")
 shader_parameter/texture_albedo_over = ExtResource("3_itt0i")
@@ -38,5 +40,17 @@ resource_name = "concrete"
 material_override_0 = SubResource("ShaderMaterial_cty8v")
 atlas_size_in_tiles = Vector2i(1, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7g8k"]
+render_priority = 0
+shader = ExtResource("2_r62jx")
+shader_parameter/uv1_blend_sharpness = 0.1
+shader_parameter/texture_albedo = ExtResource("4_57x2f")
+shader_parameter/texture_albedo_over = ExtResource("5_waxdb")
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_75y82"]
+resource_name = "wood"
+material_override_0 = SubResource("ShaderMaterial_o7g8k")
+atlas_size_in_tiles = Vector2i(1, 1)
+
 [resource]
-models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_md4tr"), SubResource("VoxelBlockyModelCube_q0n2y"), SubResource("VoxelBlockyModelCube_6aisr")])
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_md4tr"), SubResource("VoxelBlockyModelCube_q0n2y"), SubResource("VoxelBlockyModelCube_6aisr"), SubResource("VoxelBlockyModelCube_75y82")])
