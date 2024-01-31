@@ -148,7 +148,6 @@ dialog_text = "fatal_window.fullscreen_warning"
 dialog_autowrap = true
 
 [node name="Scale" type="HBoxContainer" parent="#options_video#/VideoSetting/VSpilt"]
-visible = false
 layout_mode = 2
 
 [node name="scale_text" type="Label" parent="#options_video#/VideoSetting/VSpilt/Scale"]

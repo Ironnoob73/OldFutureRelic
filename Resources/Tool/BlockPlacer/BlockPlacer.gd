@@ -43,12 +43,12 @@ func refresh_screen():
 				else	"terrain.smooth" )
 
 #Interact
-func _unhandled_input(event):
-	if InteractRay.Bterrain_tool != null and !(event is InputEventMouseMotion):
+func _physics_process(delta):
+	if InteractRay.Bterrain_tool != null:
 		if InteractRay.Player.current_menu == "HUD":
 	#Dig & Place
 			var hit = InteractRay.get_pointed_voxel(current_mode)
-			if event.pressed and InteractRay.is_colliding():
+			if InteractRay.is_colliding():
 				if Input.is_action_just_pressed("main_attack"):
 					if hit != null :	dig(InteractRay.hit_point)
 				elif Input.is_action_just_pressed("secondary_attack"):
@@ -63,11 +63,10 @@ func _unhandled_input(event):
 						elif hit != null :	pos = hit.previous_position
 						place(pos)
 	#Switch block
-			if event.pressed:
-				if Input.is_action_just_pressed("tab_right") or Input.is_action_just_pressed("roll_down") and ( Input.is_action_pressed("tool_function_switch") or InteractRay.Player.current_menu == "ToolSetting" ):
-					switch_block(true)
-				elif Input.is_action_just_pressed("tab_left") or Input.is_action_just_pressed("roll_up") and ( Input.is_action_pressed("tool_function_switch") or InteractRay.Player.current_menu == "ToolSetting" ):
-					switch_block(false)
+			if Input.is_action_just_pressed("tab_right") or Input.is_action_just_pressed("roll_down") and ( Input.is_action_pressed("tool_function_switch") or InteractRay.Player.current_menu == "ToolSetting" ):
+				switch_block(true)
+			elif Input.is_action_just_pressed("tab_left") or Input.is_action_just_pressed("roll_up") and ( Input.is_action_pressed("tool_function_switch") or InteractRay.Player.current_menu == "ToolSetting" ):
+				switch_block(false)
 			if Input.is_action_just_pressed("tool_function_switch"):
 				animation.play("Switch_block")
 			if Input.is_action_just_released("tool_function_switch"):
@@ -129,7 +128,6 @@ func dig(center: Vector3i):
 		create_trail(Color(1.0,0.0,0.0))
 	refresh_screen()
 	Player.Inventory.ToolHotbar[Player.current_hotbar].damage += randf_range(0.0,2.0)
-	InteractRay.Bterrain.save_modified_blocks()
 	
 func place(center: Vector3i):
 	if !current_mode:
@@ -158,6 +156,8 @@ func create_trail(light_color:Color):
 	var trail_tween = get_tree().create_tween()
 	trail_tween.tween_property(trail.material_override, "albedo_color:a", 0.0, 0.5)
 	trail_tween.tween_callback(trail.queue_free)
+	
+	InteractRay.Bterrain.save_modified_blocks()
 
 #Setting
 #Menthod from GOAT Template : https://github.com/miskatonicstudio/goat/blob/master/addons/goat/main_scenes/InteractiveScreen.gd

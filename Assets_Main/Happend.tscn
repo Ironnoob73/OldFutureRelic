@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmeul2tdylr0t"]
+[gd_scene load_steps=15 format=3 uid="uid://dmeul2tdylr0t"]
 
 [ext_resource type="Script" path="res://Assets_Main/Happend.gd" id="1_e8in2"]
 [ext_resource type="PackedScene" uid="uid://bys33qmaoyw20" path="res://default_environment.tscn" id="1_jc240"]
 [ext_resource type="PackedScene" uid="uid://bk6ihg1vf71uf" path="res://Assets_Main/Player.tscn" id="1_qmywt"]
 [ext_resource type="VoxelStreamScript" uid="uid://wkauv1r5gk6e" path="res://Assets_Main/Terrain/VoxelStream.tres" id="4_2su5t"]
 [ext_resource type="VoxelBlockyLibrary" uid="uid://btij0v7fevj3g" path="res://Resources/Block/BlockLib_basic.tres" id="4_5idhv"]
+[ext_resource type="PackedScene" uid="uid://c28uk3upo2y2q" path="res://Resources/Decorate/Obelisk/Obelisk.tscn" id="6_5bgou"]
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_65jvy"]
 library = ExtResource("4_5idhv")
@@ -81,6 +82,8 @@ shape = SubResource("SphereShape3D_7p7mn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("SphereMesh_apmip")
+
+[node name="Static" parent="." instance=ExtResource("6_5bgou")]
 
 [connection signal="mesh_block_exited" from="BlockTerrain" to="BlockTerrain" method="_on_mesh_block_exited"]
 

@@ -41,4 +41,5 @@ func dig(center: Vector3i):
 		print(InteractRay.Bterrain_tool.get_voxel_metadata(center))
 		tool_info.damage += randf_range(0.0,2.0)
 		Player.refresh_handheld_info()
+		
 	InteractRay.Bterrain.save_modified_blocks()

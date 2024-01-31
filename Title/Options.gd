@@ -6,6 +6,7 @@ extends TabContainer
 
 @onready var Fullscreen = $"#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button"
 @onready var fullscreen_warn = $"#options_video#/VideoSetting/VSpilt/Fullscreen/fullscreen_button/fullscreen_warn"
+@onready var Scale = $"#options_video#/VideoSetting/VSpilt/Scale/scale_button"
 
 @onready var MasterVolume = $"#options_audio#/AudioSetting/VSpilt/Master/master_button"
 @onready var BgmVolume = $"#options_audio#/AudioSetting/VSpilt/Music/bgm_button"
@@ -24,6 +25,8 @@ func _ready():
 	match DisplayServer.window_get_mode():
 		0:	Fullscreen.set_pressed_no_signal(false)
 		3:	Fullscreen.set_pressed_no_signal(true)
+	#Scale
+	Scale.value = get_window().content_scale_factor
 	#Volume
 	MasterVolume.value = db_to_linear(AudioServer.get_bus_volume_db(0))
 	MasterVolume.set_tooltip_text( str(db_to_linear(AudioServer.get_bus_volume_db(0))*100) + "%")
@@ -80,8 +83,7 @@ func _on_fullscreen_warn_close_requested():
 	fullscreen_warn.show()
 #Scale
 func _on_scale_button_value_changed(value):
-	ProjectSettings.set_setting("display/window/stretch/scale",value)
-	print(ProjectSettings.get_setting("display/window/stretch/scale"))
+	get_window().content_scale_factor = value
 	Global.save_config()
 	
 #Master volume

@@ -21,11 +21,11 @@ width = 100
 height = 100
 fill = 2
 
-[sub_resource type="InputEventAction" id="InputEventAction_mfe8b"]
-action = &"ui_cancel"
+[sub_resource type="InputEventAction" id="InputEventAction_pcxar"]
+action = &"pause"
 
-[sub_resource type="Shortcut" id="Shortcut_q52yj"]
-events = [SubResource("InputEventAction_mfe8b")]
+[sub_resource type="Shortcut" id="Shortcut_be5wd"]
+events = [SubResource("InputEventAction_pcxar")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ln0lj"]
 content_margin_left = 4.0
@@ -661,7 +661,7 @@ offset_left = 25.0
 offset_right = 8.0
 offset_bottom = 50.0
 grow_vertical = 0
-shortcut = SubResource("Shortcut_q52yj")
+shortcut = SubResource("Shortcut_be5wd")
 text = "button.back"
 
 [node name="ItemInv" type="HBoxContainer" parent="."]

@@ -46,6 +46,7 @@ func _input(event):
 		rotate_y(-deg_to_rad(event.relative.x * Global.mouse_sens))
 		player_camera.rotate_x(-deg_to_rad(event.relative.y * Global.mouse_sens))
 		player_camera.rotation.x = clamp(player_camera.rotation.x,deg_to_rad(-90),deg_to_rad(90))
+		
 func _unhandled_input(event):
 	# Pause.
 	if Input.is_action_just_pressed("pause"):
@@ -55,12 +56,11 @@ func _unhandled_input(event):
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				pause_menu.show()
 			"Inventory":
-				if inventory_menu.close_inventory():
-					current_menu = "HUD"
-					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				inventory_menu.close_inventory()
 			"ToolSetting":
 				current_menu = "HUD"
 				hand_held.get_child(0).setting_off()
+		print(current_menu)
 	# Inventory
 	if Input.is_action_just_pressed("inventory"):
 		match current_menu :
@@ -69,8 +69,6 @@ func _unhandled_input(event):
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				inventory_menu.open_inventory()
 			"Inventory":
-				current_menu = "HUD"
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				inventory_menu.close_inventory()
 			"ToolSetting":
 				hand_held.get_child(0).setting_off()
@@ -95,16 +93,6 @@ func _unhandled_input(event):
 			current_hotbar = 4
 			refresh_handheld(current_hotbar)
 			
-		if !(event is InputEventMouseMotion) and event.pressed:
-			if Input.is_action_just_pressed("roll_down"):
-				if current_hotbar < 4 :	current_hotbar += 1
-				else :	current_hotbar = 0
-				refresh_handheld(current_hotbar)
-			elif Input.is_action_just_pressed("roll_up"):
-				if current_hotbar > 0 :	current_hotbar -= 1
-				else :	current_hotbar = 4
-				refresh_handheld(current_hotbar)
-	
 func _physics_process(_delta):
 	# Record Inerita & Add the gravity.
 	if is_on_floor():
@@ -149,6 +137,17 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
+	#Scroll hotbar
+	if current_menu == "HUD" and !Input.is_action_pressed("tool_function_switch"):
+		if Input.is_action_just_pressed("roll_down"):
+			if current_hotbar < 4 :	current_hotbar += 1
+			else :	current_hotbar = 0
+			refresh_handheld(current_hotbar)
+		elif Input.is_action_just_pressed("roll_up"):
+			if current_hotbar > 0 :	current_hotbar -= 1
+			else :	current_hotbar = 4
+			refresh_handheld(current_hotbar)
+		
 func _process(_delta):
 	first_person_cam.global_transform = player_camera.global_transform
 	

@@ -53,7 +53,10 @@ func close_inventory():
 	title.text = "inventory.title"
 	if !animation.is_playing():
 		match current_inv:
-			"Main" :	animation.play_backwards("Show")
+			"Main" :
+				animation.play_backwards("Show")
+				get_parent().current_menu = "HUD"
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			"Item" :
 				current_inv = "Main"
 				animation.play_backwards("Item")
@@ -63,12 +66,10 @@ func close_inventory():
 			"Status" :
 				current_inv = "Main"
 				animation.play_backwards("Status")
-	return true
+		return true
+	else :	return false
 
 func _on_back_button_pressed():
-	if current_inv == "Main":
-		get_parent().current_menu = "HUD"
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	close_inventory()
 func _on_item_button_pressed():
 	if current_inv == "Main":
@@ -102,11 +103,11 @@ func item_inv_update():
 	block_group.set_text(0,tr("inventory.item.block"))
 	for i in inventory.itemStack:
 		var group : Object
-		match i.item.get_original_class():
-			"IBlockClass" :	group = block_group
-			"ItemClass" :	group = item_group
-		#if i.item is IBlockClass :	group = block_group
-		#elif i.item is ItemClass :	group = item_group
+		#match i.item.get_original_class():
+		#	"IBlockClass" :	group = block_group
+		#	"ItemClass" :	group = item_group
+		if i.item is IBlockClass :	group = block_group
+		elif i.item is ItemClass :	group = item_group
 		var subitem = item_list.create_item(group)
 		subitem.set_icon(0,i.item.icon)
 		subitem.set_icon_max_width(0,30)
