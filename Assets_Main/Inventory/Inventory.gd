@@ -122,6 +122,8 @@ func _on_item_list_item_selected():
 	if index != null:
 		item_name.text = inventory.itemStack[index].item.name0
 		item_model.mesh = inventory.itemStack[index].item.model
+		if inventory.itemStack[index].item.material:
+			item_model.material_override = inventory.itemStack[index].item.material
 		item_discription.text = inventory.itemStack[index].item.get_discription()
 #Sort
 func _on_item_list_column_title_clicked(column, mouse_button_index):
@@ -161,6 +163,8 @@ func _on_equipment_list_item_selected():
 			tr("equipment.durability") + ":" + \
 			str(inventory.eqMeta[index].equipment.durability - inventory.eqMeta[index].damage) + "/" + str(inventory.eqMeta[index].equipment.durability)
 		equipment_model.mesh = inventory.eqMeta[index].equipment.model
+		if inventory.eqMeta[index].equipment.material:
+			equipment_model.material_override = inventory.eqMeta[index].equipment.material
 		equipment_discription.text = inventory.eqMeta[index].equipment.get_discription()
 #Sort
 func _on_equipment_list_column_title_clicked(column, mouse_button_index):

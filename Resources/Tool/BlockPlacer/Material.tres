@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bklpldfehlvm"]
+
+[ext_resource type="Shader" path="res://Resources/Item/ModelTexture.gdshader" id="1_xmlmq"]
+[ext_resource type="Texture2D" uid="uid://ci0xnp4w3fu8f" path="res://Resources/Tool/BlockPlacer/block_placer.png" id="2_5ewdm"]
+[ext_resource type="Texture2D" uid="uid://dkj1ivqpphr5m" path="res://Resources/Tool/BlockPlacer/block_placer_e.png" id="3_jsktf"]
+[ext_resource type="Texture2D" uid="uid://n00qdprajeou" path="res://Resources/Tool/BlockPlacer/block_placer_mrh.png" id="4_44kby"]
+[ext_resource type="Texture2D" uid="uid://c5638adw2r2g3" path="res://Resources/Tool/BlockPlacer/block_placer_normal.png" id="5_bk4bf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xmlmq")
+shader_parameter/texture_albedo = ExtResource("2_5ewdm")
+shader_parameter/texture_mrh = ExtResource("4_44kby")
+shader_parameter/texture_emission = ExtResource("3_jsktf")
+shader_parameter/texture_normal = ExtResource("5_bk4bf")

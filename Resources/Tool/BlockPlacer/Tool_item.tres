@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EToolClass" load_steps=5 format=3 uid="uid://7i1mom7pwv8p"]
+[gd_resource type="Resource" script_class="EToolClass" load_steps=6 format=3 uid="uid://7i1mom7pwv8p"]
 
-[ext_resource type="ArrayMesh" uid="uid://bu05yjf2svybh" path="res://Resources/Tool/BlockPlacer/ModelMesh.tres" id="1_s2el4"]
 [ext_resource type="Texture2D" uid="uid://be151ueubkmgb" path="res://Resources/Tool/BlockPlacer/block_placer.svg" id="1_v8bo3"]
+[ext_resource type="Material" uid="uid://bklpldfehlvm" path="res://Resources/Tool/BlockPlacer/Material.tres" id="2_cvnwf"]
 [ext_resource type="Script" path="res://Assets_Main/Inventory/Class/Equipment/EToolClass.gd" id="2_kbfjc"]
 [ext_resource type="PackedScene" uid="uid://cemsonsnw348p" path="res://Resources/Tool/BlockPlacer/BlockPlacer.tscn" id="3_s4bfw"]
+[ext_resource type="ArrayMesh" uid="uid://cfjexn72q0qp7" path="res://Resources/Tool/BlockPlacer/block_placer.obj" id="3_w24jr"]
 
 [resource]
 script = ExtResource("2_kbfjc")
@@ -15,5 +16,6 @@ durability = 10200.0
 name1 = "tool.godfinger.subname"
 name0 = "tool.godfinger"
 icon = ExtResource("1_v8bo3")
-model = ExtResource("1_s2el4")
+model = ExtResource("3_w24jr")
+material = ExtResource("2_cvnwf")
 discription = ""

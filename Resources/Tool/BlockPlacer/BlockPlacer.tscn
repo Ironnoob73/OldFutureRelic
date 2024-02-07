@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cemsonsnw348p"]
+[gd_scene load_steps=13 format=3 uid="uid://cemsonsnw348p"]
 
-[ext_resource type="ArrayMesh" uid="uid://bu05yjf2svybh" path="res://Resources/Tool/BlockPlacer/ModelMesh.tres" id="1_j6y5y"]
+[ext_resource type="Material" uid="uid://bklpldfehlvm" path="res://Resources/Tool/BlockPlacer/Material.tres" id="1_1b5yt"]
+[ext_resource type="ArrayMesh" uid="uid://cfjexn72q0qp7" path="res://Resources/Tool/BlockPlacer/block_placer.obj" id="2_vivkh"]
 [ext_resource type="Script" path="res://Resources/Tool/BlockPlacer/BlockPlacer.gd" id="6_oi4h2"]
 [ext_resource type="PackedScene" uid="uid://mftuavwg2mms" path="res://Resources/Tool/BlockPlacer/screen.tscn" id="7_k2oyq"]
 
@@ -139,9 +140,10 @@ _data = {
 [node name="ModelScene" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 layers = 19
+material_override = ExtResource("1_1b5yt")
 ignore_occlusion_culling = true
 gi_lightmap_scale = 1
-mesh = ExtResource("1_j6y5y")
+mesh = ExtResource("2_vivkh")
 script = ExtResource("6_oi4h2")
 
 [node name="Screen" type="MeshInstance3D" parent="."]
